@@ -1,0 +1,104 @@
+--- mozplugger-2.1.3/configure.ac~	2013-02-18 19:42:08.000000000 +0000
++++ mozplugger-2.1.3/configure.ac	2013-10-13 17:42:07.000000000 +0100
+@@ -31,10 +31,10 @@
+ AC_PROG_MAKE_SET
+ 
+ # Determine the linker flags for mozplugger.so
+-LDSHARED='gcc -shared'
++LDSHARED="$CC -shared"
+ PLATFORM="x`uname`"
+-XCFLAGS="-fPIC -Wall -O2 -Wdeclaration-after-statement"
+-BIN2O="ld -r -b binary"
++XCFLAGS="-fPIC"
++BIN2O="$CC -nostdlib -Wl,-r -Wl,-b -Wl,binary"
+ MOZPLUGGER_SO_BLOB="mozplugger_so_blob.o"
+ 
+ if test "${PLATFORM}" = xIRIX; then
+--- mozplugger-2.1.3/Makefile.in~	2013-02-18 19:42:08.000000000 +0000
++++ mozplugger-2.1.3/Makefile.in	2013-10-13 17:44:07.000000000 +0100
+@@ -134,7 +134,7 @@
+ 
+ LDSHARED=@LDSHARED@
+ LDFLAGS=@LDFLAGS@
+-CFLAGS=$(COMMON_CFLAGS) $(XCFLAGS) @XCFLAGS@
++CFLAGS=@CFLAGS@ $(COMMON_CFLAGS) $(XCFLAGS) @XCFLAGS@
+ 
+ .SUFFIXES:
+ .SUFFIXES: .c .o
+@@ -142,33 +142,26 @@
+ all: mozplugger.so $(EXE_FILES)
+ 
+ mozplugger-helper: $(HELPER_OBJS) Makefile
+-	@echo "LD $@"
+-	@$(LD) -o $@ $(HELPER_OBJS) $(LDFLAGS) $(XLIBS)
++	$(LD) -o $@ $(HELPER_OBJS) $(LDFLAGS) $(XLIBS)
+ 
+ mozplugger-controller: $(CONTROL_OBJS) Makefile
+-	@echo "LD $@"
+-	@$(LD) -o $@ $(CONTROL_OBJS) $(LDFLAGS) $(XLIBS)
++	$(LD) -o $@ $(CONTROL_OBJS) $(LDFLAGS) $(XLIBS)
+ 
+ mozplugger-linker: $(LINKER_OBJS) Makefile
+-	@echo "LD $@"
+-	@$(LD) -o $@ $(LINKER_OBJS) $(LDFLAGS) $(XLIBS)
++	$(LD) -o $@ $(LINKER_OBJS) $(LDFLAGS) $(XLIBS)
+ 
+ mozplugger-update: $(MKCONFIG_OBJS) Makefile
+-	@echo "LD $@"
+-	@$(LD) -o $@ $(MKCONFIG_OBJS) $(LDFLAGS)
++	$(LD) -o $@ $(MKCONFIG_OBJS) $(LDFLAGS)
+ 
+ mozplugger_so_blob.o: mozplugger.so
+-	@echo "BIN2O $@"
+-	@$(BIN2O) -o $@ $<
++	$(BIN2O) -o $@ $<
+ 
+ mozplugger.so: $(PLUGIN_OBJS) Makefile
+-	@echo "LD $@"
+-	@$(LDSHARED) $(LDFLAGS) -o $@ $(PLUGIN_OBJS) $(XLIBS)
++	$(LDSHARED) $(LDFLAGS) -o $@ $(PLUGIN_OBJS) $(XLIBS)
+ 
+ .c.o :
+-	-@echo "CC $<"
+-	@$(CC) -c $(CFLAGS) -o $@ '$<'
+-	-@$(MKDEP) $(CFLAGS) -o $*.d '$<'
++	$(CC) -c $(CFLAGS) -o $@ '$<'
++	$(MKDEP) $(CFLAGS) -o $*.d '$<'
+ 
+ #mozplugger-helper.o: mozplugger-helper.c cmd_flags.h child.h debug.h config.h \
+ #    		     pipe_msg.h Makefile
+@@ -266,17 +259,17 @@
+ 	make localinstall BROWSERDIR=.opera
+ 
+ install:
+-	-install -d @bindir@
+-	install mozplugger-helper @bindir@
+-	install mozplugger-controller @bindir@
+-	install mozplugger-linker @bindir@
+-	install mozplugger-update @bindir@
+-	-for a in ${PLUGINDIRS}; do install -d $$a ; done
+-	for a in ${PLUGINDIRS}; do install mozplugger.so $$a ; done
+-	-install -d @sysconfdir@
+-	install $(srcdir)/mozpluggerrc @sysconfdir@
+-	-install -d @mandir@/man7
+-	install $(srcdir)/mozplugger.7 @mandir@/man7/
++	-install -d $(DESTDIR)@bindir@
++	install mozplugger-helper $(DESTDIR)@bindir@
++	install mozplugger-controller $(DESTDIR)@bindir@
++	install mozplugger-linker $(DESTDIR)@bindir@
++	install mozplugger-update $(DESTDIR)@bindir@
++	-install -d $(DESTDIR)@libdir@/nsbrowser/plugins
++	install mozplugger.so $(DESTDIR)@libdir@/nsbrowser/plugins
++	-install -d $(DESTDIR)@sysconfdir@
++	install $(srcdir)/mozpluggerrc $(DESTDIR)@sysconfdir@
++	-install -d $(DESTDIR)@mandir@/man7
++	install $(srcdir)/mozplugger.7 $(DESTDIR)@mandir@/man7/
+ 
+ uninstall:
+ 	-rm -f @sysconfdir@/mozpluggerrc
+@@ -335,5 +328,3 @@
+ 	    rm mozplugger ; \
+           fi ;\
+ 	)
+-
+--include $(ALL_OBJS:%.o=%.d)

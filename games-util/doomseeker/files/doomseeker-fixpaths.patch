@@ -1,0 +1,13 @@
+--- src/core/main.cpp	2011-03-04 15:50:06.000000000 -0800
++++ src/core/main.cpp	2011-03-29 21:53:52.412809448 -0700
+@@ -134,7 +134,9 @@
+ 		return 0;
+ 	}
+ 
+-	enginePlugins = new PluginLoader(MAKEID('E','N','G','N'), dataDirectories, "engines/");
++	QStringList tmpDataDirs;
++	tmpDataDirs << "/usr/local/share/doomseeker/engines/";
++	enginePlugins = new PluginLoader(MAKEID('E','N','G','N'), tmpDataDirs, "");
+ 
+ 	if (bTestMode)
+ 	{
