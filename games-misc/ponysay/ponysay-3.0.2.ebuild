@@ -6,7 +6,7 @@ EAPI='4'
 
 inherit git-2 eutils
 
-DESCRIPTION='Pony wrapper for cowsay.'
+DESCRIPTION='Pony wrapper for cowsay'
 HOMEPAGE='https://github.com/erkin/ponysay'
 
 SRC_URI=''
@@ -15,7 +15,7 @@ EGIT_COMMIT=$PV
 
 LICENSE='WTFPL-2'
 SLOT='0'
-KEYWORDS='x86 amd64'
+KEYWORDS='~amd64 ~x86'
 IUSE='-info -bash-completion -fish-completion -zsh-completion -strict-license'
 
 DEPEND='info? ( sys-apps/texinfo )
