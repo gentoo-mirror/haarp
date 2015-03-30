@@ -52,6 +52,8 @@ src_prepare() {
 	# Use default game data path
 	sed -i -e "s:/usr/local/share/:${GAMES_DATADIR}/doom-data/:" src/sdl/i_system.h
 
+	epatch "${FILESDIR}/${PN}-gl-types.patch"
+
 	# FIXME: Make this patch work, then use newer fmod
 	#epatch "${FILESDIR}/${PN}-fix-new-fmod.patch"
 }
