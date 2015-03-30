@@ -1,0 +1,17 @@
+--- neo/framework/BuildDefines.h.old	2013-11-12 15:20:49.702300031 +0100
++++ neo/framework/BuildDefines.h	2013-11-12 15:21:10.852810329 +0100
+@@ -109,13 +109,7 @@
+ 	#endif
+ #endif
+
+-#ifndef ID_ENFORCE_KEY
+-#	if !defined( ID_DEDICATED ) && !defined( ID_DEMO_BUILD )
+-#		define ID_ENFORCE_KEY 1
+-#	else
+-#		define ID_ENFORCE_KEY 0
+-#	endif
+-#endif
++#define ID_ENFORCE_KEY 0
+
+ #ifndef ID_OPENAL
+ #	if ( defined(_WIN32) || defined(MACOS_X) ) && !defined( ID_DEDICATED )
