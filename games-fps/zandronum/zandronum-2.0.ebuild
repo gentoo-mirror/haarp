@@ -6,11 +6,11 @@ EAPI=5
 
 inherit base games eutils cmake-utils
 
-MY_COMMIT="3e26f5eca13742bcaf1f451dd8d3d01fd05771aa" # 1.3
+MY_COMMIT="2fc02c0fad9378bcf76283e334725399294ce6ab" # 2.0
 
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
 HOMEPAGE="http://zandronum.com/"
-SRC_URI="https://bitbucket.org/Torr_Samaho/${PN}-stable/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2
+SRC_URI="https://bitbucket.org/Torr_Samaho/${PN}/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2
          https://www.sqlite.org/2014/sqlite-amalgamation-3080600.zip"
 
 LICENSE="BSD BUILDLIC Sleepycat"
@@ -18,8 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_mmx dedicated gtk timidity"
 
-RDEPEND="
-         !games-fps/gzdoom
+RDEPEND="!games-fps/gzdoom
          gtk? ( x11-libs/gtk+:2 )
          timidity? ( media-sound/timidity++ )
          media-libs/flac
@@ -35,14 +34,14 @@ DEPEND="${RDEPEND}
 
 src_unpack() {
 	base_src_unpack
-	S="${WORKDIR}/Torr_Samaho-${PN}-stable-${MY_COMMIT:0:12}"
+	S="${WORKDIR}/Torr_Samaho-${PN}-${MY_COMMIT:0:12}"
 	mv ${WORKDIR}/sqlite*/* ${S}/sqlite/	# Ugly, but upstream recommends this way...
 }
 
 src_prepare() {
 	# Fix NETGAMEVERSION for online play, without Mercurial
 	# normally Mercurial would generate svnversion.h, which defines it
-	local timestamp=$(curl -s https://bitbucket.org/api/1.0/repositories/Torr_Samaho/${PN}-stable/changesets/${MY_COMMIT}?format=yaml \
+	local timestamp=$(curl -s https://bitbucket.org/api/1.0/repositories/Torr_Samaho/${PN}/changesets/${MY_COMMIT}?format=yaml \
 		| awk -F\' '/utctimestamp/{print $2}')
 	test -z "${timestamp}" && die "Couldn't grab NETGAMEVERSION!"
 	local unixtimestamp=$(date +%s -d "${timestamp}")
@@ -52,8 +51,6 @@ src_prepare() {
 
 	# Use default game data path
 	sed -i -e "s:/usr/local/share/:${GAMES_DATADIR}/doom-data/:" src/sdl/i_system.h
-
-	epatch "${FILESDIR}/${PN}-gl-types.patch"
 
 	# FIXME: Make this patch work, then use newer fmod
 	#epatch "${FILESDIR}/${PN}-fix-new-fmod.patch"
