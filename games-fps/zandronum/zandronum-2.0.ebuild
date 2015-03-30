@@ -6,11 +6,11 @@ EAPI=5
 
 inherit base games eutils cmake-utils
 
-MY_COMMIT="2fc02c0fad9378bcf76283e334725399294ce6ab" # 2.0
+OWNER="Torr_Samaho"
 
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
 HOMEPAGE="http://zandronum.com/"
-SRC_URI="https://bitbucket.org/Torr_Samaho/${PN}/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2
+SRC_URI="https://bitbucket.org/${OWNER}/${PN}/get/${PV}.tar.bz2 -> ${P}.tar.bz2
          https://www.sqlite.org/2014/sqlite-amalgamation-3080600.zip"
 
 LICENSE="BSD BUILDLIC Sleepycat"
@@ -34,15 +34,15 @@ DEPEND="${RDEPEND}
 
 src_unpack() {
 	base_src_unpack
-	S="${WORKDIR}/Torr_Samaho-${PN}-${MY_COMMIT:0:12}"
+	S="$(ls -d "${WORKDIR}/${OWNER}-${PN}"-*)"
 	mv ${WORKDIR}/sqlite*/* ${S}/sqlite/	# Ugly, but upstream recommends this way...
 }
 
 src_prepare() {
-	# Fix NETGAMEVERSION for online play, without Mercurial
+	# Fix NETGAMEVERSION for online play, but without Mercurial
 	# normally Mercurial would generate svnversion.h, which defines it
-	local timestamp=$(curl -s https://bitbucket.org/api/1.0/repositories/Torr_Samaho/${PN}/changesets/${MY_COMMIT}?format=yaml \
-		| awk -F\' '/utctimestamp/{print $2}')
+	local url="https://bitbucket.org/api/1.0/repositories/${OWNER}/${PN}/changesets/${PV}?format=yaml"
+	local timestamp=$(wget -q "$url" -O - | awk -F\' '/utctimestamp/{print $2}')
 	test -z "${timestamp}" && die "Couldn't grab NETGAMEVERSION!"
 	local unixtimestamp=$(date +%s -d "${timestamp}")
 	local netgameversion=$(printf 0x%x $(( $unixtimestamp % 256 )) )
