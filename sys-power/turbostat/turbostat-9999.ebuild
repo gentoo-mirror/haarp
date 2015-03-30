@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit linux-info
+
 DESCRIPTION="Report processor frequency and idle statistics"
 HOMEPAGE="http://lwn.net/Articles/433002/"
 
@@ -18,7 +20,7 @@ DEPEND="${DEPEND}
 
 src_unpack() {
 	mkdir -p "${S}"
-	cp /usr/src/linux/tools/power/x86/turbostat/* "${S}/" || die "turbostat not found in kernel sources!"
+	cp "${KERNEL_DIR}/tools/power/x86/turbostat"/* "${S}/" || die "turbostat not found in kernel sources!"
 	cd "${S}"
 }
 
