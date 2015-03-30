@@ -10,8 +10,7 @@ OWNER="Torr_Samaho"
 
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
 HOMEPAGE="http://zandronum.com/"
-SRC_URI="https://bitbucket.org/${OWNER}/${PN}/get/${PV}.tar.bz2 -> ${P}.tar.bz2
-         https://www.sqlite.org/2014/sqlite-amalgamation-3080600.zip"
+SRC_URI="https://bitbucket.org/${OWNER}/${PN}/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="BSD BUILDLIC Sleepycat"
 SLOT="0"
@@ -31,6 +30,7 @@ RDEPEND="!games-fps/gzdoom
                    virtual/jpeg
                    virtual/opengl
 	)
+	dev-db/sqlite
 	dev-libs/openssl"
 
 DEPEND="${RDEPEND}
@@ -39,7 +39,6 @@ DEPEND="${RDEPEND}
 src_unpack() {
 	base_src_unpack
 	S="$(ls -d "${WORKDIR}/${OWNER}-${PN}"-*)"
-	mv ${WORKDIR}/sqlite*/* ${S}/sqlite/	# Ugly, but upstream recommends this way...
 }
 
 src_prepare() {
@@ -52,6 +51,9 @@ src_prepare() {
 	local netgameversion=$(printf 0x%x $(( $unixtimestamp % 256 )) )
 	elog "Using NETGAMEVERSION=${netgameversion}"
 	sed -i -e "s:(SVN_REVISION_NUMBER % 256):${netgameversion}:" src/version.h
+
+	# Use the dynamically-linked system-sqlite instead
+	sed -i -e "/add_subdirectory( sqlite )/d" CMakeLists.txt
 
 	# Use default game data path
 	sed -i -e "s:/usr/local/share/:${GAMES_DATADIR}/doom-data/:" src/sdl/i_system.h
@@ -99,7 +101,7 @@ src_install() {
 	insinto "${GAMES_DATADIR}/doom-data"
 	doins *.pk3
 
-        if use opengl;then
+	if use opengl;then
 		dogamesbin "${WORKDIR}/${P}_client/${PN}"
 		doicon "${S}/src/win32/zandronum.ico"
 		make_desktop_entry "${PN}" "Zandronum" "${PN}.ico" "Game;ActionGame;"
