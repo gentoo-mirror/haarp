@@ -38,24 +38,33 @@ DEPEND="${RDEPEND}
 dir=$(games_get_libdir)/${PN}
 
 src_prepare() {
-	epatch "${FILESDIR}/d3_nokeycheck.patch"
-	epatch "${FILESDIR}/d3_carmacksreverse.patch"
+	# do we really need Wall spam?
+	sed -i -e "/BASECPPFLAGS.append( '-Wall' )/d" neo/SConstruct
+
+	# use our own CFLAGS in release builds
+	sed -i -e "/OPTCPPFLAGS = \[ '-O3'/d" neo/SConstruct
+
+        epatch "${FILESDIR}/d3_nokeycheck.patch"
+        epatch "${FILESDIR}/d3_carmacksreverse.patch"
 }
 
 src_configure() {
 	S+="/neo"
 
-	myesconsargs=(
+	myesconsargs+=(
 		CC="$(tc-getCC)"
 		CXX="$(tc-getCXX)"
-	)
-		# FIXME build fails with JOBS=3
+		# FIXME: build fails with JOBS=3
 		#JOBS="$(echo -j1 ${MAKEOPTS} | sed -r "s/.*(-j\s*|--jobs=)([0-9]+).*/\2/")"
+	)
 
 	if use debug; then
 		myesconsargs+=( BUILD="debug-all" )
 	else
-		myesconsargs+=( BUILD="release" )
+		myesconsargs+=(
+			BUILD="release"
+			OPTCPPFLAGS="${CXXFLAGS}"
+		)
 	fi
 
 	if use dedicated; then
@@ -68,7 +77,7 @@ src_configure() {
 		myesconsargs+=( DEDICATED="0" )
 	fi
 
-	# FIXME needs 32-bit libz.a
+	# FIXME: needs 32-bit libz.a
 	myesconsargs+=( NOCURL="1" )
 }
 
@@ -90,7 +99,7 @@ src_install() {
 		doexe sys/linux/setup/image/openurl.sh
 		games_make_wrapper ${PN} ./doom.x86 "${dir}" "${dir}"
 		newicon sys/linux/setup/image/doom3.png ${PN}.png
-		make_desktop_entry ${PN} "Doom III GPL"
+		make_desktop_entry ${PN} "Doom III"
 	fi
 
 	prepgamesdirs
