@@ -101,7 +101,7 @@ src_install() {
 	insinto "${GAMES_DATADIR}/doom-data"
 	doins *.pk3
 
-	if use opengl;then
+	if use opengl; then
 		dogamesbin "${WORKDIR}/${P}_client/${PN}"
 		doicon "${S}/src/win32/zandronum.ico"
 		make_desktop_entry "${PN}" "Zandronum" "${PN}.ico" "Game;ActionGame;"

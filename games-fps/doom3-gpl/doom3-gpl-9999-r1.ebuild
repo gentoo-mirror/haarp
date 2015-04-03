@@ -41,24 +41,25 @@ src_prepare() {
 	# do we really need Wall spam?
 	sed -i -e "/BASECPPFLAGS.append( '-Wall' )/d" neo/SConstruct
 
-	# we supply our own CFLAGS for release builds
-	sconsCXXFLAGS="'$(echo "${CXXFLAGS}" | sed -e "s/ /', '/g")'"
-	sed -i -e "s/'-O3'.*'-fomit-frame-pointer'/${sconsCXXFLAGS}/" neo/SConstruct
+	# we supply our own CFLAGS
+	sed -i -e "/OPTCPPFLAGS = \[ '-O3'/d" neo/SConstruct
+	sed -i -e "s/BASEFLAGS = ''/BASEFLAGS = \[ '${CXXFLAGS//[${IFS}]/', '}' \]/" neo/SConstruct
+	sed -i -e "s/BASELINKFLAGS = \[ \]/BASELINKFLAGS = \[ '${LDFLAGS//[${IFS}]/', '}' \]/" neo/SConstruct
 
 	epatch "${FILESDIR}/d3_nokeycheck.patch"
 	epatch "${FILESDIR}/d3_carmacksreverse.patch"
 }
 
 src_configure() {
-	S+="/neo"
+	S="${WORKDIR}/${P}/neo"
 
-	myesconsargs+=(
+	myesconsargs=(
 		CC="$(tc-getCC)"
 		CXX="$(tc-getCXX)"
 	)
 
 	if use debug; then
-		myesconsargs+=( BUILD="debug-all" )
+		myesconsargs+=( BUILD="debug" )
 	else
 		myesconsargs+=( BUILD="release" )
 	fi
@@ -73,7 +74,7 @@ src_configure() {
 		myesconsargs+=( DEDICATED="0" )
 	fi
 
-	# FIXME: needs 32-bit libz.a
+	# FIXME: needs 32-bit libz.a - what is curl even needed for??
 	myesconsargs+=( NOCURL="1" )
 }
 
@@ -96,6 +97,7 @@ src_install() {
 
 	if use dedicated; then
 		doexe doomded.x86
+		games_make_wrapper ${PN}-dedicated ./doomded.x86 "${dir}" "${dir}"
 	fi
 
 	prepgamesdirs
