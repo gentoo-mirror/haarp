@@ -67,6 +67,9 @@ src_prepare() {
 	# options. On Gentoo, star is /usr/bin/tar, GNU tar is /bin/tar
 	epatch "${FILESDIR}"/${PN}-2.10.3-use_bin_tar.patch
 
+	# Backport patch that allows multiple file-roller instances again
+	epatch "${FILESDIR}"/${PN}-3.10.2.1-mark_command_line_usage.patch
+
 	# File providing Gentoo package names for various archivers
 	cp -f "${FILESDIR}/3.6.0-packages.match" data/packages.match || die
 
