@@ -31,6 +31,10 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 "
 
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-3.8.2-show_titlebar_when_maximized.patch
+}
+
 src_configure() {
 	gnome2_src_configure   \
 		ITSTOOL=$(type -P true) \

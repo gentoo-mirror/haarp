@@ -74,6 +74,9 @@ src_prepare() {
 	# libview: fixing memory leak (from '3.12' branch)
 	epatch "${FILESDIR}"/${P}-memory-leak.patch
 
+	# Show titlebar when maximized
+	epatch "${FILESDIR}"/${PN}-3.12.2-show_titlebar_when_maximized.patch
+
 	gnome2_src_prepare
 
 	# Do not depend on gnome-icon-theme, bug #326855, #391859
