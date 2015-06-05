@@ -16,7 +16,7 @@ EGIT_COMMIT=$PV
 LICENSE='WTFPL-2'
 SLOT='0'
 KEYWORDS='~amd64 ~x86'
-IUSE='-info -bash-completion -fish-completion -zsh-completion -strict-license'
+IUSE='-info -fish-completion -zsh-completion -strict-license'
 
 DEPEND='info? ( sys-apps/texinfo )
 		app-arch/gzip
@@ -37,7 +37,7 @@ src_compile() {
 
 	python3 setup.py --everything $freedom                      \
 		--without-pdf                                       \
-		$(use_with bash-completion | sed 's/-completion//') \
+		--with-bash                                         \
 		$(use_with fish-completion | sed 's/-completion//') \
 		$(use_with zsh-completion  | sed 's/-completion//') \
 		$(use_with info)                                    \
@@ -48,7 +48,7 @@ src_install() {
 	python3 setup.py --everything $freedom                      \
 		--without-pdf                                       \
 		--dest-dir=${D}                                     \
-		$(use_with bash-completion | sed 's/-completion//') \
+		--with-bash                                         \
 		$(use_with fish-completion | sed 's/-completion//') \
 		$(use_with zsh-completion  | sed 's/-completion//') \
 		$(use_with info)                                    \
