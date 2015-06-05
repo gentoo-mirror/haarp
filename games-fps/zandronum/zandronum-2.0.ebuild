@@ -15,7 +15,7 @@ SRC_URI="https://bitbucket.org/${OWNER}/${PN}/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 LICENSE="BSD BUILDLIC Sleepycat"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_mmx dedicated gtk opengl timidity"
+IUSE="cpu_flags_x86_mmx cpu_flags_x86_sse2 dedicated gtk opengl timidity"
 
 REQUIRED_USE="|| ( dedicated opengl )
               gtk? ( opengl )
@@ -65,6 +65,7 @@ src_prepare() {
 src_configure() {
 	mycmakeargs=(
 		$(cmake-utils_use_no cpu_flags_x86_mmx ASM)
+		$(cmake-utils_use cpu_flags_x86_sse2 SSE)
 		$(cmake-utils_use_no gtk GTK)
 		-DFMOD_INCLUDE_DIR=/opt/fmodex/api/inc/
 		-DFMOD_LIBRARY=/opt/fmodex/api/lib/libfmodex.so
