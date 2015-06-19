@@ -1,0 +1,36 @@
+Re-implement Carmack's Reverse which had been removed due to patent bs
+
+--- neo/renderer/draw_common.cpp.old	2014-05-22 12:55:36.403044927 +0200
++++ neo/renderer/draw_common.cpp	2014-05-22 15:27:23.299742373 +0200
+@@ -1143,18 +1143,26 @@
+ 		return;
+ 	}
+ 
+-	// patent-free work around
++	// patented depth-fail stencil shadows
++	// https://github.com/ljbade/doom3.gpl/commit/d4de024341e79e0ac1dfb54fb528859f8ccea605
+ 	if ( !external ) {
+-		// "preload" the stencil buffer with the number of volumes
+-		// that get clipped by the near or far clip plane
+-		qglStencilOp( GL_KEEP, tr.stencilDecr, tr.stencilDecr );
++		qglStencilOp( GL_KEEP, tr.stencilDecr, GL_KEEP );
+ 		GL_Cull( CT_FRONT_SIDED );
+ 		RB_DrawShadowElementsWithCounters( tri, numIndexes );
+-		qglStencilOp( GL_KEEP, tr.stencilIncr, tr.stencilIncr );
++		qglStencilOp( GL_KEEP, tr.stencilIncr, GL_KEEP );
+ 		GL_Cull( CT_BACK_SIDED );
+ 		RB_DrawShadowElementsWithCounters( tri, numIndexes );
+ 	}
++	// traditional depth-pass stencil shadows
++	else {
++		qglStencilOp( GL_KEEP, GL_KEEP, tr.stencilIncr );
++		GL_Cull( CT_FRONT_SIDED );
++		RB_DrawShadowElementsWithCounters( tri, numIndexes );
+ 
++		qglStencilOp( GL_KEEP, GL_KEEP, tr.stencilDecr );
++		GL_Cull( CT_BACK_SIDED );
++		RB_DrawShadowElementsWithCounters( tri, numIndexes );
++	}
+ 	// traditional depth-pass stencil shadows
+ 	qglStencilOp( GL_KEEP, GL_KEEP, tr.stencilIncr );
+ 	GL_Cull( CT_FRONT_SIDED );

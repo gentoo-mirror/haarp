@@ -1,0 +1,25 @@
+From ead5ddd26ec18033fa677cdf253ce25d5a0324e8 Mon Sep 17 00:00:00 2001
+From: Giovanni Campagna <gcampagna@src.gnome.org>
+Date: Sat, 18 Jan 2014 14:14:23 +0100
+Subject: Application: mark that we handle the command line
+
+Otherwise activating the application a second time would fail.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=722492
+
+diff --git a/src/fr-application.c b/src/fr-application.c
+index 0109a3a..f751bcf 100644
+--- a/src/fr-application.c
++++ b/src/fr-application.c
+@@ -866,7 +866,7 @@ fr_application_new (void)
+ {
+         return g_object_new (fr_application_get_type (),
+                              "application-id", "org.gnome.FileRoller",
+-                             "flags", G_APPLICATION_FLAGS_NONE,
++                             "flags", G_APPLICATION_HANDLES_COMMAND_LINE,
+                              NULL);
+ }
+ 
+-- 
+cgit v0.10.2
+
