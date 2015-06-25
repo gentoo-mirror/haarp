@@ -7,10 +7,11 @@ EAPI=5
 inherit base games eutils cmake-utils
 
 OWNER="Torr_Samaho"
+MY_COMMIT="27275a8414e840fc6d0318f9ab91d8122077ab3a"
 
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
 HOMEPAGE="http://zandronum.com/"
-SRC_URI="https://bitbucket.org/${OWNER}/${PN}/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://bitbucket.org/${OWNER}/${PN}-stable/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="BSD BUILDLIC Sleepycat"
 SLOT="0"
@@ -44,7 +45,7 @@ src_unpack() {
 src_prepare() {
 	# Fix NETGAMEVERSION for online play, but without Mercurial
 	# normally Mercurial would generate svnversion.h, which defines it
-	local url="https://bitbucket.org/api/1.0/repositories/${OWNER}/${PN}/changesets/${PV}?format=yaml"
+	local url="https://bitbucket.org/api/1.0/repositories/${OWNER}/${PN}-stable/changesets/${MY_COMMIT}?format=yaml"
 	local timestamp=$(wget -q "$url" -O - | awk -F\' '/utctimestamp/{print $2}')
 	test -z "${timestamp}" && die "Couldn't grab NETGAMEVERSION!"
 	local unixtimestamp=$(date +%s -d "${timestamp}")
