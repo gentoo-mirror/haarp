@@ -7,7 +7,7 @@ EAPI=5
 inherit base games eutils cmake-utils
 
 OWNER="Torr_Samaho"
-MY_COMMIT="27275a8414e840fc6d0318f9ab91d8122077ab3a"
+MY_COMMIT="ZA_2.1.2" #tags work too
 
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
 HOMEPAGE="http://zandronum.com/"
