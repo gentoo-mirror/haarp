@@ -1,0 +1,24 @@
+app-arch/file-roller 3.10.2.1-r1: Archive manager for GNOME
+app-editors/gedit 3.10.4: A text editor for the GNOME desktop
+app-editors/gedit-plugins 3.10.1: Official plugins for gedit
+app-misc/umouse 1.0: Unlocks the mouse pointer when an SDL app crashes
+app-text/evince 3.12.2-r2: Simple document viewer for GNOME
+games-fps/doom3-gpl 9999-r1: 3rd installment of the classic iD 3D first-person shooter
+games-fps/gzdoom 1.6.00 1.8.4: Enhanced OpenGL port of the official DOOM source code that also supports Heretic, Hexen, and Strife
+games-fps/zandronum 1.3 2.1.2: OpenGL ZDoom port with Client/Server multiplayer
+games-misc/ponysay 3.0.2: Pony wrapper for cowsay
+games-util/doomseeker 0.12.2b: Internet Doom server browser
+gnome-extra/gnome-system-monitor 3.8.2.1: The Gnome System Monitor
+media-gfx/gnome-font-viewer 3.8.0: Font viewer for GNOME 3
+media-gfx/img2xterm 9999: Displays images on your 256-color terminal with Unicode block characters
+media-libs/fmod 4.24.16: music and sound effects library, and a sound processing system
+net-wireless/blueproximity 1.2.5: Proximity detector for your mobile phone via bluetooth
+sys-apps/baobab 3.8.2-r1: Disk usage browser for GNOME
+sys-apps/gnome-disk-utility 3.10.0: Disk Utility for GNOME using udisks
+sys-power/gapcmon 0.9.0: Linux GUI monitor for APCUPSD
+sys-power/turbostat 9999: Report processor frequency and idle statistics
+www-plugins/wacomwebplugin 0.3.0-r1: An implementation of the Wacom Tablet Plugin, on Linux
+x11-misc/XCreateMouseVoid 9999: Creates an undecorated black window and prevents the mouse from entering that window
+x11-misc/switchscreen 0.1.1: Move the X mouse cursor to a given point on a given screen
+x11-misc/xiccd 0.2.2: xiccd is a simple bridge between colord and X
+xfce-extra/xfce4-screenshooter 1.8.2: Xfce4 screenshooter application and panel plugin
