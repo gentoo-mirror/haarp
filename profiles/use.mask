@@ -1,0 +1,2 @@
+# Doomseeker currently fails to compile with this
+legacy-plugins

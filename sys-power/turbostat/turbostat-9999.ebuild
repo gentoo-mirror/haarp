@@ -25,7 +25,8 @@ src_unpack() {
 }
 
 src_prepare() {
-	ewarn "If ${PN} fails to compile (especially due to undeclared defines), try"
-	ewarn "upgrading sys-kernel/linux-headers to more closely match your kernel version"
+	ewarn "This ebuild grabs ${PN} from your active kernel's sources!"
+	ewarn "In case of build failures (e.g. undeclared defines), try upgrading"
+	ewarn "sys-kernel/linux-headers to more closely match your kernel version"
 	sed -i -e 's:../../../../arch/x86/include/uapi/asm/msr-index.h:asm/msr-index.h:' Makefile
 }
