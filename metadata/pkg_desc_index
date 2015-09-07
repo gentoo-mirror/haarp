@@ -1,6 +1,7 @@
 app-arch/file-roller 3.10.2.1-r1: Archive manager for GNOME
 app-editors/gedit 3.10.4: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.10.1: Official plugins for gedit
+app-misc/solaar 9999: A Linux device manager for Logitech's Unifying Receiver peripherals
 app-misc/umouse 1.0: Unlocks the mouse pointer when an SDL app crashes
 app-text/evince 3.12.2-r2: Simple document viewer for GNOME
 games-fps/doom3-gpl 9999-r1: 3rd installment of the classic iD 3D first-person shooter
