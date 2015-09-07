@@ -24,8 +24,6 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${P}_src"
 
 src_prepare() {
-	use legacy-plugins && ewarn "USE=legacy-plugins will probably fail to compile, consider it deprecated..."
-
 	#libs go into libdir, not share
 	sed -i -e "s:DESTINATION share/:DESTINATION $(games_get_libdir)/:" src/plugins/PluginFooter.txt
 	sed -i -e "s:INSTALL_PREFIX \"/share/doomseeker/\":\"$(games_get_libdir)/doomseeker/\":" src/core/main.cpp
