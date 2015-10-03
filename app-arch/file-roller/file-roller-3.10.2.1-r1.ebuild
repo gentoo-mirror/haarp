@@ -70,6 +70,9 @@ src_prepare() {
 	# Backport patch that allows multiple file-roller instances again
 	epatch "${FILESDIR}"/${PN}-3.10.2.1-mark_command_line_usage.patch
 
+	# Disable pointless temp dir creation
+	epatch "${FILESDIR}"/${PN}-3.10.2.1-disable_tempdir.patch
+
 	# File providing Gentoo package names for various archivers
 	cp -f "${FILESDIR}/3.6.0-packages.match" data/packages.match || die
 

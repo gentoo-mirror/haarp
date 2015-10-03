@@ -1,0 +1,11 @@
+--- src/file-utils.c.old	2015-10-03 16:02:16.888446499 +0200
++++ src/file-utils.c	2015-10-03 16:02:34.388445927 +0200
+@@ -52,7 +52,7 @@
+ /* path */
+ 
+ 
+-static const char *try_folder[] = { "cache", "~", "tmp", NULL };
++static const char *try_folder[] = { NULL };
+ 
+ 
+ static const char *
