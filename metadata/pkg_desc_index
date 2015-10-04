@@ -13,6 +13,7 @@ gnome-extra/gnome-system-monitor 3.8.2.1: The Gnome System Monitor
 media-gfx/gnome-font-viewer 3.8.0: Font viewer for GNOME 3
 media-gfx/img2xterm 9999: Displays images on your 256-color terminal with Unicode block characters
 media-libs/fmod 4.24.16: music and sound effects library, and a sound processing system
+media-sound/teamspeak-client-bin 3.0.13.1: TeamSpeak Client - Voice Communication Software
 net-wireless/blueproximity 1.2.5: Proximity detector for your mobile phone via bluetooth
 sys-apps/baobab 3.8.2-r1: Disk usage browser for GNOME
 sys-apps/gnome-disk-utility 3.10.0: Disk Utility for GNOME using udisks
