@@ -53,6 +53,10 @@ src_prepare() {
 
 	# Rename the tsclient to its shorter version, required by the teamspeak3 script we install.
 	mv ts3client_linux_* ts3client || die "Couldn't rename ts3client to its shorter version."
+
+	# Remove libtstdc++, make it use the system one. Fixes this when clicking links:
+	# libstdc++.so.6: version `GLIBCXX_3.4.21' not found (required by /usr/bin/firefox)
+	rm libstdc++.so.6
 }
 
 src_install() {
