@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=media-libs/libsdl
+DESCRIPTION=Unlocks the mouse pointer when an SDL app crashes
+EAPI=5
+HOMEPAGE=http://icculus.org/lgfaq/#umouse
+KEYWORDS=~amd64 ~x86
+RDEPEND=media-libs/libsdl
+SLOT=0
+SRC_URI=http://icculus.org/misc/umouse.c
+_eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
+_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=718eccf4f8deb657444f5729aee1f895
