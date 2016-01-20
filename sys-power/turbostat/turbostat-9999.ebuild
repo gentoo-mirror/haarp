@@ -28,5 +28,5 @@ src_prepare() {
 	ewarn "This ebuild grabs ${PN} from your active kernel's sources!"
 	ewarn "In case of build failures (e.g. undeclared defines), try upgrading"
 	ewarn "sys-kernel/linux-headers to more closely match your kernel version"
-	sed -i -e 's:../../../../arch/x86/include/uapi/asm/msr-index.h:asm/msr-index.h:' Makefile
+	sed -i -e 's:../../../../arch/x86/include/asm/msr-index.h:asm/msr-index.h:' Makefile
 }
