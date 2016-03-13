@@ -7,4 +7,4 @@ SLOT=0
 SRC_URI=http://static.jonof.id.au/dl/kenutils/pngout-20150319-linux.tar.gz
 _eclass_exported_funcs=src_unpack:unpacker src_install:-
 _eclasses_=unpacker	1d149d9bda7723e740cfd28118f27813
-_md5_=4f9578d7e0aabc25cd8b5d90b186fb6a
+_md5_=23738fb89268c9e8fbfa6c627022ceac
