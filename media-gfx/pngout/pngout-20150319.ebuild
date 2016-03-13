@@ -22,8 +22,8 @@ S="${WORKDIR}/${P}-linux"
 
 src_install() {
 	exeinto /opt/bin
-	if use amd64; then doexe x86_64/pngout
-	else doexe i686/pngout
+	if use amd64; then doexe x86_64/${PN}
+	else doexe i686/${PN}
 	fi
 
 	dodoc readme.txt
