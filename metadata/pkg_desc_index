@@ -14,6 +14,7 @@ gnome-extra/gnome-system-monitor 3.8.2.1: The Gnome System Monitor
 media-gfx/gnome-font-viewer 3.8.0: Font viewer for GNOME 3
 media-gfx/img2xterm 9999: Displays images on your 256-color terminal with Unicode block characters
 media-gfx/pngout 20150319: Optimize the size of .PNG files losslessly
+media-gfx/scour 0.33: Take an SVG file and produce a cleaner and more concise file
 media-libs/fmod 4.24.16: music and sound effects library, and a sound processing system
 media-libs/mozjpeg 3.1: Improved JPEG encoder based on libjpeg-turbo
 media-sound/teamspeak-client-bin 3.0.13.1: TeamSpeak Client - Voice Communication Software
