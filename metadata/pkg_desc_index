@@ -18,7 +18,6 @@ media-libs/fmod 4.24.16: music and sound effects library, and a sound processing
 media-libs/mozjpeg 3.1: Improved JPEG encoder based on libjpeg-turbo
 media-sound/teamspeak-client-bin 3.0.13.1: TeamSpeak Client - Voice Communication Software
 net-wireless/blueproximity 1.2.5: Proximity detector for your mobile phone via bluetooth
-sys-apps/baobab 3.8.2-r1: Disk usage browser for GNOME
 sys-apps/gnome-disk-utility 3.10.0: Disk Utility for GNOME using udisks
 sys-power/gapcmon 0.9.0: Linux GUI monitor for APCUPSD
 sys-power/turbostat 9999: Report processor frequency and idle statistics
