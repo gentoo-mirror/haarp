@@ -43,17 +43,17 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Fix NETGAMEVERSION for online play, but without Mercurial
-	# normally Mercurial would generate svnversion.h, which defines it
+	# Normally Mercurial would generate gitinfo.h for NETGAMEVERSION
+	# let's do it without Mercurial
 	local url="https://bitbucket.org/api/1.0/repositories/${OWNER}/${PN}-stable/changesets/${MY_COMMIT}?format=yaml"
 	local timestamp=$(wget -q "$url" -O - | awk -F\' '/utctimestamp/{print $2}')
-	test -z "${timestamp}" && die "Couldn't grab NETGAMEVERSION!"
+	test -z "${timestamp}" && die "Couldn't grab commit timestamp!"
 	local unixtimestamp=$(date +%s -d "${timestamp}")
-	local netgameversion=$(printf 0x%x $(( $unixtimestamp % 256 )) )
-	elog "Using NETGAMEVERSION=${netgameversion}"
-	sed -i -e "s:(SVN_REVISION_NUMBER % 256):${netgameversion}:" src/version.h
+	echo "#define SVN_REVISION_NUMBER ${unixtimestamp}" > src/gitinfo.h
+	echo "#define SVN_REVISION_STRING \"0\"" >> src/gitinfo.h
+	echo "#define HG_REVISION_HASH_STRING \"0\"" >> src/gitinfo.h
 
-	# Use the dynamically-linked system-sqlite instead
+	# Use the system sqlite
 	sed -i -e "/add_subdirectory( sqlite )/d" CMakeLists.txt
 
 	# Use default game data path
