@@ -1,6 +1,7 @@
 app-arch/kzipmix 20150319: PKZIP-compatible compressor focusing on space over speed
 app-editors/gedit 3.10.4: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.10.1: Official plugins for gedit
+app-editors/pluma-plugins 1.8.0: Additional plugins for Pluma
 app-misc/solaar 9999: A Linux device manager for Logitech's Unifying Receiver peripherals
 app-misc/umouse 1.0: Unlocks the mouse pointer when an SDL app crashes
 app-text/evince 3.12.2-r2: Simple document viewer for GNOME
