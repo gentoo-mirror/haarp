@@ -9,7 +9,7 @@ LICENSE=BSD BUILDLIC Sleepycat
 RDEPEND=!games-fps/gzdoom gtk? ( x11-libs/gtk+:2 ) timidity? ( media-sound/timidity++ ) opengl? ( =media-libs/fmod-4.24.16 media-libs/libsdl virtual/glu virtual/jpeg virtual/opengl ) dev-db/sqlite dev-libs/openssl games-misc/games-envd
 REQUIRED_USE=|| ( dedicated opengl ) gtk? ( opengl ) timidity? ( opengl )
 SLOT=0
-SRC_URI=https://bitbucket.org/Torr_Samaho/zandronum-stable/get/ZA_2.1.2.tar.bz2 -> zandronum-2.1.2.tar.bz2
+SRC_URI=https://bitbucket.org/Torr_Samaho/zandronum-stable/get/ZA_2.1.2.tar.bz2 -> zandronum-2.1.2.tar.bz2 https://bitbucket.org/api/1.0/repositories/Torr_Samaho/zandronum-stable/changesets/ZA_2.1.2?format=yaml -> zandronum-2.1.2.metadata
 _eclass_exported_funcs=pkg_preinst:games pkg_postinst:- pkg_setup:games src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
 _eclasses_=base	3fe4f8980633fd7bc69e9887209ba2fe	cmake-utils	422bbd1bee2557490177a34dbe0a662b	eutils	9d81603248f2ba3ec59124320d123e5e	flag-o-matic	d270fa247153df66074f795fa42dba3e	games	2cf0d67d765e6358b435ccda30c13ad8	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb	user	906f3c8eb3a2350a4f1191a89baa3e46	versionator	99ae9d758cbe7cfed19170e7d48f5a9c
-_md5_=7c78ac48f174b765c763866975bd606f
+_md5_=a817e004f2b05538afb522a08b5c7e37
