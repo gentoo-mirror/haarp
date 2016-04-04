@@ -11,7 +11,9 @@ MY_COMMIT="ZA_2.1.2" #tags work too
 
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
 HOMEPAGE="http://zandronum.com/"
-SRC_URI="https://bitbucket.org/${OWNER}/${PN}-stable/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://bitbucket.org/${OWNER}/${PN}-stable/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2
+         https://bitbucket.org/api/1.0/repositories/${OWNER}/${PN}-stable/changesets/${MY_COMMIT}?format=yaml -> ${P}.metadata
+"
 
 LICENSE="BSD BUILDLIC Sleepycat"
 SLOT="0"
@@ -45,9 +47,7 @@ src_unpack() {
 src_prepare() {
 	# Normally Mercurial would generate gitinfo.h for NETGAMEVERSION
 	# let's do it without Mercurial
-	local url="https://bitbucket.org/api/1.0/repositories/${OWNER}/${PN}-stable/changesets/${MY_COMMIT}?format=yaml"
-	local timestamp=$(wget -q "$url" -O - | awk -F\' '/utctimestamp/{print $2}')
-	test -z "${timestamp}" && die "Couldn't grab commit timestamp!"
+	local timestamp=$(awk -F\' '/utctimestamp/{print $2}' "${DISTDIR}/${P}.metadata")
 	local unixtimestamp=$(date +%s -d "${timestamp}")
 	echo "#define SVN_REVISION_NUMBER ${unixtimestamp}" > src/gitinfo.h
 	echo "#define SVN_REVISION_STRING \"0\"" >> src/gitinfo.h
