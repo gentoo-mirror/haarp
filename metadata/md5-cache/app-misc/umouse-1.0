@@ -8,5 +8,5 @@ RDEPEND=media-libs/libsdl
 SLOT=0
 SRC_URI=http://icculus.org/misc/umouse.c
 _eclass_exported_funcs=src_unpack:- src_compile:- src_install:-
-_eclasses_=multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
+_eclasses_=multilib	23ae8c186171e6476af098d2a50d0ee0	toolchain-funcs	d513d423d449877e49d99af3f7af7acb
 _md5_=718eccf4f8deb657444f5729aee1f895
