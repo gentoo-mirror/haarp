@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -16,10 +16,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11
-         x11-libs/libXi"
+	x11-libs/libXi"
 
 DEPEND="${RDEPEND}
-        || ( net-misc/npapi-sdk www-client/firefox[-minimal] )"
+	|| ( net-misc/npapi-sdk www-client/firefox[-minimal] )"
 
 S="${WORKDIR}/WacomWebPlugin-${PV}"
 

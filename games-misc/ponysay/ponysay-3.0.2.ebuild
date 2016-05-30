@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI='4'
 
@@ -35,7 +35,7 @@ src_compile() {
 		freedom='--freedom=partial'
 	fi
 
-	python3 setup.py --everything $freedom                      \
+	python3 setup.py --everything "${freedom}"                  \
 		--without-pdf                                       \
 		--with-bash                                         \
 		$(use_with fish-completion | sed 's/-completion//') \
@@ -45,9 +45,9 @@ src_compile() {
 }
 
 src_install() {
-	python3 setup.py --everything $freedom                      \
+	python3 setup.py --everything "${freedom}"                  \
 		--without-pdf                                       \
-		--dest-dir=${D}                                     \
+		--dest-dir="${D}"                                   \
 		--with-bash                                         \
 		$(use_with fish-completion | sed 's/-completion//') \
 		$(use_with zsh-completion  | sed 's/-completion//') \
