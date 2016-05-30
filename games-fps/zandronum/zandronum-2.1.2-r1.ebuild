@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit games eutils cmake-utils
+inherit base eutils cmake-utils
 
 OWNER="Torr_Samaho"
 MY_COMMIT="ZA_2.1.2" #tags work too
@@ -56,8 +56,8 @@ src_prepare() {
 	# Use the system sqlite
 	sed -i -e "/add_subdirectory( sqlite )/d" CMakeLists.txt
 
-	# Use default game data path
-	sed -i -e "s:/usr/local/share/:${GAMES_DATADIR}/doom-data/:" src/sdl/i_system.h
+	# Use default data path
+	sed -i -e "s:/usr/local/share/:/usr/share/doom-data/:" src/sdl/i_system.h
 
 	# Make compatible with newer fmod
 	epatch "${FILESDIR}/${PN}-fix-new-fmod.patch"
@@ -100,26 +100,24 @@ src_install() {
 	dohtml docs/console*.{css,html}
 
 	cd "${BUILD_DIR}"
-	insinto "${GAMES_DATADIR}/doom-data"
+	insinto "/usr/share/doom-data"
 	doins *.pk3
 
 	if use opengl; then
-		dogamesbin "${WORKDIR}/${P}_client/${PN}"
+		dobin "${WORKDIR}/${P}_client/${PN}"
 		doicon "${S}/src/win32/zandronum.ico"
 		make_desktop_entry "${PN}" "Zandronum" "${PN}.ico" "Game;ActionGame;"
 	fi
 	if use dedicated; then
-		dogamesbin "${WORKDIR}/${P}_server/${PN}-server"
+		dobin "${WORKDIR}/${P}_server/${PN}-server"
 	fi
 
 	prepgamesdirs
 }
 
 pkg_postinst() {
-	games_pkg_postinst
-
-	elog "Copy or link wad files into ${GAMES_DATADIR}/doom-data/"
-	elog "(the files must be readable by the 'games' group)."
+	elog "Copy or link wad files into /usr/share/doom-data/"
+	elog "ATTENTION: The path has changed! It used to be /usr/share/games/doom-data/"
 	elog
 	if use opengl; then
 		elog "To play, install games-util/doomseeker or simply run:"
