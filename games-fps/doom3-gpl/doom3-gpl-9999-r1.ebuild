@@ -19,19 +19,11 @@ REQUIRED_USE="|| ( dedicated opengl )"
 
 RDEPEND="sys-libs/glibc
 	amd64? ( sys-libs/glibc[multilib] )
-	opengl? ( || (
-		(
-			>=virtual/opengl-7.0-r1[abi_x86_32(-)]
-			>=x11-libs/libX11-1.6.2[abi_x86_32(-)]
-			>=x11-libs/libXext-1.3.2[abi_x86_32(-)]
-			>=media-libs/alsa-lib-1.0.27.2[abi_x86_32(-)]
-		)
-		(
-			app-emulation/emul-linux-x86-xlibs[-abi_x86_32(-)]
-			app-emulation/emul-linux-x86-opengl[-abi_x86_32(-)]
-			app-emulation/emul-linux-x86-soundlibs[-abi_x86_32(-)]
-		)
-	) )"
+	opengl? ( >=virtual/opengl-7.0-r1[abi_x86_32(-)]
+		  >=x11-libs/libX11-1.6.2[abi_x86_32(-)]
+		  >=x11-libs/libXext-1.3.2[abi_x86_32(-)]
+		  >=media-libs/alsa-lib-1.0.27.2[abi_x86_32(-)]
+	)"
 DEPEND="${RDEPEND}
 	sys-devel/m4"
 
