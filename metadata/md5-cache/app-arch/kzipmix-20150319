@@ -7,4 +7,4 @@ SLOT=0
 SRC_URI=http://static.jonof.id.au/dl/kenutils/kzipmix-20150319-linux.tar.gz
 _eclass_exported_funcs=src_unpack:unpacker src_install:-
 _eclasses_=unpacker	45d07319df5f40ee6af58418b0f930be
-_md5_=75a4bb2bcc15033f4c84c71402c400c4
+_md5_=b96e033301db61ac6c520a912e0bcd4b

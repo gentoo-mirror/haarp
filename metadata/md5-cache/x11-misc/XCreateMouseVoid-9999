@@ -1,6 +1,6 @@
 DEFINED_PHASES=compile install prepare
 DEPEND=x11-base/xorg-server
-DESCRIPTION=Creates an undecorated black window and prevents the mouse from entering that window
+DESCRIPTION=Create a void window and prevent the mouse from entering it
 EAPI=5
 HOMEPAGE=https://github.com/cas--/XCreateMouseVoid
 IUSE=debug
@@ -10,4 +10,4 @@ RDEPEND=x11-base/xorg-server
 SLOT=0
 SRC_URI=https://github.com/cas--/XCreateMouseVoid/archive/master.zip -> XCreateMouseVoid-9999.zip
 _eclass_exported_funcs=src_prepare:- src_compile:- src_install:-
-_md5_=9b2b11476f7c35240d3e7ef843aa2a84
+_md5_=97f20286706e90bdad439011db15b71d

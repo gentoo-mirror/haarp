@@ -2,4 +2,4 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-games-fps/gzdoom:fluidsynth - Enables Fluidsynth MIDI software synthesis
+media-video/nvidia-settings:gtk3 - Additionally build the GTK 3 library
