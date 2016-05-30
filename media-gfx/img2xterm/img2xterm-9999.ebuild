@@ -5,10 +5,10 @@
 EAPI=5
 
 DESCRIPTION="Displays images on your 256-color terminal with Unicode block characters"
-HOMEPAGE="https://github.com/rossy2401/img2xterm/"
-SRC_URI="https://github.com/rossy2401/img2xterm/archive/master.zip -> ${P}.zip"
+HOMEPAGE="https://github.com/rossy/img2xterm"
+SRC_URI="https://github.com/rossy/img2xterm/archive/master.zip -> ${P}.zip"
 
-LICENSE=""
+LICENSE="CC0-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
