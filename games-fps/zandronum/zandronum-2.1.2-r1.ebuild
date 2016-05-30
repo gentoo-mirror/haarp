@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit base games eutils cmake-utils
+inherit games eutils cmake-utils
 
 OWNER="Torr_Samaho"
 MY_COMMIT="ZA_2.1.2" #tags work too
