@@ -1,20 +1,20 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
 DESCRIPTION="Displays images on your 256-color terminal with Unicode block characters"
-HOMEPAGE="https://github.com/rossy2401/img2xterm/"
-SRC_URI="https://github.com/rossy2401/img2xterm/archive/master.zip -> ${P}.zip"
+HOMEPAGE="https://github.com/rossy/img2xterm"
+SRC_URI="https://github.com/rossy/img2xterm/archive/master.zip -> ${P}.zip"
 
-LICENSE=""
+LICENSE="CC0-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="sys-libs/ncurses
-         media-gfx/imagemagick"
+RDEPEND="sys-libs/ncurses:5
+	media-gfx/imagemagick"
 DEPEND=${RDEPEND}
 
 S="${WORKDIR}/${PN}-master"

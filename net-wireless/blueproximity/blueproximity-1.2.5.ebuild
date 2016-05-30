@@ -37,7 +37,6 @@ src_install() {
 	insinto "/usr/lib/${PN}"
 	doins blueproximity*
 	doins proximity*
-	dodoc COPYING
 	dodoc README
 	dodoc ChangeLog
 	doman doc/blueproximity.1

@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -16,9 +16,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=">=x11-libs/gtk+-2.6
-         >=dev-libs/glib-2.8
-         >=gnome-base/gconf-2.10
-         !sys-power/apcupsd[gnome]"
+	>=dev-libs/glib-2.8
+	>=gnome-base/gconf-2.10
+	!sys-power/apcupsd[gnome]"
 
 S="$WORKDIR/$BASE"
 

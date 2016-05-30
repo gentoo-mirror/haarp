@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI="5"
 
@@ -15,8 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND=">=dev-libs/glib-2.36
-         >=x11-apps/xrandr-1.3
-         >=x11-misc/colord-1.0.2"
+	>=x11-apps/xrandr-1.3
+	>=x11-misc/colord-1.0.2"
 DEPEND="${RDEPEND}"
 
 src_prepare() {

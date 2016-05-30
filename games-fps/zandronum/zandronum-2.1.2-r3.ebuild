@@ -1,10 +1,10 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
-inherit base games eutils cmake-utils
+inherit eutils cmake-utils
 
 OWNER="Torr_Samaho"
 MY_COMMIT="ZA_2.1.2" #tags work too
@@ -12,7 +12,7 @@ MY_COMMIT="ZA_2.1.2" #tags work too
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
 HOMEPAGE="http://zandronum.com/"
 SRC_URI="https://bitbucket.org/${OWNER}/${PN}-stable/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2
-         https://bitbucket.org/api/1.0/repositories/${OWNER}/${PN}-stable/changesets/${MY_COMMIT}?format=yaml -> ${P}.metadata
+	https://bitbucket.org/api/1.0/repositories/${OWNER}/${PN}-stable/changesets/${MY_COMMIT}?format=yaml -> ${P}.metadata
 "
 
 LICENSE="BSD BUILDLIC Sleepycat"
@@ -21,26 +21,26 @@ KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_mmx cpu_flags_x86_sse2 dedicated gtk opengl timidity"
 
 REQUIRED_USE="|| ( dedicated opengl )
-              gtk? ( opengl )
-              timidity? ( opengl )"
+	gtk? ( opengl )
+	timidity? ( opengl )"
 
 RDEPEND="!games-fps/gzdoom
-         gtk? ( x11-libs/gtk+:2 )
-         timidity? ( media-sound/timidity++ )
-         opengl? ( =media-libs/fmod-4.24.16
-                   media-libs/libsdl
-                   virtual/glu
-                   virtual/jpeg
-                   virtual/opengl
+	gtk? ( x11-libs/gtk+:2 )
+	timidity? ( media-sound/timidity++ )
+	opengl? ( media-libs/fmod:1
+		media-libs/libsdl
+		virtual/glu
+		virtual/jpeg:62
+		virtual/opengl
 	)
 	dev-db/sqlite
-	dev-libs/openssl"
+	dev-libs/openssl:0"
 
 DEPEND="${RDEPEND}
-        cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )"
+	cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )"
 
 src_unpack() {
-	base_src_unpack
+	default
 	S="$(ls -d "${WORKDIR}/${OWNER}-${PN}"-*)"
 }
 
@@ -56,11 +56,11 @@ src_prepare() {
 	# Use the system sqlite
 	sed -i -e "/add_subdirectory( sqlite )/d" CMakeLists.txt
 
-	# Use default game data path
-	sed -i -e "s:/usr/local/share/:${GAMES_DATADIR}/doom-data/:" src/sdl/i_system.h
+	# Use default data path
+	sed -i -e "s:/usr/local/share/:/usr/share/doom-data/:" src/sdl/i_system.h
 
-	# FIXME: Make this patch work, then use newer fmod
-	#epatch "${FILESDIR}/${PN}-fix-new-fmod.patch"
+	# Make compatible with newer fmod
+	epatch "${FILESDIR}/${PN}-fix-new-fmod.patch"
 }
 
 src_configure() {
@@ -100,26 +100,24 @@ src_install() {
 	dohtml docs/console*.{css,html}
 
 	cd "${BUILD_DIR}"
-	insinto "${GAMES_DATADIR}/doom-data"
+	insinto "/usr/share/doom-data"
 	doins *.pk3
 
 	if use opengl; then
-		dogamesbin "${WORKDIR}/${P}_client/${PN}"
+		dobin "${WORKDIR}/${P}_client/${PN}"
 		doicon "${S}/src/win32/zandronum.ico"
 		make_desktop_entry "${PN}" "Zandronum" "${PN}.ico" "Game;ActionGame;"
 	fi
 	if use dedicated; then
-		dogamesbin "${WORKDIR}/${P}_server/${PN}-server"
+		dobin "${WORKDIR}/${P}_server/${PN}-server"
 	fi
 
 	prepgamesdirs
 }
 
 pkg_postinst() {
-	games_pkg_postinst
-
-	elog "Copy or link wad files into ${GAMES_DATADIR}/doom-data/"
-	elog "(the files must be readable by the 'games' group)."
+	elog "Copy or link wad files into /usr/share/doom-data/"
+	elog "ATTENTION: The path has changed! It used to be /usr/share/games/doom-data/"
 	elog
 	if use opengl; then
 		elog "To play, install games-util/doomseeker or simply run:"

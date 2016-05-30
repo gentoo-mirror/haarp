@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -10,7 +10,7 @@ DESCRIPTION="Unlocks the mouse pointer when an SDL app crashes"
 HOMEPAGE="http://icculus.org/lgfaq/#umouse"
 SRC_URI="http://icculus.org/misc/${PN}.c"
 
-LICENSE=""
+LICENSE="none"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
