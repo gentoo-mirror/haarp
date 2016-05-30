@@ -27,7 +27,7 @@ REQUIRED_USE="|| ( dedicated opengl )
 RDEPEND="!games-fps/gzdoom
          gtk? ( x11-libs/gtk+:2 )
          timidity? ( media-sound/timidity++ )
-         opengl? ( =media-libs/fmod-4.24.16
+         opengl? ( media-libs/fmod:1
                    media-libs/libsdl
                    virtual/glu
                    virtual/jpeg
@@ -59,8 +59,8 @@ src_prepare() {
 	# Use default game data path
 	sed -i -e "s:/usr/local/share/:${GAMES_DATADIR}/doom-data/:" src/sdl/i_system.h
 
-	# FIXME: Make this patch work, then use newer fmod
-	#epatch "${FILESDIR}/${PN}-fix-new-fmod.patch"
+	# Make compatible with newer fmod
+	epatch "${FILESDIR}/${PN}-fix-new-fmod.patch"
 }
 
 src_configure() {
