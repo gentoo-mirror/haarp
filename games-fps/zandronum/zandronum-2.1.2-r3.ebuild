@@ -111,8 +111,6 @@ src_install() {
 	if use dedicated; then
 		dobin "${WORKDIR}/${P}_server/${PN}-server"
 	fi
-
-	prepgamesdirs
 }
 
 pkg_postinst() {
