@@ -15,7 +15,7 @@ SRC_URI="https://bitbucket.org/${OWNER}/${PN}-stable/get/${MY_COMMIT}.tar.bz2 ->
 	https://bitbucket.org/api/1.0/repositories/${OWNER}/${PN}-stable/changesets/${MY_COMMIT}?format=yaml -> ${P}.metadata
 "
 
-LICENSE="BSD BUILDLIC Sleepycat"
+LICENSE="Sleepycat"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cpu_flags_x86_mmx cpu_flags_x86_sse2 dedicated gtk opengl timidity"
@@ -111,8 +111,6 @@ src_install() {
 	if use dedicated; then
 		dobin "${WORKDIR}/${P}_server/${PN}-server"
 	fi
-
-	prepgamesdirs
 }
 
 pkg_postinst() {

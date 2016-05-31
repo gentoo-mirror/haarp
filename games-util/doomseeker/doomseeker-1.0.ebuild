@@ -28,8 +28,8 @@ src_prepare() {
 	sed -i -e 's:DESTINATION share/:DESTINATION lib/:' src/plugins/PluginFooter.txt
 	sed -i -e 's:INSTALL_PREFIX "/share/doomseeker/":INSTALL_PREFIX "/lib/doomseeker/":' src/core/main.cpp
 
-	#fix icon path
-	sed -i -e "s:Icon=/usr/local:Icon=/usr/:" media/Doomseeker.desktop
+	#fix desktop file
+	sed -i -e 's:Icon=/usr/local:Icon=/usr:' -e 's:Categories=Game:Categories=Game;:' media/Doomseeker.desktop
 }
 
 src_configure() {
@@ -39,9 +39,4 @@ src_configure() {
 		$(cmake-utils_use_build legacy-plugins LEGACY_PLUGINS)
 	)
 	cmake-utils_src_configure
-}
-
-src_install() {
-	cmake-utils_src_install
-	prepgamesdirs
 }
