@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -14,7 +14,7 @@ SRC_URI="https://dl.hexchat.net/hexchat/${P}.tar.xz"
 LICENSE="GPL-2 plugin-fishlim? ( MIT )"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
-IUSE="dbus +gtk ipv6 libcanberra libnotify libproxy libressl nls ntlm perl +plugins plugin-checksum plugin-doat plugin-fishlim plugin-sysinfo python spell ssl theme-manager"
+IUSE="dbus +gtk libcanberra libnotify libproxy libressl nls perl +plugins plugin-checksum plugin-doat plugin-fishlim plugin-sysinfo python spell ssl theme-manager"
 REQUIRED_USE="plugins? ( python? ( ${PYTHON_REQUIRED_USE} ) )"
 
 DEPEND="dev-libs/glib:2
@@ -24,7 +24,6 @@ DEPEND="dev-libs/glib:2
 	libproxy? ( net-libs/libproxy )
 	libnotify? ( x11-libs/libnotify )
 	nls? ( virtual/libintl )
-	ntlm? ( net-libs/libntlm )
 	plugins? (
 		perl? ( >=dev-lang/perl-5.8.0 )
 		plugin-sysinfo? ( sys-apps/pciutils )
@@ -77,8 +76,6 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable nls) \
-		$(use_enable libproxy socks) \
-		$(use_enable ipv6) \
 		$(use_enable ssl openssl) \
 		$(use_enable gtk gtkfe) \
 		$(use_enable !gtk textfe) \
@@ -110,10 +107,8 @@ src_configure() {
 		$(use_enable dbus) \
 		$(use_enable libnotify) \
 		$(use_enable libcanberra) \
-		$(use_enable ntlm) \
 		$(use_enable libproxy) \
 		$(use_enable spell isocodes) \
-		--enable-minimal-flags \
 		$(use_with theme-manager)
 }
 
