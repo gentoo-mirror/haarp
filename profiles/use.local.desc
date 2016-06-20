@@ -2,10 +2,16 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
+app-editors/gedit:zeitgeist - Build the plugin to inject events to gnome-extra/zeitgeist
+app-editors/gedit-plugins:charmap - Insert special characters just by clicking on them
+app-editors/gedit-plugins:git - Shows document changes related to git's HEAD
+app-editors/gedit-plugins:synctex - Synchronize between LaTeX and PDF with gedit and evince
+app-editors/gedit-plugins:terminal - Embed a terminal in the bottom pane
 games-fps/zandronum:dedicated - Build zandronum-server
 games-fps/zandronum:gtk - Build WAD selector
 games-util/doomseeker:fake-plugins - Build plugins that are used for development purposes only
 games-util/doomseeker:legacy-plugins - Build plugins for discontinued source ports
+gnome-extra/gnome-system-monitor:systemd - Display sys-apps/systemd metadata, e.g. unit names, for running processes
 gnome-extra/nm-applet:modemmanager - Enable support for mobile broadband devices using net-misc/modemmanager
 media-video/nvidia-settings:gtk3 - Additionally build the GTK 3 library
 net-irc/hexchat:libcanberra - Enable sound event support using media-libs/libcanberra
@@ -28,3 +34,4 @@ net-misc/networkmanager:resolvconf - Use net-dns/openresolv for managing DNS inf
 net-misc/networkmanager:teamd - Enable Teamd control support
 net-misc/networkmanager:wext - Enable support for the deprecated Wext (Wireless Extensions) API; needed for some older drivers (e.g. ipw2200, ndiswrapper)
 net-misc/networkmanager:wifi - Enable support for wifi and 802.1x security using net-wireless/wpa_supplicant
+sys-apps/gnome-disk-utility:fat - Include FAT16/FAT32 support (sys-fs/dosfstools)
