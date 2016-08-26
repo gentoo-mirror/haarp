@@ -20,7 +20,7 @@ S=${WORKDIR}/${PN}
 
 src_install() {
 	# wrapper to use renamed libjpeg.so (allows coexistence with libjpeg-turbo)
-	echo -e '#!/bin/sh\nLD_PRELOAD=libmozjpeg.so .$(basename $0) $@' > wrapper
+	echo -e '#!/bin/sh\nLD_PRELOAD=libmozjpeg.so .$(basename $0) "$@"' > wrapper
 	newbin wrapper mozcjpeg
 	newbin wrapper mozjpegtran
 
