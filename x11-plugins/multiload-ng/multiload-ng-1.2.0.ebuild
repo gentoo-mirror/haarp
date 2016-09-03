@@ -18,17 +18,18 @@ RDEPEND=">=x11-libs/gtk+-2.14:2
 	x11-libs/cairo
 	>=gnome-base/libgtop-2.11.92
 	lxpanel? ( lxde-base/lxpanel )
+	mate? ( mate-base/mate-panel )
 	xfce_plugins_multiload-ng? (
 		>=xfce-base/libxfce4ui-4.10
 		>=xfce-base/libxfce4util-4.10
 		>=xfce-base/xfce4-panel-4.10
-		)"
+	)"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig"
 
-REQUIRED_USE="|| ( xfce_plugins_multiload-ng lxpanel )"
+REQUIRED_USE="|| ( mate lxpanel standalone xfce_plugins_multiload-ng )"
 
 DOCS="AUTHORS README.md"
 
@@ -39,7 +40,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# FIXME: currently builds with gtk2 only
+	# FIXME: currently configured for gtk2 only
 	econf \
 		--with-gtk=2.0 \
 		$(use_with indicator) \
