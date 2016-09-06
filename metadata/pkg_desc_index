@@ -29,4 +29,4 @@ x11-misc/switchscreen 0.1.1: Move the X mouse cursor to a given point on a given
 x11-misc/xiccd 0.2.2: xiccd is a simple bridge between colord and X
 x11-misc/xprintidle 2.0: Prints user's X server idle time in milliseconds
 x11-plugins/multiload-ng 1.2.0: Modern graphical system monitor for XFCE/MATE/LXDE, forked from GNOME multiload applet
-xfce-extra/xfce4-power-manager 1.4.4: Power manager for the Xfce desktop environment
+xfce-base/xfce4-session 4.12.1_p20160624: A session manager for the Xfce desktop environment
