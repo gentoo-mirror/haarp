@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~x86
 SLOT=0
 SRC_URI=http://static.jonof.id.au/dl/kenutils/pngout-20150319-linux.tar.gz
 _eclass_exported_funcs=src_unpack:unpacker src_install:-
-_eclasses_=unpacker	45d07319df5f40ee6af58418b0f930be
+_eclasses_=unpacker	76ddf385f3c212c12857bb8ec2a8bd35
 _md5_=06c3f4e855d0d999ac647c271881de91
