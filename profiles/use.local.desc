@@ -20,7 +20,5 @@ net-irc/hexchat:plugin-fishlim - Build FiSHLiM plugin (needs plugins )
 net-irc/hexchat:plugin-sysinfo - Build SysInfo plugin (needs plugins)
 net-irc/hexchat:plugins - Enable plugin support and installs some built-in plugins
 net-irc/hexchat:theme-manager - Build the theme manager (mono)
-sci-geosciences/googleearth:bundled-libs - Use bundled libraries.
 sys-apps/gnome-disk-utility:fat - Include FAT16/FAT32 support (sys-fs/dosfstools)
 sys-auth/fingerprint-gui:upekbsapi - Add UPEK BSAPI drivers for identify functions on some readers
-xfce-extra/xfce4-clipman-plugin:qrcode - Enable support for media-gfx/qrencode
