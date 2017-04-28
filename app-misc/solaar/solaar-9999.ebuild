@@ -18,7 +18,8 @@ IUSE="doc"
 
 RDEPEND=">=dev-python/pyudev-0.13[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	x11-libs/gtk+:3[introspection]"
+	x11-libs/gtk+:3[introspection]
+	dev-libs/libappindicator"
 
 CONFIG_CHECK="~HID_LOGITECH_DJ ~HIDRAW"
 
