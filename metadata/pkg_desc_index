@@ -5,6 +5,7 @@ app-editors/pluma-plugins 1.8.0: Additional plugins for Pluma
 app-misc/solaar 9999: A Linux device manager for Logitech's Unifying Receiver peripherals
 app-misc/umouse 1.0: Unlocks the mouse pointer when an SDL app crashes
 games-fps/doom3-gpl 9999-r1: 3rd installment of the classic iD 3D first-person shooter
+games-fps/gzdoom 3.0.0: A 3D-accelerated Doom source port based on ZDoom code
 games-fps/zandronum 2.1.2-r3: OpenGL ZDoom port with Client/Server multiplayer
 games-misc/ponysay 3.0.2: Pony wrapper for cowsay
 games-util/doomseeker 1.0: Internet Doom server browser
