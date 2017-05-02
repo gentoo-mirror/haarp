@@ -3,7 +3,7 @@ DEPEND=gtk? ( x11-libs/gtk+:2 ) timidity? ( media-sound/timidity++ ) opengl? ( m
 DESCRIPTION=OpenGL ZDoom port with Client/Server multiplayer
 EAPI=5
 HOMEPAGE=http://zandronum.com/
-IUSE=cpu_flags_x86_mmx cpu_flags_x86_sse2 dedicated gtk opengl timidity
+IUSE=cpu_flags_x86_mmx cpu_flags_x86_sse2 dedicated +gtk opengl timidity
 KEYWORDS=~amd64 ~x86
 LICENSE=Sleepycat
 RDEPEND=gtk? ( x11-libs/gtk+:2 ) timidity? ( media-sound/timidity++ ) opengl? ( media-libs/fmod:1 media-libs/libsdl virtual/glu virtual/jpeg:62 virtual/opengl ) dev-db/sqlite dev-libs/openssl:0
@@ -12,4 +12,4 @@ SLOT=0
 SRC_URI=https://bitbucket.org/Torr_Samaho/zandronum-stable/get/ZA_2.1.2.tar.bz2 -> zandronum-2.1.2.tar.bz2 https://bitbucket.org/api/1.0/repositories/Torr_Samaho/zandronum-stable/changesets/ZA_2.1.2?format=yaml -> zandronum-2.1.2.metadata
 _eclass_exported_funcs=pkg_postinst:- src_unpack:- src_prepare:- src_configure:- src_compile:- src_test:cmake-utils src_install:-
 _eclasses_=cmake-utils	a69f3a404abc4ade0a99e523f51b989d	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	flag-o-matic	61cad4fb5d800b29d484b27cb033f59b	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	0236be304ee52e7f179ed2f337075515	multiprocessing	284a473719153462f3e974d86c8cb81c	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee	versionator	c80ccf29e90adea7c5cae94b42eb76d0
-_md5_=be4f6cac7206d4f9c5bfa6970f7e02a3
+_md5_=da73db7b45a534cc90c441176f476094
