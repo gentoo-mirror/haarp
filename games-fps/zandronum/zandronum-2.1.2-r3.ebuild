@@ -18,7 +18,7 @@ SRC_URI="https://bitbucket.org/${OWNER}/${PN}-stable/get/${MY_COMMIT}.tar.bz2 ->
 LICENSE="Sleepycat"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_mmx cpu_flags_x86_sse2 dedicated gtk opengl timidity"
+IUSE="cpu_flags_x86_mmx cpu_flags_x86_sse2 dedicated +gtk opengl timidity"
 
 REQUIRED_USE="|| ( dedicated opengl )
 	gtk? ( opengl )
