@@ -13,7 +13,7 @@ SRC_URI="https://zdoom.org/files/gzdoom/src/${PN}-g${PV}.zip"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_mmx cpu_flags_x86_sse2 fluidsynth +gtk3 timidity"
+IUSE="fluidsynth +gtk3 timidity"
 
 RDEPEND="fluidsynth? ( media-sound/fluidsynth )
 	gtk3? ( x11-libs/gtk+:3 )
@@ -24,7 +24,7 @@ RDEPEND="fluidsynth? ( media-sound/fluidsynth )
 	virtual/opengl"
 
 DEPEND="${RDEPEND}
-	cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )"
+	|| ( dev-lang/nasm dev-lang/yasm )"
 
 S="${WORKDIR}/${PN}-g${PV}"
 
@@ -37,10 +37,7 @@ src_prepare() {
 
 src_configure() {
 	mycmakeargs=(
-		$(cmake-utils_use_no cpu_flags_x86_mmx ASM)
-		$(cmake-utils_use cpu_flags_x86_sse2 SSE)
 		$(cmake-utils_use_no gtk3 GTK)
-		$(cmake-utils_use_use fluidsynth FLUIDSYNTH)
 	)
 
 	cmake-utils_src_configure
