@@ -24,8 +24,7 @@ REQUIRED_USE="|| ( dedicated opengl )
 	gtk? ( opengl )
 	timidity? ( opengl )"
 
-RDEPEND="!games-fps/gzdoom
-	gtk? ( x11-libs/gtk+:2 )
+RDEPEND="gtk? ( x11-libs/gtk+:2 )
 	timidity? ( media-sound/timidity++ )
 	opengl? ( media-libs/fmod:1
 		media-libs/libsdl
