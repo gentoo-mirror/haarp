@@ -12,7 +12,7 @@ EGIT_REPO_URI="git://github.com/TTimo/doom3.gpl.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug dedicated opengl"
 
 REQUIRED_USE="|| ( dedicated opengl )"
