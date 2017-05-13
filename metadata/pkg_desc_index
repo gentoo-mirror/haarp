@@ -2,6 +2,7 @@ app-arch/kzipmix 20150319: PKZIP-compatible compressor focusing on space over sp
 app-editors/gedit 3.10.4: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.10.1: Official plugins for gedit
 app-editors/pluma-plugins 1.8.0: Additional plugins for Pluma
+app-editors/xed 1.4.1: X-Apps [Text] Editor (Cross-DE, backward-compatible, GTK3, traditional UI)
 app-misc/solaar 9999: A Linux device manager for Logitech's Unifying Receiver peripherals
 app-misc/umouse 1.0: Unlocks the mouse pointer when an SDL app crashes
 games-fps/doom3-gpl 9999-r1: 3rd installment of the classic iD 3D first-person shooter
