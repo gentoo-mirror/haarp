@@ -5,9 +5,9 @@
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes" # plugins are dlopened
-PYTHON_COMPAT=( python3_{3,4} )
+PYTHON_COMPAT=( python3_{4,5} )
 
-inherit eutils gnome2 multilib python-r1 virtualx
+inherit eutils gnome2 multilib python-single-r1 virtualx
 
 DESCRIPTION="A text editor for the GNOME desktop"
 HOMEPAGE="http://live.gnome.org/Gedit"
@@ -25,7 +25,6 @@ COMMON_DEPEND="
 	>=dev-libs/libxml2-2.5.0:2
 	>=dev-libs/glib-2.37.5:2
 	>=x11-libs/gtk+-3.9.9:3[introspection?]
-	!>=x11-libs/gtk+-3.20:3
 	>=x11-libs/gtksourceview-3.9.91:3.0[introspection?]
 	>=dev-libs/libpeas-1.7.0[gtk]
 

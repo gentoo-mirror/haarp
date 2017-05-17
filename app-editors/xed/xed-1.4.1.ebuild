@@ -4,9 +4,9 @@
 
 EAPI="6"
 GNOME2_LA_PUNT="yes" # plugins are dlopened
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5} )
 
-inherit autotools eutils gnome2 multilib python-r1 #virtualx
+inherit autotools eutils gnome2 multilib python-single-r1
 
 DESCRIPTION="X-Apps [Text] Editor (Cross-DE, backward-compatible, GTK3, traditional UI)"
 HOMEPAGE="https://github.com/linuxmint/xed"
@@ -18,9 +18,7 @@ SLOT="0"
 IUSE="+python spell test"
 # python-single-r1 would request disabling PYTHON_TARGETS on libpeas
 # we need to fix that
-REQUIRED_USE="
-	python? ( ^^ ( $(python_gen_useflags '*') ) )
-"
+REQUIRED_USE="python? ( ^^ ( $(python_gen_useflags '*') ) )"
 
 KEYWORDS="~amd64 ~x86"
 
