@@ -5,10 +5,10 @@
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes" # plugins are dlopened
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python3_{4,5} )
 PYTHON_REQ_USE="xml"
 
-inherit eutils gnome2 multilib python-r1
+inherit eutils gnome2 multilib python-single-r1
 
 DESCRIPTION="Official plugins for gedit"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gedit/ShippedPlugins"
