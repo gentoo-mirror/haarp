@@ -1,0 +1,316 @@
+https://sourceforge.net/p/roxterm/bugs/125/
+
+--- a/src/multitab.c	2017-05-25 16:40:38.743116691 +0200
++++ b/src/multitab.c	2017-05-25 17:01:03.589777394 +0200
+@@ -246,6 +246,9 @@ MultiTab *multi_tab_new(MultiWin * paren
+     multi_win_add_tab(parent, tab, pos, FALSE);
+     multi_win_select_tab(parent, tab);
+ 
++    g_warning("call roxterm_force_resize_now from line %d", __LINE__);
++    roxterm_force_resize_now(parent);
++
+     return tab;
+ }
+ 
+@@ -322,8 +325,39 @@ static gboolean multi_win_clear_geometry
+ void multi_win_set_geometry_hints(MultiWin *win, GtkWidget *child,
+     GdkGeometry *geometry, GdkWindowHints geom_mask)
+ {
++#if GTK_CHECK_VERSION (3, 19, 5)
++    GtkAllocation child_alloc, toplevel_alloc;
++    gint chrome_width, chrome_height;
++    gint decorator_width, decorator_height;
++
++    void roxterm_get_current_chrome_dimensions(MultiWin *win,
++        int *chrome_width, int *chrome_height);
++    roxterm_get_current_chrome_dimensions(win, &chrome_width, &chrome_height);
++
++    gtk_widget_get_allocation(child, &child_alloc);
++    gtk_widget_get_allocation(GTK_WIDGET(win->gtkwin), &toplevel_alloc);
++    decorator_width = toplevel_alloc.width - child_alloc.width;
++    decorator_height = toplevel_alloc.height - child_alloc.height;
++
++    g_warning(_("allocated to top level: %d x %d"), toplevel_alloc.width, toplevel_alloc.height);
++    g_warning(_("allocated to child: %d x %d"), child_alloc.width, child_alloc.height);
++    g_warning(_("base geometry is %d x %d"), geometry->base_width, geometry->base_height);
++    g_warning(_("min geometry is %d x %d"), geometry->min_width, geometry->min_height);
++    g_warning(_("decorator size is %d x %d"), decorator_width, decorator_height);
++    g_warning(_("chrome geometry is %d x %d"), chrome_width, chrome_height);
++
++    geometry->base_width = decorator_width + chrome_width;
++    geometry->base_height = decorator_height + chrome_height;
++
++    g_warning(_("requesting %d x %d"), geometry->base_width, geometry->base_height);
++
++    gtk_window_set_geometry_hints(GTK_WINDOW(win->gtkwin), NULL,
++        geometry, geom_mask);
++#else  // GTK 2 and GTK 3 earlier than 3.19.5
+     gtk_window_set_geometry_hints(GTK_WINDOW(win->gtkwin), child,
+         geometry, geom_mask);
++#endif
++
+     if (global_options_lookup_int_with_default("no-geometry", FALSE))
+         g_idle_add((GSourceFunc) multi_win_clear_geometry_hints, win->gtkwin);
+ }
+@@ -1768,6 +1802,9 @@ void multi_win_show(MultiWin *win)
+     gtk_widget_show(win->gtkwin);
+     g_object_set_data(G_OBJECT(gtk_widget_get_window(win->gtkwin)),
+             "ROXTermWin", win);
++
++    //g_warning("call roxterm_force_resize_now from line %d", __LINE__);
++    //roxterm_force_resize_now(win);
+ }
+ 
+ void multi_win_set_colormap(MultiWin *win)
+--- a/src/roxterm.c	2017-05-25 16:40:38.743116691 +0200
++++ b/src/roxterm.c	2017-05-25 17:13:18.353107150 +0200
+@@ -31,6 +31,10 @@
+ 
+ #include <gdk/gdkx.h>
+ 
++#if GTK_CHECK_VERSION (3, 19, 5)
++#include <gtk/gtkwidget.h>
++#endif
++
+ #include "about.h"
+ #include "boxcompat.h"
+ #include "colourscheme.h"
+@@ -1171,6 +1175,16 @@ static const GdkRGBA *extrapolate_colour
+     return &ext;
+ }
+ 
++#if GTK_CHECK_VERSION(3, 19, 5)
++static void roxterm_get_vte_padding(VteTerminal *vte, int *w, int *h)
++{
++    *w = 0;
++    *h = 0;
++
++    // *w = 20;
++    // *h = 20;
++}
++#else
+ static void roxterm_get_vte_padding(ROXTermData *roxterm,
+         int *pad_w, int *pad_h)
+ {
+@@ -1207,6 +1221,7 @@ static void roxterm_get_vte_padding(ROXT
+     if (pad_h)
+         *pad_h = roxterm->padding_h;
+ }
++#endif
+ 
+ static const GdkRGBA *roxterm_get_background_colour_with_transparency(
+         ROXTermData * roxterm)
+@@ -1266,6 +1281,8 @@ static void
+ roxterm_set_vte_size(ROXTermData *roxterm, VteTerminal *vte,
+         int columns, int rows)
+ {
++    g_warning(_("calling roxterm_set_vte_size, cols=%d, rows=%d..."), columns, rows);
++
+     /* First get current size of vte and parent window so we know difference */
+     int cw, ch, ww, wh;
+     GtkWidget *vw = GTK_WIDGET(vte);
+@@ -1273,6 +1290,7 @@ roxterm_set_vte_size(ROXTermData *roxter
+     MultiWin *win = roxterm_get_win(roxterm);
+     GtkWidget *pw = win ? multi_win_get_widget(win) : NULL;
+     GdkWindow *pd = pw ? gtk_widget_get_window(pw) : NULL;
++    GtkWindow *top = roxterm_get_toplevel(roxterm);
+ 
+     if (drbl && pd)
+     {
+@@ -1284,14 +1302,28 @@ roxterm_set_vte_size(ROXTermData *roxter
+     /* If we're in a realized window, resize it as required, otherwise the
+      * vte's size request won't be honoured.
+      */
+-    if (drbl && pd)
++    if (0 && drbl && pd)
+     {
+         int px, py;
+         int req_w, req_h;
++        int win_w, win_h;
++        int top_w, top_h;
+ 
+         roxterm_get_vte_padding(roxterm, &px, &py);
+         req_w = vte_terminal_get_char_width(vte) * columns + px;
+         req_h = vte_terminal_get_char_height(vte) * rows + py;
++
++        gtk_window_get_size(GTK_WINDOW(pw), &win_w, &win_h);
++        gtk_window_get_size(top, &top_w, &top_h);
++
++        g_warning(_("resize..."));
++        g_warning(_("reported window size is %d x %d"), ww, wh);
++        //g_warning(_("2nd  reported window size is %d x %d"), win_w, win_h);
++        //g_warning(_("3rd  reported window size is %d x %d"), top_w, top_h);
++        g_warning(_("reported drawable size is %d x %d"), cw, ch);
++        g_warning(_("reported request size is %d x %d"), req_w, req_h);
++        g_warning(_("overall size is %d x %d"), req_w + ww - cw, req_h + wh - ch);
++
+         /*
+         g_debug("Child was %dx%d, window bigger by %dx%d; "
+                 "resizing for child calc %dx%d",
+@@ -1306,12 +1338,27 @@ static void roxterm_geometry_func(ROXTer
+ {
+     VteTerminal *vte = VTE_TERMINAL(roxterm->widget);
+ 
++/*#if GTK_CHECK_VERSION (3, 19, 5)
++    roxterm_terminal_get_geometry_hints (vte, geom, 4, 4);
++#else*/
+     roxterm_get_vte_padding(roxterm, &geom->base_width, &geom->base_height);
+     geom->width_inc = vte_terminal_get_char_width(vte);
+     geom->height_inc = vte_terminal_get_char_height(vte);
+-    geom->min_width = geom->base_width + 4 * geom->width_inc;
+-    geom->min_height = geom->base_height + 4 * geom->height_inc;
+-    *hints = GDK_HINT_RESIZE_INC | GDK_HINT_BASE_SIZE | GDK_HINT_MIN_SIZE;
++    //geom->min_width = geom->base_width + 4 * geom->width_inc;
++    //geom->min_height = geom->base_height + 4 * geom->height_inc;
++    geom->min_width = 0;
++    geom->min_height = 0;
++    //geom->base_width = vte_terminal_get_column_count(vte) * geom->width_inc;
++    //geom->base_height = vte_terminal_get_row_count(vte) * geom->height_inc;
++    //geom->base_width = roxterm->columns * geom->width_inc;
++    //geom->base_height = roxterm->rows * geom->height_inc;
++    geom->base_width = 0;
++    geom->base_height = 0;
++    g_warning(_("roxterm_geometry_func sets base to %d x %d"),
++        geom->base_width, geom->base_height);
++//#endif
++    // *hints = GDK_HINT_RESIZE_INC | GDK_HINT_BASE_SIZE | GDK_HINT_MIN_SIZE;
++    *hints = GDK_HINT_RESIZE_INC | GDK_HINT_BASE_SIZE;
+ }
+ 
+ static void roxterm_size_func(ROXTermData *roxterm, gboolean pixels,
+@@ -1340,17 +1387,6 @@ static void roxterm_default_size_func(RO
+     *pheight = options_lookup_int_with_default(roxterm->profile, "height", 24);
+ }
+ 
+-static void roxterm_update_size(ROXTermData * roxterm, VteTerminal * vte)
+-{
+-    if (multi_win_get_current_tab(roxterm_get_win(roxterm)) == roxterm->tab)
+-    {
+-        int w, h;
+-
+-        roxterm_default_size_func(roxterm, &w, &h);
+-        roxterm_set_vte_size(roxterm, vte, w, h);
+-    }
+-}
+-
+ static void roxterm_update_geometry(ROXTermData * roxterm, VteTerminal * vte)
+ {
+     (void) vte;
+@@ -1365,6 +1401,20 @@ static void roxterm_update_geometry(ROXT
+     }
+ }
+ 
++static void roxterm_update_size(ROXTermData * roxterm, VteTerminal * vte)
++{
++    if (multi_win_get_current_tab(roxterm_get_win(roxterm)) == roxterm->tab)
++    {
++        int w, h;
++
++        roxterm_default_size_func(roxterm, &w, &h);
++        g_warning("call roxterm_set_vte_size from line %d", __LINE__);
++        roxterm_set_vte_size(roxterm, vte, w, h);
++
++        //roxterm_update_geometry(roxterm, vte);
++    }
++}
++
+ static void resize_pango_for_zoom(PangoFontDescription *pango_desc,
+         double zf)
+ {
+@@ -1432,6 +1482,7 @@ roxterm_apply_profile_font(ROXTermData *
+     roxterm->current_zoom_factor = roxterm->target_zoom_factor;
+     if (update_geometry)
+     {
++        g_warning("call roxterm_set_vte_size from line %d", __LINE__);
+         roxterm_set_vte_size(roxterm, vte, w, h);
+         roxterm_update_geometry(roxterm, vte);
+     }
+@@ -1461,6 +1512,7 @@ roxterm_update_font(ROXTermData *roxterm
+     roxterm->current_zoom_factor = roxterm->target_zoom_factor;
+     if (update_geometry)
+     {
++        g_warning("call roxterm_set_vte_size from line %d", __LINE__);
+         roxterm_set_vte_size(roxterm, vte, w, h);
+         roxterm_update_geometry(roxterm, vte);
+     }
+@@ -1500,6 +1552,7 @@ static void roxterm_match_text_size(ROXT
+     if (vte_terminal_get_column_count(vte) != width ||
+             vte_terminal_get_row_count(vte) != height)
+     {
++        g_warning("call roxterm_set_vte_size from line %d", __LINE__);
+         roxterm_set_vte_size(roxterm, VTE_TERMINAL(roxterm->widget),
+                 width, height);
+     }
+@@ -2589,8 +2642,10 @@ static void roxterm_resize_window_handle
+     //    return;
+ 
+     /* Only resize window now if this is current tab */
+-    if (roxterm->tab == multi_win_get_current_tab(win))
++    if (roxterm->tab == multi_win_get_current_tab(win)) {
++        g_warning("call roxterm_set_vte_size from line %d", __LINE__);
+         roxterm_set_vte_size(roxterm, vte, columns, rows);
++    }
+     else
+         vte_terminal_set_size(vte, columns, rows);
+ }
+@@ -3326,6 +3381,7 @@ static GtkWidget *roxterm_multi_tab_fill
+     title_orig = vte_terminal_get_window_title(vte);
+     multi_tab_set_window_title(tab, title_orig ? title_orig : _("ROXTerm"));
+ 
++    g_warning("call roxterm_set_vte_size from line %d", __LINE__);
+     roxterm_set_vte_size(roxterm, vte, roxterm->columns, roxterm->rows);
+ 
+     roxterm_connect_misc_signals(roxterm);
+@@ -3343,6 +3399,42 @@ static GtkWidget *roxterm_multi_tab_fill
+     return scrollbar_pos ? roxterm->hbox : roxterm->widget;
+ }
+ 
++VteTerminal *roxterm_get_current_vte_ptr(MultiWin *win) {
++    ROXTermData *roxterm = multi_win_get_user_data_for_current_tab(win);
++    VteTerminal *vte = VTE_TERMINAL(roxterm->widget);
++    return vte;
++}
++
++void roxterm_get_current_chrome_dimensions(MultiWin *win,
++    int *chrome_width, int *chrome_height) {
++
++#if GTK_CHECK_VERSION(3, 0, 0)
++    ROXTermData *roxterm = multi_win_get_user_data_for_current_tab(win);
++    VteTerminal *vte = roxterm_get_current_vte_ptr(win);
++    int w = roxterm->columns;//vte_terminal_get_column_count(vte);
++    int h = roxterm->rows;//vte_terminal_get_row_count(vte);
++    GtkRequisition vte_request;
++
++    gtk_widget_get_preferred_size(
++        multi_win_get_widget(win), NULL, &vte_request);
++    *chrome_width = vte_request.width - (vte_terminal_get_char_width(vte) * w);
++    *chrome_height = vte_request.height - (vte_terminal_get_char_height(vte) * h);
++#else
++    *chrome_width = 0;
++    *chrome_height = 0;
++#endif
++}
++
++void roxterm_force_resize_now(MultiWin *win) {
++    ROXTermData *roxterm = multi_win_get_user_data_for_current_tab(win);
++    VteTerminal *vte = VTE_TERMINAL(roxterm->widget);
++
++    int w = roxterm->columns;//vte_terminal_get_column_count(vte);
++    int h = roxterm->rows;//vte_terminal_get_row_count(vte);
++    roxterm_set_vte_size(roxterm, vte, w, h);
++    roxterm_update_geometry(roxterm, vte);
++}
++
+ static void roxterm_multi_tab_destructor(ROXTermData * roxterm)
+ {
+     roxterm_terms = g_list_remove(roxterm_terms, roxterm);
+@@ -4349,6 +4441,9 @@ void roxterm_launch(const char *display_
+     g_free(shortcut_scheme);
+     g_free(colour_scheme_name);
+     g_free(profile_name);
++
++    g_warning("call roxterm_force_resize_now from %s:%d", __FILE__, __LINE__);
++    roxterm_force_resize_now(win);
+ }
+ 
+ static void roxterm_tab_to_new_window(MultiWin *win, MultiTab *tab,
