@@ -31,6 +31,10 @@ DEPEND="${RDEPEND}
 	virtual/imagemagick-tools
 	nls? ( app-text/po4a sys-devel/gettext )"
 
+src_prepare(){
+	epatch "${FILESDIR}/gtk+-3.19.5+-geometry-fix.patch"
+}
+
 src_configure() {
 	local myconf=(
 		CC="$(tc-getCC)"
