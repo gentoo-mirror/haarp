@@ -1,4 +1,5 @@
 app-arch/kzipmix 20150319: PKZIP-compatible compressor focusing on space over speed
+app-crypt/gnupg 2.0.28: The GNU Privacy Guard, a GPL pgp replacement
 app-editors/gedit 3.10.4: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.10.1: Official plugins for gedit
 app-editors/pluma-plugins 1.8.0: Additional plugins for Pluma
@@ -7,6 +8,7 @@ app-misc/solaar 9999: A Linux device manager for Logitech's Unifying Receiver pe
 app-misc/umouse 1.0: Unlocks the mouse pointer when an SDL app crashes
 dev-lang/sassc 3.4.2: libsass command line driver
 dev-libs/libsass 3.4.4: A C/C++ implementation of a Sass compiler
+dev-libs/pth 2.0.7-r3: GNU Portable Threads
 games-fps/doom3-gpl 9999-r1: 3rd installment of the classic iD 3D first-person shooter
 games-fps/gzdoom 3.0.0: A 3D-accelerated Doom source port based on ZDoom code
 games-fps/zandronum 2.1.2-r3: OpenGL ZDoom port with Client/Server multiplayer
@@ -16,7 +18,7 @@ media-gfx/gnome-font-viewer 3.8.0: Font viewer for GNOME 3
 media-gfx/img2xterm 9999: Displays images on your 256-color terminal with Unicode block characters
 media-gfx/pngout 20150319: Optimize the size of .PNG files losslessly
 media-gfx/scour 0.33: Take an SVG file and produce a cleaner and more concise file
-media-libs/mozjpeg 3.1: Improved JPEG encoder based on libjpeg-turbo
+media-libs/mozjpeg 3.1-r1: Improved JPEG encoder based on libjpeg-turbo
 media-sound/teamspeak-client-bin 3.0.13.1: TeamSpeak Client - Voice Communication Software
 net-irc/hexchat 2.12.1: Graphical IRC client based on XChat
 net-wireless/blueproximity 1.2.5: Proximity detector for your mobile phone via bluetooth
@@ -27,7 +29,6 @@ www-plugins/wacomwebplugin 0.3.0-r1: An implementation of the Wacom Tablet Plugi
 x11-misc/XCreateMouseVoid 9999: Create a void window and prevent the mouse from entering it
 x11-misc/switchscreen 0.1.1: Move the X mouse cursor to a given point on a given screen
 x11-misc/xiccd 0.2.2: xiccd is a simple bridge between colord and X
-x11-plugins/multiload-ng 1.2.0: Modern graphical system monitor for XFCE/MATE/LXDE, forked from GNOME multiload applet
+x11-plugins/multiload-ng 1.2.0: Modern graphical system monitor for XFCE/MATE/LXDE (GNOME applet fork)
 x11-terms/roxterm 3.3.2-r1: A terminal emulator designed to integrate with the ROX environment
-xfce-base/xfce4-session 4.12.1_p20160624: A session manager for the Xfce desktop environment
 xfce-extra/xfce4-power-manager 1.4.4: Power manager for the Xfce desktop environment

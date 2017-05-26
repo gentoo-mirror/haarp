@@ -9,4 +9,4 @@ RDEPEND=sys-libs/ncurses:5 media-gfx/imagemagick
 SLOT=0
 SRC_URI=https://github.com/rossy/img2xterm/archive/master.zip -> img2xterm-9999.zip
 _eclass_exported_funcs=src_prepare:- src_install:-
-_md5_=8b44b2245cc91d40b5fa66c427fa1dc3
+_md5_=c636cd1b7e52cf5c53ed61acc428a865
