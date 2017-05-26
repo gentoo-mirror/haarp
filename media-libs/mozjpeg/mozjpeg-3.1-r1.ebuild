@@ -1,6 +1,5 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -20,7 +19,7 @@ S=${WORKDIR}/${PN}
 
 src_install() {
 	# wrapper to use renamed libjpeg.so (allows coexistence with libjpeg-turbo)
-	echo -e '#!/bin/sh\nLD_PRELOAD=libmozjpeg.so .$(basename $0) "$@"' > wrapper
+	echo -e '#!/bin/sh\nLD_PRELOAD="libmozjpeg.so $LD_PRELOAD" .$(basename $0) "$@"' > wrapper
 	newbin wrapper mozcjpeg
 	newbin wrapper mozjpegtran
 

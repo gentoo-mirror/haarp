@@ -1,11 +1,10 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 inherit autotools eutils
 
-DESCRIPTION="Modern graphical system monitor for XFCE/MATE/LXDE, forked from GNOME multiload applet"
+DESCRIPTION="Modern graphical system monitor for XFCE/MATE/LXDE (GNOME applet fork)"
 HOMEPAGE="https://udda.github.io/multiload-ng/"
 SRC_URI="https://github.com/udda/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
