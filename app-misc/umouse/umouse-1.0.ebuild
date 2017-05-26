@@ -9,7 +9,7 @@ DESCRIPTION="Unlocks the mouse pointer when an SDL app crashes"
 HOMEPAGE="http://icculus.org/lgfaq/#umouse"
 SRC_URI="http://icculus.org/misc/${PN}.c"
 
-LICENSE="none"
+LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
