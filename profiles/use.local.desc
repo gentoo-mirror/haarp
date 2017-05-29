@@ -28,3 +28,13 @@ net-irc/hexchat:plugins - Enable plugin support and installs some built-in plugi
 net-irc/hexchat:theme-manager - Build the theme manager (mono)
 sys-apps/gnome-disk-utility:fat - Include FAT16/FAT32 support (sys-fs/dosfstools)
 sys-auth/fingerprint-gui:upekbsapi - Add UPEK BSAPI drivers for identify functions on some readers
+x11-plugins/multiload-ng:autostart - Install autostart entries for suitable targets
+x11-plugins/multiload-ng:awn - Build plugin for gnome-extra/avant-window-navigator (experimental)
+x11-plugins/multiload-ng:gtk2 - Build against GTK+2 (check compatibility with your panel)
+x11-plugins/multiload-ng:gtk3 - Build against GTK+3 (check compatibility with your panel)
+x11-plugins/multiload-ng:indicator - Build plugin with dev-libs/libappindicator (Ubuntu Unity and others)
+x11-plugins/multiload-ng:lxde - Build plugin for lxde-base/lxpanel
+x11-plugins/multiload-ng:mate - Build plugin for mate-base/mate-panel
+x11-plugins/multiload-ng:standalone - Build application with standalone window
+x11-plugins/multiload-ng:systray - Build application for system tray
+x11-plugins/multiload-ng:xfce4 - Build plugin for xfce-base/xfce4-panel
