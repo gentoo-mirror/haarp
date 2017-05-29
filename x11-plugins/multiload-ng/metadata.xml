@@ -22,7 +22,7 @@ Multiload-ng can be built with GTK2 and GTK3, so can be embedded within GTK2/GTK
 		<flag name="indicator">Build plugin with <pkg>dev-libs/libappindicator</pkg> (Ubuntu Unity and others)</flag>
 		<flag name="lxde">Build plugin for <pkg>lxde-base/lxpanel</pkg></flag>
 		<flag name="mate">Build plugin for <pkg>mate-base/mate-panel</pkg></flag>
-		<flag name="xfce4">Build plugin for <pkg>xfce-base/xfce4-panel</pkg></flag>
+		<flag name="xfce">Build plugin for <pkg>xfce-base/xfce4-panel</pkg></flag>
 		<flag name="standalone">Build application with standalone window</flag>
 		<flag name="systray">Build application for system tray</flag>
 	</use>
