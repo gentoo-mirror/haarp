@@ -77,9 +77,7 @@ src_configure() {
 
 	gnome2_src_configure \
 		--enable-gvfs-metadata \
-		$(use_enable spell) \
-		$(use_enable python) \
-		$(use_enable test tests)
+		$(use_enable spell)
 }
 
 src_test() {
