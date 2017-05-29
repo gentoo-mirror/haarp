@@ -37,4 +37,4 @@ x11-plugins/multiload-ng:lxde - Build plugin for lxde-base/lxpanel
 x11-plugins/multiload-ng:mate - Build plugin for mate-base/mate-panel
 x11-plugins/multiload-ng:standalone - Build application with standalone window
 x11-plugins/multiload-ng:systray - Build application for system tray
-x11-plugins/multiload-ng:xfce4 - Build plugin for xfce-base/xfce4-panel
+x11-plugins/multiload-ng:xfce - Build plugin for xfce-base/xfce4-panel
