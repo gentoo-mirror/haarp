@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DESCRIPTION="Move the X mouse cursor to a given point on a given screen"
 HOMEPAGE="http://sampo.kapsi.fi/switchscreen/"
@@ -18,6 +18,8 @@ DEPEND=${RDEPEND}
 src_prepare() {
 	sed -i -e '/CC=/d' -e '/CFLAGS=/d' -e '/LDFLAGS=/d' Makefile
 	sed -i -e 's/gcc/${CC} ${CFLAGS}/g' Makefile
+
+	eapply_user
 }
 
 src_install() {
