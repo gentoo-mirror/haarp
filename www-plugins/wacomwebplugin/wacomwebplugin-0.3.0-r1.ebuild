@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit nsplugins
 
@@ -22,9 +22,7 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/WacomWebPlugin-${PV}"
 
-src_prepare() {
-	epatch "${FILESDIR}/accept-additional-mimetype.patch"
-}
+PATCHES=( "${FILESDIR}/accept-additional-mimetype.patch" )
 
 src_install() {
 	exeinto /usr/$(get_libdir)/${PLUGINS_DIR}

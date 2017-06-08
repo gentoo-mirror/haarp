@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils
 
@@ -23,19 +23,21 @@ RDEPEND="${DEPEND}"
 S="${WORKDIR}/${P}_src"
 
 src_prepare() {
-	#libs go into libdir, not share
+	# libs go into libdir, not share
 	sed -i -e 's:DESTINATION share/:DESTINATION lib/:' src/plugins/PluginFooter.txt
 	sed -i -e 's:INSTALL_PREFIX "/share/doomseeker/":INSTALL_PREFIX "/lib/doomseeker/":' src/core/main.cpp
 
-	#fix desktop file
+	# fix desktop file
 	sed -i -e 's:Icon=/usr/local:Icon=/usr:' -e 's:Categories=Game:Categories=Game;:' media/Doomseeker.desktop
+
+	eapply_user
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="/usr"
-		$(cmake-utils_use_build fake-plugins FAKE_PLUGINS)
-		$(cmake-utils_use_build legacy-plugins LEGACY_PLUGINS)
+		-DBUILD_FAKE_PLUGINS=$(usex fake-plugins ON OFF)
+		-DBUILD_LEGACY_PLUGINS=$(usex legacy-plugins ON OFF)
 	)
 	cmake-utils_src_configure
 }

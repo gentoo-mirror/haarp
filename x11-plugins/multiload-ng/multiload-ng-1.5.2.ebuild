@@ -6,17 +6,22 @@ inherit autotools eutils
 
 DESCRIPTION="Modern graphical system monitor for XFCE/MATE/LXDE (GNOME applet fork)"
 HOMEPAGE="https://udda.github.io/multiload-ng/"
-SRC_URI="https://github.com/udda/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/udda/multiload-ng.git"
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/udda/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="autostart awn debug gtk2 +gtk3 indicator lxde mate +standalone systray xfce"
 
-LANGS="de es fr it lt ru zh_CN"
-for lang in ${LANGS}; do
-	IUSE+=" linguas_${lang}"
-done
+LANGS=" de es fr it lt ru zh_CN"
+IUSE="${IUSE} ${LANGS// / linguas_}"
 
 RDEPEND="
 	gtk2? ( >=x11-libs/gtk+-2.20:2 )
@@ -63,7 +68,8 @@ DOCS=( AUTHORS Changelog.md CONTRIBUTING.md README.md )
 
 src_prepare() {
 	eautoreconf
-	default
+
+	eapply_user
 }
 
 src_configure() {

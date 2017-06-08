@@ -1,9 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-PYTHON_COMPAT=( python{2_6,2_7} )
+EAPI=6
+PYTHON_COMPAT=( python2_7 )
 
 inherit eutils python-single-r1
 
@@ -11,22 +10,19 @@ DESCRIPTION="Proximity detector for your mobile phone via bluetooth"
 HOMEPAGE="http://blueproximity.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-MY_AVAILABLE_LINGUAS="de en es fa hu it ru sv th"
-IUSE="${IUSE} ${MY_AVAILABLE_LINGUAS// / linguas_}"
+LANGS=" de en es fa hu it ru sv th"
+IUSE="${IUSE} ${LANGS// / linguas_}"
 
-SLOT="0"
-
-LICENSE="GPL-2"
-
-KEYWORDS="~amd64 ~x86"
-
-DEPEND=""
 RDEPEND="dev-python/pygobject[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	dev-python/pybluez[${PYTHON_USEDEP}]
 	>=dev-python/pygtk-2.0[${PYTHON_USEDEP}]"
+DEPEND=""
 
 S="${WORKDIR}/${P}.orig"
 
@@ -35,16 +31,12 @@ src_install() {
 	sed -i "s#python #${PYTHON} #" start_proximity.sh
 	newbin start_proximity.sh blueproximity
 	insinto "/usr/lib/${PN}"
-	doins blueproximity*
-	doins proximity*
-	dodoc README
-	dodoc ChangeLog
+	doins blueproximity* proximity*
+	dodoc README ChangeLog
+	dodoc doc/*
 	doman doc/blueproximity.1
-	dohtml doc/*
-	insinto /usr/share/applications
-	doins addons/blueproximity.desktop
-	insinto /usr/share/pixmaps
-	doins addons/blueproximity.xpm
+	domenu addons/blueproximity.desktop
+	doicon addons/blueproximity.xpm
 	strip-linguas ${MY_AVAILABLE_LINGUAS}
 	for l in ${LINGUAS};
 	do
