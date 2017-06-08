@@ -1,17 +1,27 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils cmake-utils
 
 DESCRIPTION="A 3D-accelerated Doom source port based on ZDoom code"
-HOMEPAGE="https://gzdoom.drdteam.org/"
+HOMEPAGE="https://zdoom.org"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/coelckers/gzdoom.git"
+	KEYWORDS=""
+else
+	SRC_URI="https://zdoom.org/files/gzdoom/src/${PN}-g${PV}.zip"
+	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${PN}-g${PV}"
+fi
+
 SRC_URI="https://zdoom.org/files/gzdoom/src/${PN}-g${PV}.zip"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="fluidsynth +gtk3 timidity"
 
 RDEPEND="fluidsynth? ( media-sound/fluidsynth )
@@ -25,18 +35,17 @@ RDEPEND="fluidsynth? ( media-sound/fluidsynth )
 DEPEND="${RDEPEND}
 	|| ( dev-lang/nasm dev-lang/yasm )"
 
-S="${WORKDIR}/${PN}-g${PV}"
-
 src_prepare() {
 	# Use default data path
 	sed -i -e "s:/usr/local/share/:/usr/share/doom-data/:" src/posix/i_system.h
 	sed -i -e '/SetValueForKey ("Path", "\/usr\/share\/games\/doom", true);/ a \\t\tSetValueForKey ("Path", "/usr/share/doom-data", true);' \
 		src/gameconfigfile.cpp
+	eapply_user
 }
 
 src_configure() {
 	mycmakeargs=(
-		$(cmake-utils_use_no gtk3 GTK)
+		-DNO_GTK="$(usex gtk3 no yes)"
 	)
 
 	cmake-utils_src_configure
