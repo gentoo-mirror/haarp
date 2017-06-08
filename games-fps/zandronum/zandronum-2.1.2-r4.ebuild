@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit eutils cmake-utils
 
@@ -17,7 +17,7 @@ SRC_URI="https://bitbucket.org/${OWNER}/${PN}-stable/get/${MY_COMMIT}.tar.bz2 ->
 LICENSE="Sleepycat"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_mmx cpu_flags_x86_sse2 dedicated +gtk opengl timidity"
+IUSE="cpu_flags_x86_mmx cpu_flags_x86_sse2 dedicated +gtk +opengl timidity"
 
 REQUIRED_USE="|| ( dedicated opengl )
 	gtk? ( opengl )
@@ -51,21 +51,25 @@ src_prepare() {
 	echo "#define SVN_REVISION_STRING \"0\"" >> src/gitinfo.h
 	echo "#define HG_REVISION_HASH_STRING \"0\"" >> src/gitinfo.h
 
-	# Use the system sqlite
+	# Use system libs
 	sed -i -e "/add_subdirectory( sqlite )/d" CMakeLists.txt
 
 	# Use default data path
 	sed -i -e "s:/usr/local/share/:/usr/share/doom-data/:" src/sdl/i_system.h
 
+	# Fix building with gcc-5
+	sed -i -e 's/ restrict/ _restrict/g' dumb/include/dumb.h dumb/src/it/*.c
+
 	# Make compatible with newer fmod
 	epatch "${FILESDIR}/${PN}-fix-new-fmod.patch"
+
+	eapply_user
 }
 
 src_configure() {
 	mycmakeargs=(
-		$(cmake-utils_use_no cpu_flags_x86_mmx ASM)
-		$(cmake-utils_use cpu_flags_x86_sse2 SSE)
-		$(cmake-utils_use_no gtk GTK)
+		-DNO_ASM="$(usex cpu_flags_x86_mmx OFF ON)"
+		-DNO_GTK="$(usex gtk OFF ON)"
 		-DFMOD_INCLUDE_DIR=/opt/fmodex/api/inc/
 		-DFMOD_LIBRARY=/opt/fmodex/api/lib/libfmodex.so
 	)
@@ -94,8 +98,7 @@ src_compile() {
 }
 
 src_install() {
-	dodoc docs/*.{txt,TXT}
-	dohtml docs/console*.{css,html}
+	dodoc docs/*.{txt,TXT} docs/console*.{css,html}
 
 	cd "${BUILD_DIR}"
 	insinto "/usr/share/doom-data"
@@ -120,5 +123,5 @@ pkg_postinst() {
 		elog "   zandronum"
 		elog
 	fi
-	elog "See /usr/share/doc/${P}/zdoom.txt.* for more info"
+	elog "See /usr/share/doc/${P}/zdoom.txt* for more info"
 }

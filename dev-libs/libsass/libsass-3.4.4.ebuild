@@ -3,10 +3,10 @@
 
 EAPI=6
 
-inherit eutils autotools libtool
+inherit autotools
 
 DESCRIPTION="A C/C++ implementation of a Sass compiler"
-HOMEPAGE="http://libsass.org"
+HOMEPAGE="http://sass-lang.com/libsass"
 SRC_URI="https://github.com/sass/libsass/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
@@ -18,7 +18,6 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	default
-
+	eapply_user
 	eautoreconf
 }

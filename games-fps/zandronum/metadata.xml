@@ -3,6 +3,7 @@
 <pkgmetadata>
 	<use>
 		<flag name="dedicated">Build zandronum-server</flag>
-		<flag name="gtk">Build WAD selector</flag>
+		<flag name="gtk">Build graphical IWAD picker</flag>
+		<flag name="opengl">Build zandronum client</flag>
 	</use>
 </pkgmetadata>
