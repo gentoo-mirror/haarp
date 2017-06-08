@@ -1,13 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 inherit toolchain-funcs
 
 DESCRIPTION="Unlocks the mouse pointer when an SDL app crashes"
-HOMEPAGE="http://icculus.org/lgfaq/#umouse"
-SRC_URI="http://icculus.org/misc/${PN}.c"
+HOMEPAGE="https://icculus.org/lgfaq/#umouse"
+SRC_URI="https://icculus.org/misc/${PN}.c"
 
 LICENSE=""
 SLOT="0"
@@ -24,7 +24,7 @@ src_unpack() {
 }
 
 src_compile() {
-	einfo "$(tc-getCC) $(sdl-config --cflags) $(sdl-config --libs) ${LDFLAGS} ${CFLAGS} -o ${PN} ${PN}.c"
+	echo "$(tc-getCC) $(sdl-config --cflags) $(sdl-config --libs) ${LDFLAGS} ${CFLAGS} -o ${PN} ${PN}.c"
 	$(tc-getCC) $(sdl-config --cflags) $(sdl-config --libs) ${LDFLAGS} ${CFLAGS} -o ${PN} ${PN}.c
 }
 
