@@ -18,8 +18,6 @@ else
 	S="${WORKDIR}/${PN}-g${PV}"
 fi
 
-SRC_URI="https://zdoom.org/files/gzdoom/src/${PN}-g${PV}.zip"
-
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="fluidsynth +gtk3 timidity"
