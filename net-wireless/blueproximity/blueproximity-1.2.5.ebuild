@@ -15,8 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-MY_AVAILABLE_LINGUAS="de en es fa hu it ru sv th"
-IUSE="${IUSE} ${MY_AVAILABLE_LINGUAS// / linguas_}"
+LANGS=" de en es fa hu it ru sv th"
+IUSE="${IUSE} ${LANGS// / linguas_}"
 
 RDEPEND="dev-python/pygobject[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
