@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare unpack
+DEPEND=gtk2? ( >=x11-libs/gtk+-2.20:2 ) gtk3? ( x11-libs/gtk+:3 ) x11-libs/cairo:= awn? ( >=gnome-extra/avant-window-navigator-0.3.9 >=dev-cpp/glibmm-2.16.0:2 >=dev-cpp/gtkmm-2.20:2.4 ) indicator? ( gtk2? ( >=dev-libs/libappindicator-0.4.92:2 ) gtk3? ( >=dev-libs/libappindicator-0.4.92:3 ) ) lxde? ( >=lxde-base/lxpanel-0.5.8 ) mate? ( gtk2? ( >=mate-base/mate-panel-1.7.0 ) gtk3? ( >=mate-base/mate-panel-1.7.0[gtk3(-)] ) ) xfce? ( gtk2? ( >=xfce-base/libxfce4util-4.6.0 >=xfce-base/xfce4-panel-4.6.0 ) gtk3? ( >=xfce-base/libxfce4util-4.12.0 >=xfce-base/xfce4-panel-4.12.0 ) ) dev-util/intltool sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170317 !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1
+DESCRIPTION=Modern graphical system monitor for XFCE/MATE/LXDE (GNOME applet fork)
+EAPI=6
+HOMEPAGE=https://udda.github.io/multiload-ng/
+IUSE=autostart awn debug gtk2 +gtk3 indicator lxde mate +standalone systray xfce linguas_de linguas_es linguas_fr linguas_it linguas_lt linguas_ru linguas_zh_CN
+LICENSE=GPL-2
+RDEPEND=gtk2? ( >=x11-libs/gtk+-2.20:2 ) gtk3? ( x11-libs/gtk+:3 ) x11-libs/cairo:= awn? ( >=gnome-extra/avant-window-navigator-0.3.9 >=dev-cpp/glibmm-2.16.0:2 >=dev-cpp/gtkmm-2.20:2.4 ) indicator? ( gtk2? ( >=dev-libs/libappindicator-0.4.92:2 ) gtk3? ( >=dev-libs/libappindicator-0.4.92:3 ) ) lxde? ( >=lxde-base/lxpanel-0.5.8 ) mate? ( gtk2? ( >=mate-base/mate-panel-1.7.0 ) gtk3? ( >=mate-base/mate-panel-1.7.0[gtk3(-)] ) ) xfce? ( gtk2? ( >=xfce-base/libxfce4util-4.6.0 >=xfce-base/xfce4-panel-4.6.0 ) gtk3? ( >=xfce-base/libxfce4util-4.12.0 >=xfce-base/xfce4-panel-4.12.0 ) )
+REQUIRED_USE=^^ ( gtk2 gtk3 ) || ( awn indicator lxde mate standalone systray xfce ) awn? ( gtk2 )
+SLOT=0
+_eclass_exported_funcs=src_unpack:git-r3 src_prepare:- src_configure:-
+_eclasses_=autotools	7027963e8e8cc12c91117bdb9225dc26	epatch	8233751dc5105a6ae8fcd86ce2bb0247	estack	43ddf5aaffa7a8d0482df54d25a66a1f	eutils	9c113d6a64826c40154cad7be15d95ea	git-r3	cbafa3261c37c7e3af44bb16a34ea390	libtool	e32ea84bf82cf8987965b574672dba93	ltprune	2770eed66a9b8ef944714cd0e968182e	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	6eb35f81556258a4bc9182ad3dfd58ee
+_md5_=5c24d97961582a1643b82bb076a1d12d

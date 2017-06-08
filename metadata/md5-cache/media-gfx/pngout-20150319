@@ -1,10 +1,10 @@
 DEFINED_PHASES=install unpack
 DESCRIPTION=Optimize the size of .PNG files losslessly
-EAPI=5
+EAPI=6
 HOMEPAGE=http://www.jonof.id.au/kenutils
 KEYWORDS=~amd64 ~x86
 SLOT=0
 SRC_URI=http://static.jonof.id.au/dl/kenutils/pngout-20150319-linux.tar.gz
 _eclass_exported_funcs=src_unpack:unpacker src_install:-
 _eclasses_=unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
-_md5_=b7dc1c62fb9d392fda8abd97403352f2
+_md5_=88813e735ab4f93e0521a8a19f52b026
