@@ -37,7 +37,7 @@ src_install() {
 	doman doc/blueproximity.1
 	domenu addons/blueproximity.desktop
 	doicon addons/blueproximity.xpm
-	strip-linguas ${MY_AVAILABLE_LINGUAS}
+	strip-linguas ${LANGS}
 	for l in ${LINGUAS};
 	do
 		dodir "/usr/lib/${PN}/LANG/${l}"
