@@ -12,9 +12,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-lang/go"
+RDEPEND=""
 
-DEPEND="${RDEPEND}"
+DEPEND="dev-lang/go"
 
 S="${WORKDIR}/go-ethereum-${PV}"
 
