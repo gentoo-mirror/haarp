@@ -3,10 +3,8 @@
 
 EAPI=6
 
-##inherit eutils cmake-utils
-
-DESCRIPTION="Command line interface for running a full ethereum node"
-HOMEPAGE="http://zandronum.com/"
+DESCRIPTION="Command line interface for running a full Ethereum node"
+HOMEPAGE="https://www.ethereum.org/"
 SRC_URI="https://github.com/ethereum/go-ethereum/archive/v${PV}.tar.gz"
 
 LICENSE="LGPL-3"
