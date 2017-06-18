@@ -24,6 +24,7 @@ S="${WORKDIR}/${P}_src"
 
 src_prepare() {
 	# libs go into libdir, not share
+	# FIXME: plugin-specific translations also end up in libdir
 	sed -i -e 's:DESTINATION share/:DESTINATION lib/:' src/plugins/PluginFooter.txt
 	sed -i -e 's:INSTALL_PREFIX "/share/doomseeker/":INSTALL_PREFIX "/lib/doomseeker/":' src/core/main.cpp
 
