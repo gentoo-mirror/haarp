@@ -31,3 +31,4 @@ x11-misc/switchscreen 0.1.1: Move the X mouse cursor to a given point on a given
 x11-plugins/multiload-ng 1.5.2 9999: Modern graphical system monitor for XFCE/MATE/LXDE (GNOME applet fork)
 x11-terms/roxterm 3.3.2-r1: A terminal emulator designed to integrate with the ROX environment
 xfce-extra/xfce4-power-manager 1.4.4: Power manager for the Xfce desktop environment
+xfce-extra/xfpanel-switch 1.0.4: Simple application to manage Xfce panel layouts
