@@ -3,7 +3,7 @@ app-crypt/gnupg 2.0.28: The GNU Privacy Guard, a GPL pgp replacement
 app-editors/gedit 3.10.4: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.10.1: Official plugins for gedit
 app-editors/pluma-plugins 1.8.0: Additional plugins for Pluma
-app-editors/xed 1.4.3: X-Apps [Text] Editor (Cross-DE, backward-compatible, GTK3, traditional UI)
+app-editors/xed 1.4.4: X-Apps [Text] Editor (Cross-DE, backward-compatible, GTK3, traditional UI)
 app-misc/solaar 9999: A Linux device manager for Logitech's Unifying Receiver peripherals
 app-misc/umouse 1.0: Unlocks the mouse pointer when an SDL app crashes
 dev-lang/sassc 3.4.2: libsass command line driver
