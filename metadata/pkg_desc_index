@@ -20,6 +20,7 @@ media-gfx/scour 0.35: Take an SVG file and produce a cleaner and more concise fi
 media-libs/mozjpeg 3.2: Improved JPEG encoder based on libjpeg-turbo
 media-sound/teamspeak-client-bin 3.0.13.1: TeamSpeak Client - Voice Communication Software
 net-p2p/geth 1.6.5: Command line interface for running a full Ethereum node
+net-vpn/dns2tcp 0.5.2: Relay TCP connections through DNS traffic
 net-wireless/blueproximity 1.2.5: Proximity detector for your mobile phone via bluetooth
 sys-apps/gnome-disk-utility 3.10.0: Disk Utility for GNOME using udisks
 sys-auth/fingerprint-gui 1.09: Use Fingerprint Devices with Linux
