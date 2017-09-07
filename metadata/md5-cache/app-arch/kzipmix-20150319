@@ -5,6 +5,5 @@ HOMEPAGE=http://www.jonof.id.au/kenutils
 KEYWORDS=~amd64 ~x86
 SLOT=0
 SRC_URI=http://static.jonof.id.au/dl/kenutils/kzipmix-20150319-linux.tar.gz
-_eclass_exported_funcs=src_unpack:unpacker src_install:-
 _eclasses_=unpacker	f40f7b4bd5aa88c2a4ba7b0d1e0ded70
 _md5_=5f7016e4198eb9643addde145881dc57
