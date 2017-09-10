@@ -9,7 +9,7 @@ OWNER="Torr_Samaho"
 MY_COMMIT="ZA_2.1.2" #tags work too
 
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
-HOMEPAGE="http://zandronum.com/"
+HOMEPAGE="https://zandronum.com/"
 SRC_URI="https://bitbucket.org/${OWNER}/${PN}-stable/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2
 	https://bitbucket.org/api/1.0/repositories/${OWNER}/${PN}-stable/changesets/${MY_COMMIT}?format=yaml -> ${P}.metadata
 "
