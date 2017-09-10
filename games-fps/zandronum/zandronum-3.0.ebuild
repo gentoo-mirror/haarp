@@ -9,7 +9,7 @@ OWNER="Torr_Samaho"
 MY_COMMIT="dd3c3b57023f"
 
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
-HOMEPAGE="http://zandronum.com/"
+HOMEPAGE="https://zandronum.com/"
 SRC_URI="https://bitbucket.org/${OWNER}/${PN}/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2
 	https://bitbucket.org/api/1.0/repositories/${OWNER}/${PN}/changesets/${MY_COMMIT}?format=yaml -> ${P}.metadata
 "
