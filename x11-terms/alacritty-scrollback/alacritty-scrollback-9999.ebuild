@@ -18,8 +18,9 @@ IUSE=""
 
 # =dev-lang/rust-1.15.0 triggers https://github.com/jwilm/alacritty/issues/788
 # use a known good version (1.19.0) instead
-RDEPEND="media-libs/fontconfig"
-DEPEND="${RDEPEND}
+RDEPEND="media-libs/fontconfig
+	x11-misc/xclip"
+DEPEND="media-libs/fontconfig
 	>=virtual/rust-1.19.0"
 
 src_prepare() {
