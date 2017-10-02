@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	epatch ${FILESDIR}/support-bitmap-fonts.patch
+	epatch ${FILESDIR}/mouse-select-entire-char.patch
 	eapply_user
 }
 
