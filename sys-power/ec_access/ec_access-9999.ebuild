@@ -5,7 +5,7 @@ EAPI=6
 
 inherit linux-info toolchain-funcs
 
-DESCRIPTION="Tool to acces the Embedded Controller"
+DESCRIPTION="Tool to access the Embedded Controller"
 HOMEPAGE="https://github.com/torvalds/linux/blob/master/tools/power/acpi/tools/ec/ec_access.c"
 
 LICENSE="GPL-2"
