@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils multilib
 
 DESCRIPTION="Internet Doom server browser"
 HOMEPAGE="http://doomseeker.drdteam.org/"
@@ -25,13 +25,11 @@ S="${WORKDIR}/${P}_src"
 src_prepare() {
 	# libs go into libdir, not share
 	# FIXME: plugin-specific translations also end up in libdir
-	sed -i -e 's:DESTINATION share/:DESTINATION lib/:' src/plugins/PluginFooter.txt
-	sed -i -e 's:INSTALL_PREFIX "/share/doomseeker/":INSTALL_PREFIX "/lib/doomseeker/":' src/core/main.cpp
+	sed -i -e "s:DESTINATION share/:DESTINATION $(get_libdir)/:" src/plugins/PluginFooter.txt
+	sed -i -e "s:INSTALL_PREFIX \"/share/doomseeker/\":INSTALL_PREFIX \"/$(get_libdir)/doomseeker/\":" src/core/main.cpp
+	sed -i -e "s:DESTINATION lib:DESTINATION $(get_libdir):" src/wadseeker/CMakeLists.txt
 
-	# fix desktop file
-	sed -i -e 's:Icon=/usr/local:Icon=/usr:' -e 's:Categories=Game:Categories=Game;:' media/Doomseeker.desktop
-
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 src_configure() {
