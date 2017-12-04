@@ -26,8 +26,8 @@ src_prepare() {
 	# libs go into libdir, not share
 	# FIXME: plugin-specific translations also end up in libdir
 	sed -i -e "s:DESTINATION share/:DESTINATION $(get_libdir)/:" src/plugins/PluginFooter.txt
-	sed -i -e "s:INSTALL_PREFIX \"/share/doomseeker/\":INSTALL_PREFIX \"/$(get_libdir)/doomseeker/\":" src/core/main.cpp
 	sed -i -e "s:DESTINATION lib:DESTINATION $(get_libdir):" src/wadseeker/CMakeLists.txt
+	sed -i -e "s:INSTALL_PREFIX \"/share/doomseeker/\":INSTALL_PREFIX \"/$(get_libdir)/doomseeker/\":" src/core/main.cpp
 
 	cmake-utils_src_prepare
 }
