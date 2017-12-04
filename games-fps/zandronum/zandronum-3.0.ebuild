@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 	cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )"
 
 src_unpack() {
-	default
+	unpack "${P}.tar.bz2"
 	S="${WORKDIR}/${OWNER}-${PN}-${MY_COMMIT}"
 }
 
