@@ -9,8 +9,8 @@ inherit eutils cargo git-r3
 
 DESCRIPTION="GPU-accelerated terminal emulator, fork with scrollback support"
 HOMEPAGE="https://github.com/jwilm/alacritty"
-EGIT_REPO_URI="https://github.com/chetgurevitch/alacritty"
-EGIT_BRANCH="scrollback"
+EGIT_REPO_URI="https://github.com/neon64/alacritty"
+EGIT_BRANCH="master"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -29,6 +29,7 @@ DEPEND="media-libs/fontconfig
 src_prepare() {
 ##	epatch ${FILESDIR}/support-bitmap-fonts.patch
 	epatch ${FILESDIR}/mouse-select-entire-char.patch
+	epatch ${FILESDIR}/shift-click-text-select.patch
 	eapply_user
 }
 
