@@ -24,7 +24,7 @@ IUSE=""
 RDEPEND="media-libs/fontconfig
 	x11-misc/xclip"
 DEPEND="media-libs/fontconfig
-	>=dev-lang/rust-1.20.0"
+	>=virtual/rust-1.20.0"
 
 src_prepare() {
 ##	epatch ${FILESDIR}/support-bitmap-fonts.patch
