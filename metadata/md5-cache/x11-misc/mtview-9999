@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure unpack
+DEPEND=>=dev-vcs/git-1.8.2.1
+DESCRIPTION=Graphical multitouch viewer
+EAPI=6
+HOMEPAGE=https://github.com/whot/mtview
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+_eclasses_=git-r3	25b08efef07cea6bcd45b8c6dcce2782
+_md5_=1261bc6e0273d3c87d16b37b1b457902
