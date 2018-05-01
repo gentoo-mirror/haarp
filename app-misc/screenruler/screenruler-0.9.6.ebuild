@@ -23,9 +23,7 @@ S="${WORKDIR}/screenruler"
 src_prepare() {
 	eapply_user
 
-	sed -i -e "s:Dir.chdir.*:\$LOAD_PATH << '/usr/share/screenruler':" \
-		-e "s:\$LOAD_PATH << './utils':\$LOAD_PATH << '/usr/share/screenruler/utils':" \
-		screenruler.rb
+	sed -i -e "/\$LOAD_PATH << '.\/utils'/a\$LOAD_PATH << '.'" screenruler.rb
 }
 
 # There is no installation mechanism, so just put everything in the right place
