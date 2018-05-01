@@ -20,8 +20,6 @@ RDEPEND="dev-lang/ruby
 
 S="${WORKDIR}/screenruler"
 
-# There is no installation mechanism, so just put everything in the right place
-
 src_prepare() {
 	eapply_user
 
@@ -30,6 +28,7 @@ src_prepare() {
 		screenruler.rb
 }
 
+# There is no installation mechanism, so just put everything in the right place
 src_install() {
 	make_desktop_entry screenruler "Screen Ruler" screenruler "Utility;GTK;"
 
