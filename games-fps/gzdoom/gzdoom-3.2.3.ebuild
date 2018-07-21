@@ -8,15 +8,9 @@ inherit eutils cmake-utils
 DESCRIPTION="A 3D-accelerated Doom source port based on ZDoom code"
 HOMEPAGE="https://zdoom.org"
 
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/coelckers/gzdoom.git"
-	KEYWORDS=""
-else
-	SRC_URI="https://zdoom.org/files/gzdoom/src/${PN}-g${PV}.zip"
-	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN}-g${PV}"
-fi
+SRC_URI="https://zdoom.org/files/gzdoom/src/${PN}-g${PV}.zip"
+KEYWORDS="~amd64 ~x86"
+S="${WORKDIR}/${PN}-g${PV}"
 
 LICENSE="GPL-3"
 SLOT="0"
