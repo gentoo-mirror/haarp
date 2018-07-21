@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils fdo-mime
+inherit eutils
 
 DESCRIPTION="Measure objects on your desktop using six different metrics"
 HOMEPAGE="http://gnomecoder.wordpress.com/screenruler/"
@@ -30,24 +30,18 @@ src_prepare() {
 src_install() {
 	make_desktop_entry screenruler "Screen Ruler" screenruler "Utility;GTK;"
 
+	cd "${S}"
+
 	insinto /usr/share/${PN}
-	doins "${S}"/*.rb
-	doins "${S}"/*.glade
-	doins "${S}"/*.png
+	doins *.rb
+	doins *.glade
+	doins *.png
 	insinto /usr/share/${PN}/utils
-	doins "${S}"/utils/*
+	doins utils/*
 
 	exeinto /usr/share/${PN}
-	doexe "${S}"/screenruler.rb
+	doexe screenruler.rb
 
 	dosym /usr/share/${PN}/screenruler.rb /usr/bin/screenruler
 	dosym /usr/share/${PN}/screenruler-icon-64x64.png /usr/share/pixmaps/screenruler.png
-}
-
-pkg_postinst() {
-	fdo-mime_desktop_database_update
-}
-
-pkg_postrm() {
-	fdo-mime_desktop_database_update
 }
