@@ -4,7 +4,7 @@
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes" # plugins are dlopened
-PYTHON_COMPAT=( python3_{4,5} )
+PYTHON_COMPAT=( python3_{5,6} )
 PYTHON_REQ_USE="xml"
 
 inherit eutils gnome2 multilib python-single-r1

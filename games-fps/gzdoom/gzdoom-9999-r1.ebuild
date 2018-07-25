@@ -54,8 +54,8 @@ src_install() {
 	dodoc docs/*.txt
 	dohtml docs/console*.{css,html}
 
-	newicon "src/win32/icon1.ico" "${PN}.ico"
-	make_desktop_entry "${PN}" "GZDoom" "${PN}.ico" "Game;ActionGame;"
+	newicon "src/posix/zdoom.xpm" "${PN}.xpm"
+	make_desktop_entry "${PN}" "GZDoom" "${PN}" "Game;ActionGame;"
 
 	cd "${BUILD_DIR}"
 
