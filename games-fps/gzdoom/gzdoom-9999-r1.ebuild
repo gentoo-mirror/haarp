@@ -20,7 +20,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+gtk3 system-timidity"
+IUSE="+gtk3"
 
 RDEPEND="gtk3? ( x11-libs/gtk+:3 )
 	media-libs/libsdl2
