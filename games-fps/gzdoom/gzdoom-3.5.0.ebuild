@@ -8,19 +8,12 @@ inherit eutils cmake-utils
 DESCRIPTION="A 3D-accelerated Doom source port based on ZDoom code"
 HOMEPAGE="https://zdoom.org"
 
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/coelckers/gzdoom.git"
-	KEYWORDS=""
-else
-	SRC_URI="https://zdoom.org/files/gzdoom/src/${PN}-g${PV}.zip"
-	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN}-g${PV}"
-fi
+SRC_URI="https://zdoom.org/files/gzdoom/src/${PN}-src-g${PV}.zip https://zdoom.org/files/gzdoom/src/${PN}-src-g${PV}_legacy.zip"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+gtk3"
+IUSE="+gtk3 legacy-opengl"
 
 RDEPEND="gtk3? ( x11-libs/gtk+:3 )
 	media-libs/libsdl2
@@ -30,6 +23,16 @@ RDEPEND="gtk3? ( x11-libs/gtk+:3 )
 
 DEPEND="${RDEPEND}
 	|| ( dev-lang/nasm dev-lang/yasm )"
+
+src_unpack(){
+	if use legacy-opengl; then
+		S="${WORKDIR}/${PN}-g${PV}_legacy"
+	else
+		S="${WORKDIR}/${PN}-g${PV}"
+	fi
+
+	default
+}
 
 src_prepare() {
 	# Use default data path

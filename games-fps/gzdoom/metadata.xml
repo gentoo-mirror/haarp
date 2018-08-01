@@ -3,5 +3,6 @@
 <pkgmetadata>
 	<use>
 		<flag name="gtk3">Build graphical IWAD picker</flag>
+		<flag name="legacy-opengl">Build "vintage" version for better performance on OpenGL 2 hardware</flag>
 	</use>
 </pkgmetadata>
