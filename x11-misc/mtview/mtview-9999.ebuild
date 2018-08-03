@@ -19,5 +19,5 @@ DEPEND=${RDEPEND}
 
 src_configure() {
 	./autogen.sh
-	./configure
+	./configure --prefix=/usr
 }
