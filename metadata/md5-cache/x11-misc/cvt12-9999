@@ -1,0 +1,9 @@
+DEFINED_PHASES=compile install unpack
+DEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DESCRIPTION=CVT (Coordinated Video Timings) modeline calculator with CVT v1.2 timings
+EAPI=6
+HOMEPAGE=https://github.com/kevinlekiller/cvt_modeline_calculator_12
+KEYWORDS=~amd64 ~x86
+SLOT=0
+_eclasses_=git-r3	918d6a744039c29af2cadc7317459765	multilib	97f470f374f2e94ccab04a2fb21d811e	toolchain-funcs	e4a9360924c5ce9f52e61342cde58512
+_md5_=8d1848eaeb3b4afff529f60bfe9c75f4
