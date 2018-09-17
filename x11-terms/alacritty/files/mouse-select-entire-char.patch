@@ -1,10 +1,5 @@
 https://github.com/jwilm/alacritty/issues/784
 
- src/selection.rs | 34 +++++-----------------------------
- 1 file changed, 5 insertions(+), 29 deletions(-)
-
-diff --git c/src/selection.rs i/src/selection.rs
-index 714c84c..63ee2be 100644
 --- c/src/selection.rs
 +++ i/src/selection.rs
 @@ -264,35 +264,11 @@ impl Selection {
