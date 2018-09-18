@@ -208,9 +208,6 @@ DEPEND="
 
 src_prepare() {
 	ewarn "cargo breaks with FEATURES=network-sandbox, please keep it disabled."
-
-#	epatch ${FILESDIR}/mouse-select-entire-char.patch
-#	epatch ${FILESDIR}/shift-click-text-select.patch
 	eapply_user
 }
 
