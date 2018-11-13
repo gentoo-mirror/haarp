@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -67,7 +67,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Copy or link wad files into /usr/share/doom-data/"
+	elog 'Copy or link wad files into /usr/share/doom-data/ or $HOME/.config/gzdoom/'
 	elog "ATTENTION: The path has changed! It used to be /usr/share/games/doom-data/"
 	elog
 	elog "Starting from GZDoom 3.3.0, TiMidity++ is now an internal MIDI player."
