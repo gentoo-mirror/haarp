@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<slots>
+		<subslots>soname major version number</subslots>
+	</slots>
+	<upstream>
+		<remote-id type="github">Ultimaker/CuraEngine</remote-id>
+	</upstream>
+</pkgmetadata>
