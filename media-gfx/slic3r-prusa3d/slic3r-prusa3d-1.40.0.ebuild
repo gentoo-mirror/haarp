@@ -105,7 +105,7 @@ src_install() {
 	doexe slic3r.pl
 
 	dosym "${VENDOR_LIB}"/Slic3r/slic3r.pl /usr/bin/slic3r.pl
-	dosym /usr/lib64/perl5/vendor_perl/5.24.3/Slic3r/resources/icons/Slic3r_128px.png \
+	dosym "${VENDOR_LIB}"/Slic3r/resources/icons/Slic3r_128px.png \
 		/usr/share/pixmaps/slic3r.png
 
 	make_desktop_entry slic3r.pl \
