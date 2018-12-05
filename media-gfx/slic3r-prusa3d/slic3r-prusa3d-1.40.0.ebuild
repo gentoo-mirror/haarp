@@ -108,7 +108,7 @@ src_install() {
 	dosym "${VENDOR_LIB}"/Slic3r/resources/icons/Slic3r_128px.png \
 		/usr/share/pixmaps/slic3r.png
 
-	make_desktop_entry slic3r.pl \
+	make_desktop_entry "slic3r.pl --gui" \
 		"Slic3r Prusa Edition" \
 		"slic3r.png" \
 		"Graphics;3DGraphics;Engineering;Development"
