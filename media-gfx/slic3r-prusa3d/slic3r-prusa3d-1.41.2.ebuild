@@ -103,17 +103,17 @@ src_install() {
 	exeinto "${VENDOR_LIB}"/Slic3r
 	doexe slic3r.pl
 
-	dosym "${VENDOR_LIB}"/Slic3r/slic3r.pl /usr/bin/slic3r.pl
+	cmake-utils_src_install
+
+	dosym "${VENDOR_LIB}"/Slic3r/slic3r.pl /usr/bin/slic3r
 	dosym "${VENDOR_LIB}"/Slic3r/resources/icons/Slic3r_128px.png \
 		/usr/share/pixmaps/slic3r.png
 
-	make_desktop_entry "slic3r.pl --gui" \
+	make_desktop_entry "slic3r --gui" \
 		"Slic3r Prusa Edition" \
-		"slic3r.png" \
+		"slic3r" \
 		"Graphics;3DGraphics;Engineering;Development"
-	# xfce4-panel skips files with multiple dots
-	mv "${D}/usr/share/applications/slic3r.pl-slic3r-prusa3d.desktop" \
-		"${D}/usr/share/applications/slic3r-prusa3d.desktop"
 
-	cmake-utils_src_install
+	# broken
+	rm "${D}/usr/bin/slic3r-prusa3d"
 }
