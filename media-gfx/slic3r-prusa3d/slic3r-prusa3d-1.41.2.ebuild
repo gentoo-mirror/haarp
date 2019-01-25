@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -95,6 +95,7 @@ src_test() {
 
 src_install() {
 	perl-module_src_install
+
 	insinto "${VENDOR_LIB}"
 	doins -r lib/Slic3r.pm lib/Slic3r
 	insinto "${VENDOR_LIB}"/Slic3r
