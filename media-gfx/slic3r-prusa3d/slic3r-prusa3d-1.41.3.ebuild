@@ -30,6 +30,7 @@ RDEPEND="!=dev-lang/perl-5.16*
 	>=dev-perl/Math-PlanePath-53.0.0
 	>=dev-perl/Moo-1.3.1
 	dev-perl/XML-SAX-ExpatXS
+	sci-libs/nlopt
 	virtual/perl-Carp
 	virtual/perl-Encode
 	virtual/perl-File-Spec
