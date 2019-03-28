@@ -3,13 +3,11 @@
 
 EAPI=6
 
-inherit eutils git-r3 perl-module cmake-utils
+inherit eutils perl-module cmake-utils
 
-DESCRIPTION="Improved G-code generator for Prusa 3D printers"
+DESCRIPTION="Improved G-code generator optimized for Prusa 3D printers"
 HOMEPAGE="https://www.prusa3d.com/slic3r-prusa-edition/"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/prusa3d/Slic3r.git"
-EGIT_COMMIT="version_${PV}"
+SRC_URI="https://github.com/prusa3d/Slic3r/archive/version_${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3 CC-BY-3.0"
 SLOT="0"
@@ -69,17 +67,14 @@ DEPEND="${RDEPEND}
 	test? (	virtual/perl-Test-Harness
 		virtual/perl-Test-Simple )"
 
-S="${WORKDIR}/slic3r-prusa3d-${PV}"
-
-src_unpack() {
-	git-r3_src_unpack
-}
+S="${WORKDIR}/Slic3r-version_${PV}"
 
 src_prepare() {
 	pushd "${S}" || die
 	sed -i lib/Slic3r.pm -e "s@FindBin::Bin@FindBin::RealBin@g" || die
 	eapply_user
 	popd || die
+	cmake-utils_src_prepare
 }
 
 src_configure() {
