@@ -4,3 +4,4 @@ app-editors/gedit-plugins 3.10.1: Official plugins for gedit
 dev-libs/pth 2.0.7-r3: GNU Portable Threads
 media-gfx/gnome-font-viewer 3.8.0: Font viewer for GNOME 3
 sys-apps/gnome-disk-utility 3.10.0: Disk Utility for GNOME using udisks
+xfce-extra/xfce4-datetime-plugin 0.6.2: A panel plug-in with date, time and embedded calender
