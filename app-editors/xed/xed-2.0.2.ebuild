@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 GNOME2_LA_PUNT="yes" # plugins are dlopened
 PYTHON_COMPAT=( python3_{5,6} )
 
-inherit autotools eutils gnome2 multilib python-single-r1
+inherit eutils gnome2 meson multilib python-single-r1
 
 DESCRIPTION="X-Apps [Text] Editor (Cross-DE, backward-compatible, GTK3, traditional UI)"
 HOMEPAGE="https://github.com/linuxmint/xed"
@@ -14,7 +14,7 @@ SRC_URI="https://github.com/linuxmint/xed/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE="+python spell test"
+IUSE="doc +python spell test"
 # python-single-r1 would request disabling PYTHON_TARGETS on libpeas
 # we need to fix that
 REQUIRED_USE="python? ( ^^ ( $(python_gen_useflags '*') ) )"
@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	gnome-base/gsettings-desktop-schemas
 	gnome-base/gvfs
 
-	x11-libs/xapps
+	>=x11-libs/xapps-1.2.2
 	x11-libs/libX11
 	net-libs/libsoup:2.4
 
@@ -41,9 +41,9 @@ COMMON_DEPEND="
 		dev-python/pycairo[${PYTHON_USEDEP}]
 		>=dev-python/pygobject-3:3[cairo,${PYTHON_USEDEP}]
 		dev-libs/libpeas[${PYTHON_USEDEP}] )
+
 	spell? (
-		>=app-text/enchant-1.2:=
-		>=app-text/iso-codes-0.35 )
+		app-text/gspell )
 "
 
 RDEPEND="${COMMON_DEPEND}
@@ -68,23 +68,29 @@ pkg_setup() {
 }
 
 src_prepare() {
-eautoreconf
 	gnome2_src_prepare
 }
 
 src_configure() {
-	DOCS="AUTHORS ChangeLog HACKING NEWS README"
+	DOCS="AUTHORS HACKING NEWS.GEDIT NEWS.PLUMA README"
 
-	gnome2_src_configure \
-		--enable-gvfs-metadata \
-		$(use_enable spell)
+	local emesonargs=(
+		-Denable_gvfs_metadata=true
+		$(meson_use doc docs)
+		$(meson_use spell enable_spell)
+	)
+
+	meson_src_configure
+}
+
+src_compile() {
+	meson_src_compile
 }
 
 src_test() {
-	"${EROOT}${GLIB_COMPILE_SCHEMAS}" --allow-any-name "${S}/data" || die
-	GSETTINGS_SCHEMA_DIR="${S}/data" Xemake check
+	meson_src_test
 }
 
 src_install() {
-	gnome2_src_install
+	meson_src_install
 }
