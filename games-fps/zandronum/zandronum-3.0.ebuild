@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,11 +7,11 @@ inherit eutils cmake-utils
 
 OWNER="Torr_Samaho"
 MY_COMMIT="dd3c3b57023f"
+MY_COMMIT_UTC_TIMESTAMP="1504266050"
 
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
 HOMEPAGE="https://zandronum.com/"
 SRC_URI="https://bitbucket.org/${OWNER}/${PN}/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2
-	https://bitbucket.org/api/1.0/repositories/${OWNER}/${PN}/changesets/${MY_COMMIT}?format=yaml -> ${P}.metadata
 "
 
 LICENSE="Sleepycat"
@@ -45,9 +45,7 @@ src_unpack() {
 src_prepare() {
 	# Normally Mercurial would generate gitinfo.h for NETGAMEVERSION
 	# let's do it without Mercurial
-	local timestamp=$(awk -F\' '/utctimestamp/{print $2}' "${DISTDIR}/${P}.metadata")
-	local unixtimestamp=$(date +%s -d "${timestamp}")
-	echo "#define HG_REVISION_NUMBER ${unixtimestamp}" > src/gitinfo.h
+	echo "#define HG_REVISION_NUMBER ${MY_COMMIT_UTC_TIMESTAMP}" > src/gitinfo.h
 	echo "#define HG_REVISION_HASH_STRING \"0\"" >> src/gitinfo.h
 	echo "#define HG_TIME \"\"" >> src/gitinfo.h
 
