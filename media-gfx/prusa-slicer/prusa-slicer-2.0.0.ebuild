@@ -56,8 +56,7 @@ src_install() {
 	dosym "/usr/share/PrusaSlicer/icons/PrusaSlicer_192px.png" \
 		"/usr/share/pixmaps/prusa-slicer.png"
 
-	make_desktop_entry "prusa-slicer" \
-		"PrusaSlicer" \
-		"prusa-slicer" \
-		"Graphics;3DGraphics;Engineering;Development"
+	make_desktop_entry "prusa-slicer %F" "PrusaSlicer" "prusa-slicer" \
+		"Graphics;3DGraphics;Engineering;Development" \
+		"MimeType=model/stl;application/xml;application/prs.wavefront-obj;application/vnd.ms-3mfdocument;"
 }
