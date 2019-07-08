@@ -9,8 +9,4 @@ app-crypt/gnupg:tools - Install extra tools (including gpgsplit and gpg-zip).
 app-crypt/gnupg:usb - Build direct CCID access for scdaemon; requires dev-libs/libusb.
 app-crypt/gnupg:wks-server - Install the wks-server
 app-editors/gedit:zeitgeist - Build the plugin to inject events to gnome-extra/zeitgeist
-app-editors/gedit-plugins:charmap - Insert special characters just by clicking on them
-app-editors/gedit-plugins:git - Shows document changes related to git's HEAD
-app-editors/gedit-plugins:synctex - Synchronize between LaTeX and PDF with gedit and evince
-app-editors/gedit-plugins:terminal - Embed a terminal in the bottom pane
 sys-apps/gnome-disk-utility:fat - Include FAT16/FAT32 support (sys-fs/dosfstools)
