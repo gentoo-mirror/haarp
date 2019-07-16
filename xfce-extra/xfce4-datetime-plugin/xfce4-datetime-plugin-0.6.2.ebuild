@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit xfconf
 
 DESCRIPTION="A panel plug-in with date, time and embedded calender"
 HOMEPAGE="https://goodies.xfce.org/projects/panel-plugins/xfce4-datetime-plugin"
@@ -23,9 +22,5 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 pkg_setup() {
-	XFCONF=(
-		$(xfconf_use_debug)
-		)
-
 	DOCS=( AUTHORS ChangeLog NEWS THANKS )
 }
