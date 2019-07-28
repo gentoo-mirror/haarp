@@ -22,7 +22,6 @@ REQUIRED_USE="
 	charmap? ( python )
 	git? ( python )
 	terminal? ( python )
-	python? ( ${REQUIRED_PYTHON_USE} )
 "
 
 RDEPEND="
