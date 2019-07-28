@@ -1,5 +1,6 @@
 app-crypt/gnupg 2.0.28: The GNU Privacy Guard, a GPL pgp replacement
 app-editors/gedit 3.10.4: A text editor for the GNOME desktop
+app-editors/gedit-plugins 3.10.1: Official plugins for gedit
 dev-libs/pth 2.0.7-r3: GNU Portable Threads
 media-gfx/gnome-font-viewer 3.8.0: Font viewer for GNOME 3
 sys-apps/gnome-disk-utility 3.10.0: Disk Utility for GNOME using udisks
