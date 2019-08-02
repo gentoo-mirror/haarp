@@ -7,7 +7,7 @@ inherit perl-module cmake-utils
 
 DESCRIPTION="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 HOMEPAGE="https://www.prusa3d.com/prusaslicer/"
-SRC_URI="https://github.com/prusa3d/Slic3r/archive/version_${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/prusa3d/PrusaSlicer/archive/version_${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3 CC-BY-3.0"
 SLOT="0"
