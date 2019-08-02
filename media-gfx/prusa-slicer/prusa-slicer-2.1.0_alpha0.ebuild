@@ -7,7 +7,7 @@ inherit perl-module cmake-utils
 
 DESCRIPTION="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 HOMEPAGE="https://www.prusa3d.com/prusaslicer/"
-SRC_URI="https://github.com/prusa3d/PrusaSlicer/archive/version_${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/prusa3d/Slic3r/archive/version_${PV/_/-}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AGPL-3 CC-BY-3.0"
 SLOT="0"
@@ -19,6 +19,7 @@ RDEPEND="!media-gfx/slic3r
 	dev-cpp/eigen
 	dev-cpp/gtest
 	dev-cpp/tbb
+	dev-libs/cereal
 	dev-libs/expat
 	dev-libs/openssl
 	media-libs/glew
@@ -27,7 +28,7 @@ RDEPEND="!media-gfx/slic3r
 	x11-libs/wxGTK:3.0-gtk3"
 DEPEND="${RDEPEND}"
 
-S="${WORKDIR}/PrusaSlicer-version_${PV}"
+S="${WORKDIR}/PrusaSlicer-version_${PV/_/-}"
 
 src_configure() {
 	local mycmakeargs=(
