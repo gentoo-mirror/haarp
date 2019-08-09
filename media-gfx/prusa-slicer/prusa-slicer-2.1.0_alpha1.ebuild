@@ -11,7 +11,7 @@ SRC_URI="https://github.com/prusa3d/Slic3r/archive/version_${PV/_/-}.tar.gz -> $
 
 LICENSE="AGPL-3 CC-BY-3.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="+gui test"
 
 RDEPEND="!media-gfx/slic3r
