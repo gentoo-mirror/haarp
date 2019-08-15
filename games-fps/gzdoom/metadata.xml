@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<longdescription lang="en">
+		GZDoom is a modder-friendly OpenGL source port based on the DOOM engine
+	</longdescription>
 	<use>
-		<flag name="gtk3">Build graphical IWAD picker</flag>
-		<flag name="legacy-opengl">Build "vintage" version for better performance on OpenGL 2 hardware</flag>
+		<flag name="gtk2">Enable support for GTK+2 instead of GTK+3</flag>
 	</use>
+	<upstream>
+		<bugs-to>https://forum.zdoom.org/viewforum.php?f=2</bugs-to>
+		<doc lang="en">https://zdoom.org</doc>
+		<remote-id type="github">coelckers/gzdoom</remote-id>
+	</upstream>
 </pkgmetadata>
