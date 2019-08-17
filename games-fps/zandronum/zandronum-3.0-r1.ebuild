@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils cmake-utils
+inherit  cmake-utils desktop
 
 OWNER="Torr_Samaho"
 MY_COMMIT="dd3c3b57023f"
@@ -11,8 +11,7 @@ MY_COMMIT_UTC_TIMESTAMP="1504266050"
 
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
 HOMEPAGE="https://zandronum.com/"
-SRC_URI="https://bitbucket.org/${OWNER}/${PN}/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2
-"
+SRC_URI="https://bitbucket.org/${OWNER}/${PN}/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="Sleepycat"
 SLOT="0"
@@ -26,13 +25,14 @@ REQUIRED_USE="|| ( dedicated opengl )
 RDEPEND="gtk? ( x11-libs/gtk+:2 )
 	timidity? ( media-sound/timidity++ )
 	opengl? ( media-libs/fmod:1
-		media-libs/libsdl
+		media-libs/libsdl[opengl]
 		virtual/glu
 		virtual/jpeg:62
 		virtual/opengl
 	)
 	dev-db/sqlite
-	dev-libs/openssl:0"
+	dev-libs/openssl:0
+	media-sound/fluidsynth"
 
 DEPEND="${RDEPEND}
 	cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )"
@@ -53,20 +53,20 @@ src_prepare() {
 	sed -i -e "/add_subdirectory( sqlite )/d" CMakeLists.txt
 
 	# Use default data path
-	sed -i -e "s:/usr/local/share/:/usr/share/doom-data/:" src/sdl/i_system.h
+	sed -i -e "s:/usr/local/share/:/usr/share/doom/:" src/sdl/i_system.h
 
 	# Fix building with gcc-5
 	sed -i -e 's/ restrict/ _restrict/g' dumb/include/dumb.h dumb/src/it/*.c
 
-	eapply_user
+	cmake-utils_src_prepare
 }
 
 src_configure() {
 	mycmakeargs=(
-		-DNO_ASM="$(usex cpu_flags_x86_mmx OFF ON)"
-		-DNO_GTK="$(usex gtk OFF ON)"
 		-DFMOD_INCLUDE_DIR=/opt/fmodex/api/inc/
 		-DFMOD_LIBRARY=/opt/fmodex/api/lib/libfmodex.so
+		-DNO_ASM="$(usex cpu_flags_x86_mmx OFF ON)"
+		-DNO_GTK="$(usex gtk OFF ON)"
 	)
 
 	# Can't build both client and server at once... so separate them
@@ -96,7 +96,7 @@ src_install() {
 	dodoc docs/{commands,zandronum*}.txt docs/console.{css,html}
 
 	cd "${BUILD_DIR}"
-	insinto "/usr/share/doom-data"
+	insinto "/usr/share/doom"
 	doins *.pk3
 
 	if use opengl; then
@@ -107,14 +107,22 @@ src_install() {
 	if use dedicated; then
 		dobin "${WORKDIR}/${P}_server/${PN}-server"
 	fi
-}
 
+        # don't install this now
+        rm "${D}/usr/share/doom/brightmaps.pk3"
+}
 pkg_postinst() {
-	elog "Copy or link wad files into /usr/share/doom-data/"
-	elog "ATTENTION: The path has changed! It used to be /usr/share/games/doom-data/"
+	# install here to avoid collisions with games-fps/zandronum
+	# hacky, i know. should've listened to juippis :) please don't hit me.
+	cp -n "${BUILD_DIR}/brightmaps.pk3" "${EPREFIX}/usr/share/doom/" || die
+
+        ewarn "For parity with the gzdoom ebuild, the data path has been changed yet again!"
+        ewarn "It is ${EPREFIX}/usr/share/doom - copy/link wad files there or in \$HOME/.config/zandronum"
+        ewarn "If after an upgrade the game complains about not finding zandronum.pk3,"
+        ewarn "edit the [*Search.Directories] sections in \$HOME/.config/zandronum/zandronum.ini."
+
 	if use opengl; then
 		elog
-		elog "To play, install games-util/doomseeker or simply run:"
-		elog "   zandronum"
+		elog "To play online, install games-util/doomseeker"
 	fi
 }
