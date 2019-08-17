@@ -13,8 +13,7 @@ app-editors/gedit-plugins:charmap - Insert special characters just by clicking o
 app-editors/gedit-plugins:git - Shows document changes related to git's HEAD
 app-editors/gedit-plugins:synctex - Synchronize between LaTeX and PDF with gedit and evince
 app-editors/gedit-plugins:terminal - Embed a terminal in the bottom pane
-games-fps/gzdoom:gtk3 - Build graphical IWAD picker
-games-fps/gzdoom:legacy-opengl - Build "vintage" version for better performance on OpenGL 2 hardware
+games-fps/gzdoom:gtk2 - Enable support for GTK+2 instead of GTK+3
 games-fps/zandronum:dedicated - Build zandronum-server
 games-fps/zandronum:gtk - Build graphical IWAD picker
 games-fps/zandronum:opengl - Build zandronum client
