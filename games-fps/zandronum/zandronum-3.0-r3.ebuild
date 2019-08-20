@@ -112,7 +112,7 @@ src_install() {
         rm "${D}/usr/share/doom/brightmaps.pk3"
 }
 pkg_postinst() {
-	# install here to avoid collisions with games-fps/zandronum
+	# install here to avoid collisions with games-fps/gzdoom
 	# hacky, i know. should've listened to juippis :) please don't hit me.
 	# note: brightmaps.pk3 NEEDS TO KEEP ITS NAME to not break online play.
 	cp -n "${BUILD_DIR}/brightmaps.pk3" "${EPREFIX}/usr/share/doom/" || die
