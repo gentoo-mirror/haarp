@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit  cmake-utils desktop
+inherit cmake-utils desktop
 
 OWNER="Torr_Samaho"
 MY_COMMIT="dd3c3b57023f"
@@ -27,7 +27,7 @@ RDEPEND="gtk? ( x11-libs/gtk+:2 )
 	opengl? ( media-libs/fmod:1
 		media-libs/libsdl[opengl]
 		virtual/glu
-		virtual/jpeg:62
+		virtual/jpeg
 		virtual/opengl
 	)
 	dev-db/sqlite
@@ -112,8 +112,9 @@ src_install() {
         rm "${D}/usr/share/doom/brightmaps.pk3"
 }
 pkg_postinst() {
-	# install here to avoid collisions with games-fps/zandronum
+	# install here to avoid collisions with games-fps/gzdoom
 	# hacky, i know. should've listened to juippis :) please don't hit me.
+	# note: brightmaps.pk3 NEEDS TO KEEP ITS NAME to not break online play.
 	cp -n "${BUILD_DIR}/brightmaps.pk3" "${EPREFIX}/usr/share/doom/" || die
 
         ewarn "For parity with the gzdoom ebuild, the data path has been changed yet again!"

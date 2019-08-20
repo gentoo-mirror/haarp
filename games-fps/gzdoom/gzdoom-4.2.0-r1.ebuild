@@ -76,5 +76,5 @@ pkg_postinst() {
 	elog "Starting with GZDoom 3.3.0, TiMidity++ is an internal MIDI player."
 	elog "Unfortunately, it does not support system soundfonts directly."
 	elog "To make them selectable, add /usr/share/timidity/<foo>/* to a zip archive and"
-	elog "place it into ${EPREFIX}/usr/share/doom/ or \$HOME/.config/gzdoom/soundfonts/"
+	elog "place it into ${EPREFIX}/usr/share/doom/soundfonts/ or \$HOME/.config/gzdoom/soundfonts/"
 }
