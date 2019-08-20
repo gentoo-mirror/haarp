@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit  cmake-utils desktop
+inherit cmake-utils desktop
 
 OWNER="Torr_Samaho"
 MY_COMMIT="dd3c3b57023f"
@@ -27,7 +27,7 @@ RDEPEND="gtk? ( x11-libs/gtk+:2 )
 	opengl? ( media-libs/fmod:1
 		media-libs/libsdl[opengl]
 		virtual/glu
-		virtual/jpeg:62
+		virtual/jpeg
 		virtual/opengl
 	)
 	dev-db/sqlite
