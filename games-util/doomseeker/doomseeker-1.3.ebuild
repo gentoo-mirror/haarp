@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils multilib
+inherit cmake-utils
 
 DESCRIPTION="Internet Doom server browser"
 HOMEPAGE="https://doomseeker.drdteam.org/"

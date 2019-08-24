@@ -5,7 +5,7 @@ EAPI=6
 
 inherit perl-module cmake-utils
 
-DESCRIPTION="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
+DESCRIPTION="G-code generator for 3D printers"
 HOMEPAGE="https://www.prusa3d.com/prusaslicer/"
 SRC_URI="https://github.com/prusa3d/Slic3r/archive/version_${PV/_/-}.tar.gz -> ${P}.tar.gz"
 
