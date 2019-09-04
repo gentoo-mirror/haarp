@@ -35,6 +35,7 @@ src_prepare() {
 		-e '/Encoding/d' \
 		-e '/Categories/s:Application;::' \
 		-e '/Icon/s:.png::' \
+		-e 's/ @PACKAGE_VERSION@//' \
 		data/alltray.desktop.in || die
 
 	vala_src_prepare
