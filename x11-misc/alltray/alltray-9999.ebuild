@@ -8,7 +8,6 @@ inherit autotools git-r3 vala
 
 DESCRIPTION="An application which allows any application to be docked into the system notification area"
 HOMEPAGE="http://alltray.trausch.us/"
-##SRC_URI="https://github.com/mbt/alltray/archive/v${PV}dev.tar.gz -> ${P}.tar.gz"
 EGIT_REPO_URI="https://github.com/mbt/alltray.git"
 
 LICENSE="GPL-2"
@@ -26,8 +25,6 @@ RDEPEND="dev-libs/glib:2
 DEPEND="${RDEPEND}
 	$(vala_depend)
 	virtual/pkgconfig"
-
-##S=${WORKDIR}/${P}dev
 
 DOCS=( AUTHORS ChangeLog HACKING NEWS README )
 
@@ -47,4 +44,3 @@ src_prepare() {
 
 	eautoreconf
 }
-
