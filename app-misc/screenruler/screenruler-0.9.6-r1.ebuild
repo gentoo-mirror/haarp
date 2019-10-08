@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,8 +28,6 @@ src_prepare() {
 
 # There is no installation mechanism, so just put everything in the right place
 src_install() {
-	make_desktop_entry screenruler "Screen Ruler" screenruler "Utility;GTK;"
-
 	cd "${S}"
 
 	insinto /usr/share/${PN}
@@ -44,4 +42,7 @@ src_install() {
 
 	dosym /usr/share/${PN}/screenruler.rb /usr/bin/screenruler
 	dosym /usr/share/${PN}/screenruler-icon-64x64.png /usr/share/pixmaps/screenruler.png
+
+	# it won't launch if stderr is not a terminal/pipe??!
+	make_desktop_entry "sh -c 'screenruler 2>/dev/null'" "Screen Ruler" screenruler "Utility;GTK;"
 }
