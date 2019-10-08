@@ -4,7 +4,7 @@ app-editors/gedit 3.10.4: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.10.1: Official plugins for gedit
 app-editors/pluma-plugins 1.8.0: Additional plugins for Pluma
 app-editors/xed 1.8.3 2.2.1: X-Apps [Text] Editor (Cross-DE, backward-compatible, GTK3, traditional UI)
-app-misc/screenruler 0.9.6: Measure objects on your desktop using six different metrics
+app-misc/screenruler 0.9.6-r1: Measure objects on your desktop using six different metrics
 app-misc/solaar 9999: A Linux device manager for Logitech's Unifying Receiver peripherals
 app-misc/umouse 1.0: Unlocks the mouse pointer when an SDL app crashes
 dev-db/dbeaver-bin 5.3.2: Free universal database tool and SQL client
