@@ -15,6 +15,7 @@ KEYWORDS="~amd64"
 RDEPEND="
 	dev-db/sqlite
 	dev-qt/qtcore:5=
+	dev-qt/qtwidgets:5=
 	dev-qt/qtx11extras:5="
 
 S="${WORKDIR}/${PN}-RELEASE_${PV}"
