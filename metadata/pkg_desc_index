@@ -33,6 +33,7 @@ x11-misc/XCreateMouseVoid 9999: Create a void window and prevent the mouse from 
 x11-misc/alltray 9999: An application which allows any application to be docked into the system notification area
 x11-misc/cvt12 9999: CVT (Coordinated Video Timings) modeline calculator with CVT v1.2 timings
 x11-misc/mtview 9999: Graphical multitouch viewer
+x11-misc/nvidia-xrun 9999: Script to run dedicated X server with discrete nvidia graphics
 x11-misc/switchscreen 0.1.1: Move the X mouse cursor to a given point on a given screen
 x11-plugins/birdtray 1.6: Birdtray is a free system tray notification for new mail for Thunderbird
 x11-plugins/multiload-ng 1.5.2 9999: Modern graphical system monitor for XFCE/MATE/LXDE (GNOME applet fork)
