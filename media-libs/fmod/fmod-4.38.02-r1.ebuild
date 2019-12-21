@@ -8,9 +8,15 @@ inherit versionator
 MY_P=fmodapi$(delete_all_version_separators)linux
 
 DESCRIPTION="music and sound effects library, and a sound processing system"
-HOMEPAGE="http://www.fmod.org"
-SRC_URI="x86? ( http://www.fmod.org/index.php/release/version/${MY_P}.tar.gz )
-	amd64? ( http://www.fmod.org/index.php/release/version/${MY_P}64.tar.gz )"
+HOMEPAGE="https://www.fmod.org"
+SRC_URI="x86? (
+		https://www.fmod.org/index.php/release/version/${MY_P}.tar.gz
+		https://erppc.net/~haarp/distfiles/${MY_P}.tar.gz
+	)
+	amd64? (
+		https://www.fmod.org/index.php/release/version/${MY_P}64.tar.gz
+		https://erppc.net/~haarp/distfiles/${MY_P}64.tar.gz
+	)"
 
 LICENSE="BSD BSD-2 fmod"
 SLOT="1"
