@@ -16,7 +16,7 @@ SRC_URI="https://bitbucket.org/${OWNER}/${PN}/get/${MY_COMMIT}.tar.bz2 -> ${P}.t
 LICENSE="Sleepycat"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_mmx cpu_flags_x86_sse2 dedicated +gtk +opengl timidity"
+IUSE="cpu_flags_x86_mmx dedicated +gtk +opengl timidity"
 
 REQUIRED_USE="|| ( dedicated opengl )
 	gtk? ( opengl )
@@ -25,14 +25,17 @@ REQUIRED_USE="|| ( dedicated opengl )
 RDEPEND="gtk? ( x11-libs/gtk+:2 )
 	timidity? ( media-sound/timidity++ )
 	opengl? ( media-libs/fmod:1
+		media-libs/game-music-emu
 		media-libs/libsdl[opengl]
 		virtual/glu
 		virtual/jpeg
 		virtual/opengl
 	)
+	app-arch/bzip2
 	dev-db/sqlite
 	dev-libs/openssl:0
-	media-sound/fluidsynth"
+	media-sound/fluidsynth
+	sys-libs/zlib"
 
 DEPEND="${RDEPEND}
 	cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )"
@@ -65,6 +68,7 @@ src_configure() {
 	mycmakeargs=(
 		-DFMOD_INCLUDE_DIR=/opt/fmodex/api/inc/
 		-DFMOD_LIBRARY=/opt/fmodex/api/lib/libfmodex.so
+		-DFORCE_INTERNAL_GME="OFF"
 		-DNO_ASM="$(usex cpu_flags_x86_mmx OFF ON)"
 		-DNO_GTK="$(usex gtk OFF ON)"
 	)
@@ -114,7 +118,8 @@ src_install() {
 pkg_postinst() {
 	# install here to avoid collisions with games-fps/gzdoom
 	# hacky, i know. should've listened to juippis :) please don't hit me.
-	# note: brightmaps.pk3 NEEDS TO KEEP ITS NAME to not break online play.
+	# note: brightmaps.pk3 NEEDS TO KEEP ITS NAME to not break online play
+	# on servers that mistakenly add it as a required pwad.
 	cp -n "${BUILD_DIR}/brightmaps.pk3" "${EPREFIX}/usr/share/doom/" || die
 
         ewarn "For parity with the gzdoom ebuild, the data path has been changed yet again!"
