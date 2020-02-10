@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -38,12 +38,14 @@ COMMON_DEPEND="
 
 	python? (
 		${PYTHON_DEPS}
-		dev-python/pycairo[${PYTHON_USEDEP}]
-		>=dev-python/pygobject-3:3[cairo,${PYTHON_USEDEP}]
-		dev-libs/libpeas[${PYTHON_USEDEP}] )
+		$(python_gen_cond_dep '
+			dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pygobject-3:3[cairo,${PYTHON_MULTI_USEDEP}]
+			dev-libs/libpeas[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 
-	spell? (
-		app-text/gspell )
+	spell? ( app-text/gspell )
 "
 
 RDEPEND="${COMMON_DEPEND}

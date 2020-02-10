@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 
 DOCS="AUTHORS README.md"
 
-RDEPEND=">=app-misc/ddcutil-0.9.6
+RDEPEND=">=app-misc/ddcutil-0.9.8
         dev-qt/qtcore:5
         dev-qt/qtgui:5
 	dev-qt/qthelp:5
