@@ -3,8 +3,8 @@ app-arch/kzipmix 20150319: PKZIP-compatible compressor focusing on space over sp
 app-editors/gedit 3.10.4: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.10.1: Official plugins for gedit
 app-editors/pluma-plugins 1.8.0: Additional plugins for Pluma
-app-editors/xed 1.8.3 2.4.2: X-Apps [Text] Editor (Cross-DE, backward-compatible, GTK3, traditional UI)
-app-misc/ddcui 0.0.6: Graphical user interface for ddcutil
+app-editors/xed 2.4.2: X-Apps [Text] Editor (Cross-DE, backward-compatible, GTK3, traditional UI)
+app-misc/ddcui 0.1.0: Graphical user interface for ddcutil
 app-misc/ddcutil 0.9.8: Program for querying and changing monitor settings
 app-misc/mc 4.8.20-r2: GNU Midnight Commander is a text based file manager
 app-misc/screenruler 0.9.6-r1: Measure objects on your desktop using six different metrics
@@ -32,7 +32,6 @@ sys-power/ec_access 9999: Tool to access the Embedded Controller
 sys-power/gapcmon 0.9.0_p20160531: Linux GUI monitor for APCUPSD
 sys-process/earlyoom 1.2: Early OOM Daemon for Linux
 www-plugins/wacomwebplugin 0.3.0-r1: An implementation of the Wacom Tablet Plugin, on Linux
-x11-libs/xapps 1.2.2: Cross-desktop libraries and common resources
 x11-misc/XCreateMouseVoid 9999: Create a void window and prevent the mouse from entering it
 x11-misc/alltray 9999: An application which allows any application to be docked into the system notification area
 x11-misc/cvt12 9999: CVT (Coordinated Video Timings) modeline calculator with CVT v1.2 timings
