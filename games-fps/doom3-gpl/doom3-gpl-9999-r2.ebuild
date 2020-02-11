@@ -1,13 +1,15 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-inherit scons-utils toolchain-funcs games git-2
+# FIXME: Patch neo/SConstruct to Python3
+PYTHON_COMPAT=( python2_7 )
+inherit desktop git-r3 python-any-r1 scons-utils toolchain-funcs
 
 DESCRIPTION="3rd installment of the classic iD 3D first-person shooter"
 HOMEPAGE="https://github.com/TTimo/doom3.gpl"
-EGIT_REPO_URI="git://github.com/TTimo/doom3.gpl.git"
+EGIT_REPO_URI="https://github.com/TTimo/doom3.gpl.git"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -26,84 +28,74 @@ RDEPEND="sys-libs/glibc
 DEPEND="${RDEPEND}
 	sys-devel/m4"
 
-dir=$(games_get_libdir)/${PN}
-
 src_prepare() {
 	# do we really need Wall spam?
 	sed -i -e "/BASECPPFLAGS.append( '-Wall' )/d" neo/SConstruct
 
-	# we supply our own CFLAGS
+	# we supply our own CFLAGS instead of what the release build uses:
+	# -O3 -ffast-math -fno-unsafe-math-optimizations -fomit-frame-pointer
 	sed -i -e "/OPTCPPFLAGS = \[ '-O3'/d" neo/SConstruct
 	sed -i -e "s/BASEFLAGS = ''/BASEFLAGS = \[ '${CXXFLAGS//[${IFS}]/', '}' \]/" neo/SConstruct
 	sed -i -e "s/BASELINKFLAGS = \[ \]/BASELINKFLAGS = \[ '${LDFLAGS//[${IFS}]/', '}' \]/" neo/SConstruct
 
-	epatch "${FILESDIR}/d3_nokeycheck.patch"
-	epatch "${FILESDIR}/d3_carmacksreverse.patch"
+	# fix compilation errors on modern systems
+	sed -i -e "s/m_speed - PRIMARYFREQ/(double)(m_speed - PRIMARYFREQ)/" neo/sys/linux/sound.cpp
+	sed -i -e "s/HUGE/100000000/" neo/tools/compilers/roqvq/codec.cpp
+
+	eapply "${FILESDIR}/d3_carmacksreverse.patch"
+	eapply "${FILESDIR}/d3_nokeycheck.patch"
+
+	eapply_user
 }
 
 src_configure() {
 	S="${WORKDIR}/${P}/neo"
 
-	myesconsargs=(
+	# FIXME: disabled curl due to needing 32-bit libz.a
+	MYSCONS=(
 		CC="$(tc-getCC)"
 		CXX="$(tc-getCXX)"
+		BUILD="$(usex debug debug release)"
+		NOCURL="1"
 	)
-
-	if use debug; then
-		myesconsargs+=( BUILD="debug" )
-	else
-		myesconsargs+=( BUILD="release" )
-	fi
 
 	if use dedicated; then
 		if use opengl; then
-			myesconsargs+=( DEDICATED="2" )
+			MYSCONS+=( DEDICATED="2" )
 		else
-			myesconsargs+=( DEDICATED="1" )
+			MYSCONS+=( DEDICATED="1" )
 		fi
 	else
-		myesconsargs+=( DEDICATED="0" )
+		MYSCONS+=( DEDICATED="0" )
 	fi
-
-	# FIXME: needs 32-bit libz.a - what is curl even needed for??
-	myesconsargs+=( NOCURL="1" )
 }
 
 src_compile() {
-	escons
+	escons "${MYSCONS[@]}"
 }
 
 src_install() {
-	exeinto "${dir}"
-	doexe gamex86-base.so
+	exeinto "/usr/share/doom3"
+	newexe gamex86-base.so gamex86.so
 	doexe gamex86-d3xp.so
 
 	if use opengl; then
 		doexe doom.x86
 		doexe sys/linux/setup/image/openurl.sh
-		games_make_wrapper ${PN} ./doom.x86 "${dir}" "${dir}"
-		newicon sys/linux/setup/image/doom3.png ${PN}.png
-		make_desktop_entry ${PN} "Doom III"
+		dosym /usr/share/doom3/doom.x86 /usr/bin/doom3
+		doicon sys/linux/setup/image/doom3.png
+		make_desktop_entry doom3 "Doom III" "doom3" "Game;ActionGame"
 	fi
 
 	if use dedicated; then
 		doexe doomded.x86
-		games_make_wrapper ${PN}-dedicated ./doomded.x86 "${dir}" "${dir}"
+		dosym doomded.x86 doom3-dedicated
 	fi
 
-	prepgamesdirs
-
-	dodoc sys/linux/setup/image/README
+	dodoc README.txt sys/linux/setup/image/README
 }
 
 pkg_postinst() {
-	games_pkg_postinst
-
-	elog "You need to copy 'base' directory"
-	elog "from either your installation media or your hard drive to"
-	elog "${dir}/ before running the game."
-	echo
-	elog "To play the game, run:"
-	elog " ${PN}"
-	echo
+	elog "You need to copy the 'base' directory of a fully patched game to"
+	elog "/usr/share/doom3/ before running the game."
 }
