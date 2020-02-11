@@ -89,10 +89,10 @@ src_install() {
 
 	if use dedicated; then
 		doexe doomded.x86
-		dosym doomded.x86 doom3-dedicated
+		dosym /usr/share/doom3/doomded.x86 /usr/bin/doom3-dedicated
 	fi
 
-	dodoc README.txt sys/linux/setup/image/README
+	dodoc ../README.txt sys/linux/setup/image/README
 }
 
 pkg_postinst() {
