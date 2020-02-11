@@ -1,5 +1,5 @@
---- neo/framework/BuildDefines.h.old	2013-11-12 15:20:49.702300031 +0100
-+++ neo/framework/BuildDefines.h	2013-11-12 15:21:10.852810329 +0100
+--- a/neo/framework/BuildDefines.h	2013-11-12 15:20:49.702300031 +0100
++++ b/neo/framework/BuildDefines.h	2013-11-12 15:21:10.852810329 +0100
 @@ -109,13 +109,7 @@
  	#endif
  #endif

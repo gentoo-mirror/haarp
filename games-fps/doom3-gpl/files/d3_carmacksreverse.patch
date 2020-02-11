@@ -1,7 +1,7 @@
 Re-implement Carmack's Reverse which had been removed due to patent bs
 
---- neo/renderer/draw_common.cpp.old	2014-05-22 12:55:36.403044927 +0200
-+++ neo/renderer/draw_common.cpp	2014-05-22 15:27:23.299742373 +0200
+--- a/neo/renderer/draw_common.cpp	2014-05-22 12:55:36.403044927 +0200
++++ b/neo/renderer/draw_common.cpp	2014-05-22 15:27:23.299742373 +0200
 @@ -1143,18 +1143,26 @@
  		return;
  	}
