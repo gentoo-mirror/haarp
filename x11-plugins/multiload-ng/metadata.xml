@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person" status="active">
-		<email>mr.udda@gmail.com</email>
-		<name>Mario Cianciolo</name>
-		<description>Developer of Multiload-ng</description>
-	</maintainer>
 	<longdescription>
 Multiload-ng is a modern graphical system monitor. It's a near-complete rewrite of the good old GNOME multiload applet.
 

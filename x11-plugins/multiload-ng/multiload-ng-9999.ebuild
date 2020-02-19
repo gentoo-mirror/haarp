@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools eutils
 
 DESCRIPTION="Modern graphical system monitor for XFCE/MATE/LXDE (GNOME applet fork)"
@@ -67,9 +67,10 @@ REQUIRED_USE="
 DOCS=( AUTHORS Changelog.md CONTRIBUTING.md README.md )
 
 src_prepare() {
-	eautoreconf
-
+	eapply "${FILESDIR}/fix-sysfs-nvme-dm.patch"
 	eapply_user
+
+	eautoreconf
 }
 
 src_configure() {
