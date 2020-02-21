@@ -4,12 +4,12 @@
 EAPI=7
 inherit autotools eutils
 
-DESCRIPTION="Modern graphical system monitor for XFCE/MATE/LXDE (nylen fork)"
+DESCRIPTION="Modern graphical system monitor for XFCE/MATE/LXDE (GNOME applet fork)"
 HOMEPAGE="https://udda.github.io/multiload-ng/"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/nylen/multiload-ng.git"
+	EGIT_REPO_URI="https://github.com/udda/multiload-ng.git"
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/udda/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -67,7 +67,7 @@ REQUIRED_USE="
 DOCS=( AUTHORS Changelog.md CONTRIBUTING.md README.md )
 
 src_prepare() {
-##	eapply "${FILESDIR}/fix-sysfs-nvme-dm.patch"
+	eapply "${FILESDIR}/fix-sysfs-nvme-dm.patch"
 	eapply_user
 
 	eautoreconf
