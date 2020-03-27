@@ -34,6 +34,8 @@ RDEPEND="sys-apps/pciutils
 	dev-python/markupsafe[${PYTHON_USEDEP}]
 	>=dev-python/requests-1.0.0[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/backports-abc[${PYTHON_USEDEP}]
+	dev-python/singledispatch[${PYTHON_USEDEP}]
 	>=www-servers/tornado-4.2.1[${PYTHON_USEDEP}]
 	<www-servers/tornado-5.0[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]
