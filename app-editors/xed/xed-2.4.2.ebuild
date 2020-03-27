@@ -3,7 +3,7 @@
 
 EAPI="6"
 GNOME2_LA_PUNT="yes" # plugins are dlopened
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit eutils gnome2 meson multilib python-single-r1
 
@@ -41,7 +41,7 @@ COMMON_DEPEND="
 		$(python_gen_cond_dep '
 			dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
 			>=dev-python/pygobject-3:3[cairo,${PYTHON_MULTI_USEDEP}]
-			dev-libs/libpeas[${PYTHON_MULTI_USEDEP}]
+			dev-libs/libpeas[${PYTHON_SINGLE_USEDEP}]
 		')
 	)
 
