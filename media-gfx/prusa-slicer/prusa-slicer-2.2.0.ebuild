@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit perl-module cmake-utils
 
@@ -42,6 +42,8 @@ src_configure() {
 		-DSLIC3R_PERL_XS=0
 		-DSLIC3R_BUILD_SANDBOXES=0
 		-DSLIC3R_BUILD_TESTS=$(usex test 1 0)
+		-DSLIC3R_PCH=0
+		-DOPENVDB_ABI_VERSION_NUMBER=5
 	)
 	cmake-utils_src_configure
 }
