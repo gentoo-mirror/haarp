@@ -21,8 +21,7 @@ games-util/doomseeker 1.3: Internet Doom server browser
 media-gfx/gnome-font-viewer 3.8.0: Font viewer for GNOME 3
 media-gfx/img2xterm 9999: Displays images on your 256-color terminal with Unicode block characters
 media-gfx/pngout 20150319: Optimize the size of .PNG files losslessly
-media-gfx/prusa-slicer 2.1.1 2.2.0: G-code generator for 3D printers
-media-gfx/slic3r-prusa3d 1.41.3: Improved G-code generator optimized for Prusa 3D printers
+media-gfx/prusa-slicer 2.2.0: G-code generator for 3D printers
 media-libs/fmod 4.38.02-r1: music and sound effects library, and a sound processing system
 media-libs/mozjpeg 3.2: Improved JPEG encoder based on libjpeg-turbo
 media-sound/teamspeak-client-bin 3.0.13.1: TeamSpeak Client - Voice Communication Software
@@ -42,7 +41,7 @@ x11-misc/gtk3-nocsd 9999: Hack to disable GTK+-3 client-side decorations
 x11-misc/mtview 9999: Graphical multitouch viewer
 x11-misc/nvidia-xrun 9999: Script to run dedicated X server with discrete nvidia graphics
 x11-misc/switchscreen 0.1.1: Move the X mouse cursor to a given point on a given screen
-x11-plugins/birdtray 1.6: Birdtray is a free system tray notification for new mail for Thunderbird
+x11-plugins/birdtray 1.7.0: A free system tray notification for new mail for Thunderbird
 x11-plugins/multiload-ng 1.5.2 9999: Modern graphical system monitor for XFCE/MATE/LXDE (GNOME applet fork)
 x11-terms/roxterm 3.3.2-r1: A terminal emulator designed to integrate with the ROX environment
 xfce-extra/xfce4-datetime-plugin 0.6.2: A panel plug-in with date, time and embedded calender
