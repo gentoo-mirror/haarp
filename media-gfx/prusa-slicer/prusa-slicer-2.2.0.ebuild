@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit perl-module cmake-utils
+inherit desktop perl-module cmake-utils
 
 DESCRIPTION="G-code generator for 3D printers"
 HOMEPAGE="https://www.prusa3d.com/prusaslicer/"
