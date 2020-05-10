@@ -5,5 +5,5 @@ HOMEPAGE=http://www.jonof.id.au/kenutils
 KEYWORDS=~amd64 ~x86
 SLOT=0
 SRC_URI=http://static.jonof.id.au/dl/kenutils/pngout-20150319-linux.tar.gz
-_eclasses_=unpacker	3cd8bad0d31e525cd26be1bfa4e61631
+_eclasses_=unpacker	b5891c9326ad2e7905c011d44c927c34
 _md5_=88813e735ab4f93e0521a8a19f52b026
