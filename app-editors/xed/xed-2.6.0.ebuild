@@ -74,7 +74,7 @@ src_prepare() {
 }
 
 src_configure() {
-	DOCS="AUTHORS HACKING NEWS.GEDIT NEWS.PLUMA README debian/changelog"
+	DOCS="AUTHORS HACKING NEWS.GEDIT NEWS.PLUMA README.md debian/changelog"
 
 	local emesonargs=(
 		-Denable_gvfs_metadata=true
