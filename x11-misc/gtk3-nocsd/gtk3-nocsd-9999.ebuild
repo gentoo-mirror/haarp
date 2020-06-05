@@ -5,10 +5,10 @@ EAPI=7
 
 inherit multilib git-r3
 
-DESCRIPTION="Hack to disable GTK+-3 client-side decorations"
-HOMEPAGE="https://github.com/PCMan/gtk3-nocsd"
+DESCRIPTION="Hack to disable GTK+-3 client-side decorations (ZaWertun fork)"
+HOMEPAGE="https://github.com/ZaWertun/gtk3-nocsd"
 
-EGIT_REPO_URI="https://github.com/PCMan/gtk3-nocsd.git"
+EGIT_REPO_URI="https://github.com/ZaWertun/gtk3-nocsd.git"
 
 SLOT="0"
 KEYWORDS="~amd64"
@@ -28,4 +28,5 @@ src_install() {
 	einfo "    export LD_PRELOAD=\"${EROOT%/}/usr/$(get_libdir)/libgtk3-nocsd.so.0 \$LD_PRELOAD\""
 	einfo "Or prefix your commands with:"
 	einfo "    gtk3-nocsd"
+	einfo "Use GTK3NOCSD_SHOW_HEADER to control whether headers are shown."
 }
