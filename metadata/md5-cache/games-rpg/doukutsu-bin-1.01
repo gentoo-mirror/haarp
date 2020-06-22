@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DESCRIPTION=Side-scrolling platformer written by StudioPixel
+EAPI=7
+HOMEPAGE=http://www.cavestory.org
+KEYWORDS=~amd64 ~x86
+LICENSE=as-is
+RDEPEND=media-libs/libsdl[X]
+RESTRICT=strip
+SLOT=0
+SRC_URI=http://www.archive.org/download/CavestorydoukutsuForLinuxV1.01/linuxdoukutsu-1.01.tar.bz2
+_md5_=67faeda3a327bbb9df8ca5bed237017b

@@ -1,13 +1,13 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=install unpack
 DEPEND=x11-libs/gtk+:3
-DESCRIPTION=Hack to disable GTK+-3 client-side decorations
+DESCRIPTION=Hack to disable GTK+-3 client-side decorations (ZaWertun fork)
 EAPI=7
-HOMEPAGE=https://github.com/PCMan/gtk3-nocsd
+HOMEPAGE=https://github.com/ZaWertun/gtk3-nocsd
 KEYWORDS=~amd64
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=x11-libs/gtk+:3
 SLOT=0
 _eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	2477ebe553d3e4d2c606191fe6c33602	toolchain-funcs	605c126bed8d87e4378d5ff1645330cb
-_md5_=cf844ea1031183789e3a4e60093fce5c
+_md5_=908dd2cdded82d8d248bbe9630bf6100
