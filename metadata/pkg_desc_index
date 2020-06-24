@@ -1,4 +1,3 @@
-app-admin/salt 2019.2.3: Salt is a remote execution and configuration manager
 app-arch/kzipmix 20150319: PKZIP-compatible compressor focusing on space over speed
 app-editors/gedit 3.10.4: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.10.1: Official plugins for gedit
@@ -8,7 +7,7 @@ app-misc/ddcui 0.1.0: Graphical user interface for ddcutil
 app-misc/ddcutil 0.9.8: Program for querying and changing monitor settings
 app-misc/mc 4.8.20-r2: GNU Midnight Commander is a text based file manager
 app-misc/screenruler 0.9.6-r1: Measure objects on your desktop using six different metrics
-app-misc/solaar 9999: A Linux device manager for Logitech's Unifying Receiver peripherals
+app-misc/solaar 9999-r1: A Linux device manager for Logitech's Unifying Receiver peripherals
 app-misc/umouse 1.0: Unlocks the mouse pointer when an SDL app crashes
 app-mobilephone/scrcpy 1.12.1: Display and control your Android device
 dev-db/dbeaver-bin 6.3.0: Free universal database tool and SQL client
