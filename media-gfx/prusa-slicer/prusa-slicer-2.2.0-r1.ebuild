@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ RDEPEND="!media-gfx/slic3r
 	>=dev-libs/boost-1.55[threads]
 	dev-cpp/eigen
 	dev-cpp/gtest
-	dev-cpp/tbb
+	>=dev-cpp/tbb-2020.2
 	dev-libs/cereal
 	dev-libs/expat
 	dev-libs/openssl
