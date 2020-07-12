@@ -18,8 +18,6 @@ RDEPEND="
 	dev-qt/qtwidgets:5=
 	dev-qt/qtx11extras:5="
 
-S="${WORKDIR}/${PN}-RELEASE_${PV}"
-
 src_install() {
 	dobin  "${BUILD_DIR}/${PN}"
 	doicon "${S}/src/res/birdtray.svg"
