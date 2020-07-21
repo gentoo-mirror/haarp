@@ -37,6 +37,7 @@ www-plugins/wacomwebplugin 0.3.0-r1: An implementation of the Wacom Tablet Plugi
 x11-misc/XCreateMouseVoid 9999: Create a void window and prevent the mouse from entering it
 x11-misc/alltray 9999: An application which allows any application to be docked into the system notification area
 x11-misc/cvt12 9999: CVT (Coordinated Video Timings) modeline calculator with CVT v1.2 timings
+x11-misc/gestures 0.2.2: Modern, minimal GUI app for libinput-gestures
 x11-misc/gtk3-nocsd 9999: Hack to disable GTK+-3 client-side decorations (ZaWertun fork)
 x11-misc/mtview 9999: Graphical multitouch viewer
 x11-misc/nvidia-xrun 9999: Script to run dedicated X server with discrete nvidia graphics
