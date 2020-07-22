@@ -4,7 +4,6 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_7,3_8} )
 
-##inherit python-r1
 inherit distutils-r1
 
 DESCRIPTION="Modern, minimal GUI app for libinput-gestures"
