@@ -15,8 +15,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="fake-plugins legacy-plugins"
 
 DEPEND="app-arch/bzip2
-	dev-qt/qtmultimedia:5
+	dev-qt/linguist-tools:5
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
+	dev-qt/qtmultimedia:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtxml:5
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
 
@@ -39,5 +43,5 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	dodoc CHANGELOG.md LICENSE.json
+	dodoc CHANGELOG.md LICENSE-json
 }
