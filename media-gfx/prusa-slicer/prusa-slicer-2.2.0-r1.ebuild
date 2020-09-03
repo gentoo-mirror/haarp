@@ -22,7 +22,7 @@ RDEPEND="!media-gfx/slic3r
 	dev-libs/cereal
 	dev-libs/expat
 	dev-libs/openssl
-	>=media-gfx/openvdb-5.0[-abi4-compat]
+	>=media-gfx/openvdb-5.2.0-r2[abi5-compat]
 	media-libs/glew
 	net-misc/curl
 	sci-libs/nlopt
