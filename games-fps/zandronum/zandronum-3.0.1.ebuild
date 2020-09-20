@@ -1,17 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=6 # compiles broken unlinked binaries on EAPI=7??
 
 inherit cmake-utils desktop
 
-OWNER="Torr_Samaho"
-MY_COMMIT="dd3c3b57023f"
-MY_COMMIT_UTC_TIMESTAMP="1504266050"
+MY_COMMIT="10af17" # check tags: https://osdn.net/projects/zandronum/scm/hg/zandronum-stable/tags
+##MY_COMMIT_UTC_TIMESTAMP="1504266050"
 
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
 HOMEPAGE="https://zandronum.com/"
-SRC_URI="https://bitbucket.org/${OWNER}/${PN}/get/${MY_COMMIT}.tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="https://osdn.dl.osdn.net/scmarchive/g/${PN}/hg/${PN}-stable/${MY_COMMIT:0:2}/${MY_COMMIT:2}/${PN}-stable-${MY_COMMIT}.tar.gz"
 
 LICENSE="Sleepycat"
 SLOT="0"
@@ -40,17 +39,15 @@ RDEPEND="gtk? ( x11-libs/gtk+:2 )
 DEPEND="${RDEPEND}
 	cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )"
 
-src_unpack() {
-	unpack "${P}.tar.bz2"
-	S="${WORKDIR}/${OWNER}-${PN}-${MY_COMMIT}"
-}
+S="${WORKDIR}/${PN}-stable-${MY_COMMIT}"
 
 src_prepare() {
 	# Normally Mercurial would generate gitinfo.h for NETGAMEVERSION
 	# let's do it without Mercurial
-	echo "#define HG_REVISION_NUMBER ${MY_COMMIT_UTC_TIMESTAMP}" > src/gitinfo.h
-	echo "#define HG_REVISION_HASH_STRING \"0\"" >> src/gitinfo.h
-	echo "#define HG_TIME \"\"" >> src/gitinfo.h
+	# NOTE: not currently used for 3.0.1 as compatibility with 3.0 is hardcoded
+##	echo "#define HG_REVISION_NUMBER ${MY_COMMIT_UTC_TIMESTAMP}" > src/gitinfo.h
+##	echo "#define HG_REVISION_HASH_STRING \"0\"" >> src/gitinfo.h
+##	echo "#define HG_TIME \"\"" >> src/gitinfo.h
 
 	# Use system libs
 	sed -i -e "/add_subdirectory( sqlite )/d" CMakeLists.txt
@@ -92,7 +89,7 @@ src_compile() {
 	fi
 	if use dedicated; then
 		BUILD_DIR="${WORKDIR}/${P}_server"
-		cmake-utils_src_make SERVERONLY=1
+		cmake-utils_src_make
 	fi
 }
 
