@@ -15,7 +15,7 @@ SRC_URI="https://osdn.dl.osdn.net/scmarchive/g/${PN}/hg/${PN}-stable/${MY_COMMIT
 LICENSE="Sleepycat"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_mmx dedicated +gtk +opengl timidity"
+IUSE="cpu_flags_x86_mmx dedicated +gtk +opengl system-dumb system-geoip system-sqlite timidity"
 
 REQUIRED_USE="|| ( dedicated opengl )
 	gtk? ( opengl )
@@ -30,8 +30,10 @@ RDEPEND="gtk? ( x11-libs/gtk+:2 )
 		virtual/jpeg
 		virtual/opengl
 	)
+	system-dumb? ( >=media-libs/dumb-2 )
+	system-geoip? ( dev-libs/geoip )
+	system-sqlite? ( dev-db/sqlite )
 	app-arch/bzip2
-	dev-db/sqlite
 	dev-libs/openssl:0
 	media-sound/fluidsynth
 	sys-libs/zlib"
@@ -50,13 +52,16 @@ src_prepare() {
 ##	echo "#define HG_TIME \"\"" >> src/gitinfo.h
 
 	# Use system libs
-	sed -i -e "/add_subdirectory( sqlite )/d" CMakeLists.txt
+	# (lzma can't be system-libbed as the Gentoo ebuild provides no sources)
+	for lib in dumb geoip sqlite; do
+		use system-$lib && sed -i -e "/add_subdirectory( $lib )/Id" CMakeLists.txt
+	done
 
 	# Use default data path
-	sed -i -e "s:/usr/local/share/:/usr/share/doom/:" src/sdl/i_system.h
+	sed -i -e "s:/usr/local/share/:/usr/share/doom/:" src/sdl/i_system.h || die
 
 	# Fix building with gcc-5
-	sed -i -e 's/ restrict/ _restrict/g' dumb/include/dumb.h dumb/src/it/*.c
+	use system-dumb || sed -i -e 's/ restrict/ _restrict/g' dumb/include/dumb.h dumb/src/it/*.c || die
 
 	cmake-utils_src_prepare
 }
