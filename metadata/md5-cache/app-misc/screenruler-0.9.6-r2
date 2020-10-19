@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm preinst prepare
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Measure objects on your desktop using six different metrics
+EAPI=7
+HOMEPAGE=https://gnomecoder.wordpress.com/screenruler/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-lang/ruby dev-ruby/ruby-gettext dev-ruby/ruby-gtk2
+SLOT=0
+SRC_URI=https://launchpad.net/screenruler/trunk/0.9.6/+download/screenruler-0.9.6.tar.gz
+_eclasses_=desktop	7fd20552ce4cc97e8acb132a499a7dd8	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=1f1dc0a7ed5f87dcc184f24ba3739009
