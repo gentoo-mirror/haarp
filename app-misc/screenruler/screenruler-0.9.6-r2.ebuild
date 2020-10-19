@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils
+inherit desktop xdg
 
 DESCRIPTION="Measure objects on your desktop using six different metrics"
-HOMEPAGE="http://gnomecoder.wordpress.com/screenruler/"
+HOMEPAGE="https://gnomecoder.wordpress.com/screenruler/"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -21,6 +21,8 @@ RDEPEND="dev-lang/ruby
 S="${WORKDIR}/screenruler"
 
 src_prepare() {
+	eapply "${FILESDIR}/fix-ruby-2.5.0.patch"
+
 	eapply_user
 
 	sed -i -e "/\$LOAD_PATH << '.\/utils'/a\$LOAD_PATH << '.'" screenruler.rb
@@ -28,21 +30,26 @@ src_prepare() {
 
 # There is no installation mechanism, so just put everything in the right place
 src_install() {
-	cd "${S}"
-
 	insinto /usr/share/${PN}
-	doins *.rb
-	doins *.glade
-	doins *.png
+	doins *.rb || die
+	doins *.glade || die
+	doins *.png || die
 	insinto /usr/share/${PN}/utils
-	doins utils/*
+	doins utils/* || die
 
 	exeinto /usr/share/${PN}
-	doexe screenruler.rb
+	doexe screenruler.rb || die
 
 	dosym /usr/share/${PN}/screenruler.rb /usr/bin/screenruler
 	dosym /usr/share/${PN}/screenruler-icon-64x64.png /usr/share/pixmaps/screenruler.png
 
 	# it won't launch if stderr is not a terminal/pipe??!
-	make_desktop_entry "sh -c 'screenruler 2>/dev/null'" "Screen Ruler" screenruler "Utility;GTK;"
+	make_desktop_entry 'sh -c "screenruler 2>/dev/null"' "Screen Ruler" screenruler "Utility;GTK;"
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+pkg_postrm() {
+	xdg_desktop_database_update
 }
