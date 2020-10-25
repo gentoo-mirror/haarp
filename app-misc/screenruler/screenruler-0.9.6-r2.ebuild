@@ -25,20 +25,20 @@ src_prepare() {
 
 	eapply_user
 
-	sed -i -e "/\$LOAD_PATH << '.\/utils'/a\$LOAD_PATH << '.'" screenruler.rb
+	sed -i -e "/\$LOAD_PATH << '.\/utils'/a\$LOAD_PATH << '.'" screenruler.rb || die
 }
 
 # There is no installation mechanism, so just put everything in the right place
 src_install() {
 	insinto /usr/share/${PN}
-	doins *.rb || die
-	doins *.glade || die
-	doins *.png || die
+	doins *.rb
+	doins *.glade
+	doins *.png
 	insinto /usr/share/${PN}/utils
-	doins utils/* || die
+	doins utils/*
 
 	exeinto /usr/share/${PN}
-	doexe screenruler.rb || die
+	doexe screenruler.rb
 
 	dosym /usr/share/${PN}/screenruler.rb /usr/bin/screenruler
 	dosym /usr/share/${PN}/screenruler-icon-64x64.png /usr/share/pixmaps/screenruler.png
