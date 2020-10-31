@@ -1,12 +1,13 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=install prepare unpack
-DEPEND=sys-libs/ncurses:5 media-gfx/imagemagick >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=>=sys-libs/ncurses-5 media-gfx/imagemagick
 DESCRIPTION=Displays images on your 256-color terminal with Unicode block characters
-EAPI=6
-HOMEPAGE=http://img2xterm.sooaweso.me/
+EAPI=7
+HOMEPAGE=https://github.com/rossy/img2xterm
 KEYWORDS=~amd64 ~x86
 LICENSE=CC0-1.0
 PROPERTIES=live
-RDEPEND=sys-libs/ncurses:5 media-gfx/imagemagick
+RDEPEND=>=sys-libs/ncurses-5 media-gfx/imagemagick
 SLOT=0
 _eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
-_md5_=4cc94da6041ae1c49363c2a865283038
+_md5_=2e0ec9cad4f7be1e4836f7ae84b3e0fa
