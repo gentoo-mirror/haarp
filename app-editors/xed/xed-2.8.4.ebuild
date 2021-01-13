@@ -26,13 +26,13 @@ COMMON_DEPEND="
 	>=dev-libs/libxml2-2.5.0:2
 	>=dev-libs/glib-2.44:2[dbus]
 	>=x11-libs/gtk+-3.16:3[introspection]
-	>=x11-libs/gtksourceview-3.18:3.0[introspection]
+	x11-libs/gtksourceview:4[introspection]
 	>=dev-libs/libpeas-1.14.1[gtk]
 
 	gnome-base/gsettings-desktop-schemas
 	gnome-base/gvfs
 
-	>=x11-libs/xapps-1.2.2
+	>=x11-libs/xapps-1.9.0
 	x11-libs/libX11
 	net-libs/libsoup:2.4
 
