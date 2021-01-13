@@ -14,8 +14,6 @@ games-fps/zandronum:opengl - Build zandronum client
 games-util/doomseeker:fake-plugins - Build plugins that are used for development purposes only
 games-util/doomseeker:legacy-plugins - Build plugins for discontinued source ports
 media-gfx/prusa-slicer:gui - Enable GUI
-sci-mathematics/cgal:mpfi - Enable support for multiple recision interval arithmetic via sci-libs/mpfi
-sci-mathematics/cgal:ntl - Enable support for dev-libs/ntl
 sys-apps/gnome-disk-utility:fat - Include FAT16/FAT32 support (sys-fs/dosfstools)
 x11-plugins/multiload-ng:autostart - Install autostart entries for suitable targets
 x11-plugins/multiload-ng:awn - Build plugin for gnome-extra/avant-window-navigator (experimental)
