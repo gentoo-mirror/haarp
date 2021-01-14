@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_7,3_8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit desktop git-r3
 
@@ -19,7 +19,6 @@ RDEPEND=">=x11-libs/gtk+-3.18
 	x11-misc/libinput-gestures"
 
 src_prepare(){
-	sed -i -e 's:os.path.realpath(os.path.dirname(__file__)):os.path.dirname(os.path.realpath(__file__)):' main.py
 	mv gesture-manager-x.desktop{.in,}
 
 	eapply_user
