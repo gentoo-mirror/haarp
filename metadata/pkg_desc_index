@@ -22,6 +22,7 @@ media-gfx/prusa-slicer 2.2.0-r1: G-code generator for 3D printers
 media-libs/fmod 4.38.02-r1: music and sound effects library, and a sound processing system
 media-libs/mozjpeg 3.2: Improved JPEG encoder based on libjpeg-turbo
 media-sound/teamspeak-client-bin 3.0.13.1: TeamSpeak Client - Voice Communication Software
+net-im/wire-desktop-bin 3.21.2936: End-to-end encrypted messenger with file sharing, voice calls and video conferences
 net-p2p/geth 1.8.27: Command line interface for running a full Ethereum node
 net-vpn/dns2tcp 0.5.2: Relay TCP connections through DNS traffic
 net-wireless/blueproximity 1.2.5: Proximity detector for your mobile phone via bluetooth
