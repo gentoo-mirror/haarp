@@ -2,11 +2,6 @@
 # Please add your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using pmaint *
 
-app-editors/gedit:zeitgeist - Build the plugin to inject events to gnome-extra/zeitgeist
-app-editors/gedit-plugins:charmap - Insert special characters just by clicking on them
-app-editors/gedit-plugins:git - Shows document changes related to git's HEAD
-app-editors/gedit-plugins:synctex - Synchronize between LaTeX and PDF with gedit and evince
-app-editors/gedit-plugins:terminal - Embed a terminal in the bottom pane
 games-fps/gzdoom:gtk2 - Enable support for GTK+2 instead of GTK+3
 games-fps/zandronum:dedicated - Build zandronum-server
 games-fps/zandronum:gtk - Build graphical IWAD picker
