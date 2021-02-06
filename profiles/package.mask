@@ -1,0 +1,3 @@
+# Use media-gfx/prusaslicer in gentoo repo now!
+media-gfx/prusa-slicer
+
