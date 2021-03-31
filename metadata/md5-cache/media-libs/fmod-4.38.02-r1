@@ -2,6 +2,7 @@ DEFINED_PHASES=compile install
 DESCRIPTION=music and sound effects library, and a sound processing system
 EAPI=0
 HOMEPAGE=https://www.fmod.org
+INHERIT=versionator
 IUSE=examples
 KEYWORDS=amd64 ~x86
 LICENSE=BSD BSD-2 fmod
