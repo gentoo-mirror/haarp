@@ -4,10 +4,11 @@ DEPEND=>=sys-libs/ncurses-5 media-gfx/imagemagick
 DESCRIPTION=Displays images on your 256-color terminal with Unicode block characters
 EAPI=7
 HOMEPAGE=https://github.com/rossy/img2xterm
+INHERIT=git-r3
 KEYWORDS=~amd64 ~x86
 LICENSE=CC0-1.0
 PROPERTIES=live
 RDEPEND=>=sys-libs/ncurses-5 media-gfx/imagemagick
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=2e0ec9cad4f7be1e4836f7ae84b3e0fa

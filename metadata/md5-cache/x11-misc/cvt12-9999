@@ -3,8 +3,9 @@ DEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=CVT (Coordinated Video Timings) modeline calculator with CVT v1.2 timings
 EAPI=6
 HOMEPAGE=https://github.com/kevinlekiller/cvt_modeline_calculator_12
+INHERIT=git-r3 toolchain-funcs
 KEYWORDS=~amd64 ~x86
 PROPERTIES=live
 SLOT=0
-_eclasses_=git-r3	3e7ec3d6619213460c85e2aa48398441	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
+_eclasses_=git-r3	b8e8c92aa5fe8df7187e466138eb4e52	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	multilib	d410501a125f99ffb560b0c523cd3d1e
 _md5_=8d1848eaeb3b4afff529f60bfe9c75f4
