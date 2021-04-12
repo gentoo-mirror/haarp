@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 VALA_MIN_API_VERSION="0.14"
 
 inherit autotools git-r3 vala
@@ -41,7 +41,9 @@ src_prepare() {
 	vala_src_prepare
 	sed -i -e '/AC_PATH_PROG/s:valac:${VALAC}:g' configure.ac || die
 
-	epatch "$FILESDIR/clarify_glib_gtk_ambiguity.patch"
+	eapply "$FILESDIR/clarify_glib_gtk_ambiguity.patch"
+
+	eapply_user
 
 	eautoreconf
 }
