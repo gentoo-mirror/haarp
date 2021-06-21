@@ -9,5 +9,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=media-libs/mesa x11-apps/xinit x11-base/xorg-server[xorg] x11-drivers/nvidia-drivers[X,driver] x11-libs/libXrandr
 SLOT=0
-_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	3c7381c56a184f0dd5ba3fb824808f30	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	f93c6ebbcd4a4e3e3f2328a13511b73a	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
+_eclasses_=edos2unix	33e347e171066657f91f8b0c72ec8773	l10n	3c7381c56a184f0dd5ba3fb824808f30	wrapper	4251d4c84c25f59094fd557e0063a974	eutils	45faf8ab7d5fe72e58a634092cd1f283	git-r3	b8e8c92aa5fe8df7187e466138eb4e52
 _md5_=c8abe831d424f8dccf83b1576d5ee1b9
