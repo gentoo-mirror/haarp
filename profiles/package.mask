@@ -1,3 +1,5 @@
 # Use media-gfx/prusaslicer in gentoo repo now!
 media-gfx/prusa-slicer
 
+# This has been in the Gentoo repo all along as net-p2p/go-ethereum
+net-p2p/geth
