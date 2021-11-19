@@ -19,6 +19,9 @@ DEPEND=${RDEPEND}
 
 S="${WORKDIR}/${P}-linux"
 
+QA_PREBUILT="/opt/bin/kzip
+	/opt/bin/zipmix"
+
 src_install() {
 	exeinto /opt/bin
 	if use amd64; then
