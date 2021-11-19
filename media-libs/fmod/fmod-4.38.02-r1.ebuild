@@ -25,10 +25,7 @@ IUSE="examples"
 
 RESTRICT="strip test"
 
-QA_FLAGS_IGNORED="opt/fmodex/tools/fsbanklib/.*"
-
-QA_TEXTRELS="opt/fmodex/fmoddesignerapi/api/lib/*
-opt/fmodex/api/lib/*"
+QA_PREBUILT="*"
 
 src_compile() { :; }
 src_install() {
