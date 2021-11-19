@@ -9,12 +9,12 @@ inherit eutils gnome2 meson multilib python-single-r1
 
 DESCRIPTION="X-Apps [Text] Editor (Cross-DE, backward-compatible, GTK3, traditional UI)"
 HOMEPAGE="https://github.com/linuxmint/xed"
-SRC_URI="https://github.com/linuxmint/xed/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/linuxmint/xed/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
 
-IUSE="doc +python spell test"
+IUSE="doc +python spell"
 # python-single-r1 would request disabling PYTHON_TARGETS on libpeas
 # we need to fix that
 REQUIRED_USE="python? ( ^^ ( $(python_gen_useflags '*') ) )"
@@ -89,9 +89,9 @@ src_compile() {
 	meson_src_compile
 }
 
-src_test() {
-	meson_src_test
-}
+##src_test() {
+##	meson_src_test
+##}
 
 src_install() {
 	meson_src_install
