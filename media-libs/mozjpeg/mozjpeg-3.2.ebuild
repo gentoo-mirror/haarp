@@ -13,7 +13,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="sys-libs/zlib"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-lang/nasm"
 
 S=${WORKDIR}/${PN}
 
