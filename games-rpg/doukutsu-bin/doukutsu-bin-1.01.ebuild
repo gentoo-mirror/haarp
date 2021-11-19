@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RESTRICT="strip"
+QA_PREBUILT="*"
 
 RDEPEND="media-libs/libsdl[X]"
 

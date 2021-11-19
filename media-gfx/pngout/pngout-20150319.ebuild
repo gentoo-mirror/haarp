@@ -19,6 +19,8 @@ DEPEND=${RDEPEND}
 
 S="${WORKDIR}/${P}-linux"
 
+QA_PREBUUILT="*"
+
 src_install() {
 	exeinto /opt/bin
 	if use amd64; then doexe x86_64/${PN}
