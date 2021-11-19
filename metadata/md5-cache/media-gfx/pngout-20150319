@@ -7,4 +7,4 @@ KEYWORDS=~amd64 ~x86
 SLOT=0
 SRC_URI=http://static.jonof.id.au/dl/kenutils/pngout-20150319-linux.tar.gz
 _eclasses_=toolchain-funcs	9ea1c67b6f8315fdc2568abb674519aa	multilib	4b66d835ec72e021e359bb81eacfe988	unpacker	928e1f35ef78ba9fc2b214e29c2b55a4
-_md5_=88813e735ab4f93e0521a8a19f52b026
+_md5_=bb7c0d1884c520d2a6a13cd0ce5a2589
