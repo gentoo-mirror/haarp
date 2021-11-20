@@ -20,7 +20,6 @@ media-gfx/pngout 20150319: Optimize the size of .PNG files losslessly
 media-libs/fmod 4.38.02-r1: music and sound effects library, and a sound processing system
 media-libs/mozjpeg 3.2: Improved JPEG encoder based on libjpeg-turbo
 media-sound/teamspeak-client-bin 3.0.13.1: TeamSpeak Client - Voice Communication Software
-net-im/wire-desktop-bin 3.21.2936: End-to-end encrypted messenger with file sharing, voice calls and video conferences
 net-p2p/etherwall 2.4.0: Free software wallet/front-end for Ethereum
 net-p2p/ethminer 0.18.0: Ethereum miner with CUDA and stratum support
 net-vpn/dns2tcp 0.5.2: Relay TCP connections through DNS traffic
