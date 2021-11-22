@@ -19,6 +19,7 @@ DEPEND=${RDEPEND}
 
 src_prepare() {
 	sed -i -e 's/gcc/${CC}/g' Makefile
+	sed -i -e 's/$(CFLAGS)/$(CFLAGS) $(LDFLAGS)/g' Makefile
 
 	eapply_user
 }
