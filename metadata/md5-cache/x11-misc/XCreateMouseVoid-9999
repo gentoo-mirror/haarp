@@ -10,4 +10,4 @@ PROPERTIES=live
 RDEPEND=x11-base/xorg-server
 SLOT=0
 _eclasses_=git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da
-_md5_=d2659399928e1e5d44fd503d775d5a7d
+_md5_=8a421a4a0597bcadf0d0adb87906f154

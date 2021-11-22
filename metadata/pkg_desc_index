@@ -26,7 +26,6 @@ net-vpn/dns2tcp 0.5.2: Relay TCP connections through DNS traffic
 sys-apps/gnome-disk-utility 3.10.0: Disk Utility for GNOME using udisks
 sys-power/ec_access 9999: Tool to access the Embedded Controller
 sys-power/gapcmon 0.9.0_p20160531: Linux GUI monitor for APCUPSD
-sys-process/earlyoom 1.2: Early OOM Daemon for Linux
 x11-misc/XCreateMouseVoid 9999: Create a void window and prevent the mouse from entering it
 x11-misc/alltray 9999: An application which allows any application to be docked into the system notification area
 x11-misc/cvt12 9999: CVT (Coordinated Video Timings) modeline calculator with CVT v1.2 timings
