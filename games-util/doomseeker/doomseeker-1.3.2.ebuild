@@ -20,6 +20,7 @@ DEPEND="app-arch/bzip2
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
+	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
