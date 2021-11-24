@@ -15,7 +15,7 @@ SRC_URI="https://osdn.dl.osdn.net/scmarchive/g/${PN}/hg/${PN}-stable/${MY_COMMIT
 LICENSE="Sleepycat"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_mmx dedicated +gtk +opengl system-dumb system-geoip system-sqlite timidity"
+IUSE="cpu_flags_x86_mmx dedicated +gtk +opengl system-dumb system-geoip +system-sqlite timidity"
 
 REQUIRED_USE="|| ( dedicated opengl )
 	gtk? ( opengl )
