@@ -1,0 +1,26 @@
+--- a/src/CMakeLists.txt	2019-10-13 21:38:53.000000000 +0200
++++ b/src/CMakeLists.txt	2021-11-24 10:55:32.946070583 +0100
+@@ -636,15 +636,6 @@
+ 	add_definitions( -DBACKPATCH )
+ endif( BACKPATCH )
+ 
+-# Update gitinfo.h
+-
+-get_target_property( UPDATEREVISION_EXE updaterevision LOCATION )
+-
+-add_custom_target( revision_check ALL
+-	COMMAND ${UPDATEREVISION_EXE} src/gitinfo.h
+-	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+-	DEPENDS updaterevision )
+-
+ # Libraries ZDoom needs
+ 
+ message( STATUS "Fluid synth libs: ${FLUIDSYNTH_LIBRARIES}" )
+@@ -1459,7 +1450,6 @@
+ 	${CMAKE_BINARY_DIR}/gdtoa
+ 	${SYSTEM_SOURCES_DIR} )
+ 
+-add_dependencies( zdoom revision_check )
+ # [TP]
+ add_dependencies( zdoom protocolspec )
+ 
