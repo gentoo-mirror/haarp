@@ -6,7 +6,7 @@ EAPI=6 # compiles broken unlinked binaries on EAPI=7??
 inherit cmake-utils desktop
 
 MY_COMMIT="10af17" # check tags: https://osdn.net/projects/zandronum/scm/hg/zandronum-stable/tags
-##MY_COMMIT_UTC_TIMESTAMP="1504266050"
+MY_COMMIT_UTC_TIMESTAMP="1504266050"
 
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
 HOMEPAGE="https://zandronum.com/"
@@ -15,7 +15,7 @@ SRC_URI="https://osdn.dl.osdn.net/scmarchive/g/${PN}/hg/${PN}-stable/${MY_COMMIT
 LICENSE="Sleepycat"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_mmx dedicated +gtk +opengl system-dumb system-geoip system-sqlite timidity"
+IUSE="cpu_flags_x86_mmx dedicated +gtk +opengl system-dumb system-geoip +system-sqlite timidity"
 
 REQUIRED_USE="|| ( dedicated opengl )
 	gtk? ( opengl )
@@ -47,9 +47,10 @@ src_prepare() {
 	# Normally Mercurial would generate gitinfo.h for NETGAMEVERSION
 	# let's do it without Mercurial
 	# NOTE: not currently used for 3.0.1 as compatibility with 3.0 is hardcoded
-##	echo "#define HG_REVISION_NUMBER ${MY_COMMIT_UTC_TIMESTAMP}" > src/gitinfo.h
-##	echo "#define HG_REVISION_HASH_STRING \"0\"" >> src/gitinfo.h
-##	echo "#define HG_TIME \"\"" >> src/gitinfo.h
+	eapply "${FILESDIR}/remove-revision-check.patch"
+	echo "#define HG_REVISION_NUMBER ${MY_COMMIT_UTC_TIMESTAMP}" > src/gitinfo.h
+	echo "#define HG_REVISION_HASH_STRING \"0\"" >> src/gitinfo.h
+	echo "#define HG_TIME \"\"" >> src/gitinfo.h
 
 	# Use system libs
 	# (lzma can't be system-libbed as the Gentoo ebuild provides no sources)
