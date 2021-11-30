@@ -7,7 +7,6 @@ app-misc/mc 4.8.20-r2: GNU Midnight Commander is a text based file manager
 app-misc/screenruler 0.9.6-r2: Measure objects on your desktop using six different metrics
 app-misc/umouse 1.0: Unlocks the mouse pointer when an SDL app crashes
 app-mobilephone/scrcpy 1.12.1: Display and control your Android device
-dev-cpp/ethash 0.4.4: C/C++ implementation of Ethash – the Ethereum Proof of Work algorithm
 dev-db/dbeaver-bin 6.3.5: Free universal database tool and SQL client
 games-emulation/gens-gs 7-r5: A Gens fork which aims to clean up the source code and combine features from other forks
 games-fps/doom3-gpl 9999-r2: 3rd installment of the classic iD 3D first-person shooter
@@ -21,7 +20,6 @@ media-libs/fmod 4.38.02-r1: music and sound effects library, and a sound process
 media-libs/mozjpeg 3.2: Improved JPEG encoder based on libjpeg-turbo
 media-sound/teamspeak-client-bin 3.0.13.1: TeamSpeak Client - Voice Communication Software
 net-p2p/etherwall 2.4.0: Free software wallet/front-end for Ethereum
-net-p2p/ethminer 0.18.0: Ethereum miner with CUDA and stratum support
 net-vpn/dns2tcp 0.5.2: Relay TCP connections through DNS traffic
 sys-apps/gnome-disk-utility 3.10.0: Disk Utility for GNOME using udisks
 sys-power/ec_access 9999: Tool to access the Embedded Controller

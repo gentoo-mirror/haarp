@@ -1,6 +1,6 @@
 BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=unpack
-DEPEND=net-im/pidgin
+DEPEND=net-im/pidgin dev-libs/json-glib
 DESCRIPTION=Pidgin libpurple bridge to signald
 EAPI=7
 HOMEPAGE=https://github.com/hoehermann/libpurple-signald
@@ -8,7 +8,7 @@ INHERIT=git-r3
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
 PROPERTIES=live
-RDEPEND=net-im/pidgin
+RDEPEND=net-im/pidgin dev-libs/json-glib
 SLOT=0
 _eclasses_=git-r3	cc875b0c1e9b3bdac1af0f82f3ba29da
-_md5_=aa43e816c602b45b42cbe8aa2735b936
+_md5_=528cd16a124fb775ab6ca56918223697
