@@ -6,13 +6,13 @@ EAPI=6 # compiles broken unlinked binaries on EAPI=7??
 inherit cmake-utils desktop
 
 # look for "changed the version string" tag/commit: https://osdn.net/projects/zandronum/scm/hg/zandronum-stable/
-MY_COMMIT="417890"
+MY_COMMIT="4178904d769879e6c2919fb647ee6dd2736399e9"
 # timezone on website seems to be +0900
 MY_COMMIT_UTC_TIMESTAMP="1639258555"
 
 DESCRIPTION="OpenGL ZDoom port with Client/Server multiplayer"
 HOMEPAGE="https://zandronum.com/"
-SRC_URI="https://osdn.dl.osdn.net/scmarchive/g/${PN}/hg/${PN}-stable/${MY_COMMIT:0:2}/${MY_COMMIT:2}/${PN}-stable-${MY_COMMIT}.tar.gz"
+SRC_URI="https://osdn.dl.osdn.net/scmarchive/g/${PN}/hg/${PN}-stable/${MY_COMMIT:0:2}/${MY_COMMIT:2:4}/${PN}-stable-${MY_COMMIT:0:6}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Sleepycat"
 SLOT="0"
@@ -43,7 +43,7 @@ RDEPEND="gtk? ( x11-libs/gtk+:2 )
 DEPEND="${RDEPEND}
 	cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )"
 
-S="${WORKDIR}/${PN}-stable-${MY_COMMIT}"
+S="${WORKDIR}/${PN}-stable-${MY_COMMIT:0:6}"
 
 src_prepare() {
 	# Normally Mercurial would generate gitinfo.h for NETGAMEVERSION
