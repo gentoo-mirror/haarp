@@ -48,7 +48,6 @@ S="${WORKDIR}/${PN}-stable-${MY_COMMIT:0:6}"
 src_prepare() {
 	# Normally Mercurial would generate gitinfo.h for NETGAMEVERSION
 	# let's do it without Mercurial
-	# NOTE: not currently used for 3.0.1 as compatibility with 3.0 is hardcoded
 	eapply "${FILESDIR}/remove-revision-check.patch"
 	echo "#define HG_REVISION_NUMBER ${MY_COMMIT_UTC_TIMESTAMP}" > src/gitinfo.h
 	echo "#define HG_REVISION_HASH_STRING \"0\"" >> src/gitinfo.h
