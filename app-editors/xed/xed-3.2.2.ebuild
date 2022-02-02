@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	gnome-base/gsettings-desktop-schemas
 	gnome-base/gvfs
 
-	>=x11-libs/xapps-1.9.0
+	>=x11-libs/xapp-1.9.0
 	x11-libs/libX11
 	net-libs/libsoup:2.4
 
