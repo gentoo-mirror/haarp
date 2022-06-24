@@ -1,6 +1,6 @@
 app-admin/lastpass-cli 1.3.3: Interfaces with LastPass.com from the command line.
 app-arch/kzipmix 20150319: PKZIP-compatible compressor focusing on space over speed
-app-editors/xed 3.2.2: X-Apps [Text] Editor (Cross-DE, backward-compatible, GTK3, traditional UI)
+app-editors/xed 3.2.3: X-Apps [Text] Editor (Cross-DE, backward-compatible, GTK3, traditional UI)
 app-misc/mc 4.8.20-r2: GNU Midnight Commander is a text based file manager
 app-misc/screenruler 0.9.6-r2: Measure objects on your desktop using six different metrics
 app-misc/umouse 1.0: Unlocks the mouse pointer when an SDL app crashes
