@@ -8,5 +8,5 @@ KEYWORDS=~amd64 ~x86
 RDEPEND=media-libs/libsdl
 SLOT=0
 SRC_URI=https://icculus.org/misc/umouse.c
-_eclasses_=toolchain-funcs	fd9cde67030b26e479eeadaced488253	multilib	4fbbbc98f236f1b43acd99476bc3cd85
+_eclasses_=toolchain-funcs	e9da88162e7a3c60376e80c2c2adcdfb	multilib	4fbbbc98f236f1b43acd99476bc3cd85
 _md5_=195bb71b5c6db86aa96b99fd8138f5ae
