@@ -25,13 +25,6 @@ DEPEND="app-arch/bzip2
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	# install manually
-	sed -i -e "/LICENSE.json DESTINATION/d" src/{core,wadseeker}/CMakeLists.txt
-
-	cmake-utils_src_prepare
-}
-
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
@@ -44,5 +37,5 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	dodoc CHANGELOG.md LICENSE-json
+	dodoc CHANGELOG.md
 }
