@@ -12,16 +12,13 @@ games-fps/doom3-gpl 9999-r2: 3rd installment of the classic iD 3D first-person s
 games-fps/zandronum 3.0.1 3.1: OpenGL ZDoom port with Client/Server multiplayer
 games-rpg/doukutsu-bin 1.01: Side-scrolling platformer written by StudioPixel, aka Cava Story
 games-util/doomseeker 1.3.3: Internet Doom server browser
-media-gfx/gnome-font-viewer 3.8.0: Font viewer for GNOME 3
 media-gfx/img2xterm 9999-r1: Displays images on your 256-color terminal with Unicode block characters
 media-gfx/pngout 20150319: Optimize the size of .PNG files losslessly
 media-libs/fmod 4.38.02-r1: music and sound effects library, and a sound processing system
 media-libs/mozjpeg 3.2: Improved JPEG encoder based on libjpeg-turbo
 media-sound/pianobar 2020.11.28: A console-based replacement for Pandora's flash player
-media-sound/teamspeak-client-bin 3.0.13.1: TeamSpeak Client - Voice Communication Software
 net-p2p/etherwall 2.4.0: Free software wallet/front-end for Ethereum
 net-vpn/dns2tcp 0.5.2: Relay TCP connections through DNS traffic
-sys-apps/gnome-disk-utility 3.10.0: Disk Utility for GNOME using udisks
 sys-power/ec_access 9999: Tool to access the Embedded Controller
 sys-power/gapcmon 0.9.0_p20160531: Linux GUI monitor for APCUPSD
 x11-misc/XCreateMouseVoid 9999: Create a void window and prevent the mouse from entering it
