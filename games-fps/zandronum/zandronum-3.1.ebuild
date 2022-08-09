@@ -1,9 +1,9 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6 # compiles broken unlinked binaries on EAPI=7??
+EAPI=8
 
-inherit cmake-utils desktop
+inherit cmake desktop
 
 # look for "changed the version string" tag/commit: https://osdn.net/projects/zandronum/scm/hg/zandronum-stable/
 MY_COMMIT="4178904d769879e6c2919fb647ee6dd2736399e9"
@@ -65,7 +65,7 @@ src_prepare() {
 	# Fix building with gcc-5
 	use system-dumb || sed -i -e 's/ restrict/ _restrict/g' dumb/include/dumb.h dumb/src/it/*.c || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -75,28 +75,29 @@ src_configure() {
 		-DFORCE_INTERNAL_GME="OFF"
 		-DNO_ASM="$(usex cpu_flags_x86_mmx OFF ON)"
 		-DNO_GTK="$(usex gtk OFF ON)"
+		-DBUILD_SHARED_LIBS=OFF
 	)
 
 	# Can't build both client and server at once... so separate them
 	if use opengl; then
 		BUILD_DIR="${WORKDIR}/${P}_client"
-		cmake-utils_src_configure
+		cmake_src_configure
 	fi
 	if use dedicated; then
 		BUILD_DIR="${WORKDIR}/${P}_server"
 		mycmakeargs+=(-DSERVERONLY=1)
-		cmake-utils_src_configure
+		cmake_src_configure
 	fi
 }
 
 src_compile() {
 	if use opengl; then
 		BUILD_DIR="${WORKDIR}/${P}_client"
-		cmake-utils_src_make
+		cmake_build
 	fi
 	if use dedicated; then
 		BUILD_DIR="${WORKDIR}/${P}_server"
-		cmake-utils_src_make
+		cmake_build
 	fi
 }
 
