@@ -4,8 +4,8 @@
 EAPI=6
 
 DESCRIPTION="Move the X mouse cursor to a given point on a given screen"
-HOMEPAGE="http://sampo.kapsi.fi/switchscreen/"
-SRC_URI="http://sampo.kapsi.fi/switchscreen/${P}.tar.gz"
+HOMEPAGE="https://sampo.kapsi.fi/switchscreen/"
+SRC_URI="https://sampo.kapsi.fi/switchscreen/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
