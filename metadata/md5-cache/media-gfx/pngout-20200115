@@ -1,10 +1,10 @@
 DEFINED_PHASES=install unpack
-DESCRIPTION=PKZIP-compatible compressor focusing on space over speed
-EAPI=6
+DESCRIPTION=Optimize the size of .PNG files losslessly
+EAPI=8
 HOMEPAGE=http://www.jonof.id.au/kenutils
 INHERIT=unpacker
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
 SLOT=0
-SRC_URI=http://static.jonof.id.au/dl/kenutils/kzipmix-20150319-linux.tar.gz
+SRC_URI=http://static.jonof.id.au/dl/kenutils/pngout-20200115-linux.tar.gz
 _eclasses_=toolchain-funcs	1542e649be915f43f6908a9e93909961	multilib	5ca4e49abed8e3a2f7b56920eadee157	unpacker	697382d119fd3d195f110b7979184285
-_md5_=9f4e5979b0a51c9f578a23b2c1057b84
+_md5_=0e1f3336e87d4ff9789250c57a2a02ea

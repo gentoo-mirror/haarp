@@ -1,12 +1,12 @@
 DEFINED_PHASES=install postinst
-DESCRIPTION=Side-scrolling platformer written by StudioPixel, aka Cava Story
+DESCRIPTION=Side-scrolling platformer written by StudioPixel, aka Cave Story
 EAPI=7
-HOMEPAGE=http://www.cavestory.org
+HOMEPAGE=https://www.cavestory.org
 INHERIT=desktop
 KEYWORDS=~amd64 ~x86
 LICENSE=as-is
 RDEPEND=media-libs/libsdl[X]
 SLOT=0
-SRC_URI=http://www.archive.org/download/CavestorydoukutsuForLinuxV1.01/linuxdoukutsu-1.01.tar.bz2
+SRC_URI=https://www.archive.org/download/CavestorydoukutsuForLinuxV1.01/linuxdoukutsu-1.01.tar.bz2
 _eclasses_=desktop	22952d8f27cac191d75529d4c38e6bfa
-_md5_=274b4d640fdd0bf09e6f7bfe307b2c0f
+_md5_=a93bd848d288e5a2c4cdeba8b046e21a
