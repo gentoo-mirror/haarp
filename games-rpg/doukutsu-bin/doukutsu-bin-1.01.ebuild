@@ -5,7 +5,7 @@ EAPI="7"
 
 inherit desktop
 
-DESCRIPTION="Side-scrolling platformer written by StudioPixel, aka Cava Story"
+DESCRIPTION="Side-scrolling platformer written by StudioPixel, aka Cave Story"
 HOMEPAGE="https://www.cavestory.org"
 SRC_URI="https://www.archive.org/download/CavestorydoukutsuForLinuxV1.01/linuxdoukutsu-1.01.tar.bz2"
 
