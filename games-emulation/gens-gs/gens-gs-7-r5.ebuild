@@ -6,8 +6,8 @@ EAPI=7
 inherit autotools eutils flag-o-matic
 
 DESCRIPTION="A Gens fork which aims to clean up the source code and combine features from other forks"
-HOMEPAGE="http://info.sonicretro.org/Gens/GS"
-SRC_URI="http://www.soniccenter.org/gerbilsoft/gens/${MY_PV}/${PN}-r${PV}.tar.gz"
+HOMEPAGE="https://segaretro.org/Gens/GS"
+SRC_URI="https://stuff.gerbilsoft.com/gens/r${PV}/${PN}-r${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

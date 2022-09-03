@@ -1,17 +1,17 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit unpacker
 
-DESCRIPTION="PKZIP-compatible compressor focusing on space over speed"
+DESCRIPTION="Optimize the size of .PNG files losslessly"
 HOMEPAGE="http://www.jonof.id.au/kenutils"
 SRC_URI="http://static.jonof.id.au/dl/kenutils/${P}-linux.tar.gz"
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 RDEPEND=""
@@ -19,16 +19,18 @@ DEPEND=${RDEPEND}
 
 S="${WORKDIR}/${P}-linux"
 
-QA_PREBUILT="/opt/bin/kzip
-	/opt/bin/zipmix"
+QA_PREBUILT="/opt/bin/{$PN}"
 
 src_install() {
 	exeinto /opt/bin
-	if use amd64; then
-		doexe x86_64/kzip x86_64/zipmix
-	else
-		doexe i686/kzip i686/zipmix
+
+	if use amd64; then dir=amd64
+	elif use arm; then dir=armv7
+	elif use arm64; then dir=aarch64
+	else dir=i686
 	fi
+
+	doexe "${dir}/${PN}"
 
 	dodoc readme.txt
 }
