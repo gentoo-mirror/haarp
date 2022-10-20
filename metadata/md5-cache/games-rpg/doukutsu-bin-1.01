@@ -8,5 +8,5 @@ LICENSE=as-is
 RDEPEND=media-libs/libsdl[X]
 SLOT=0
 SRC_URI=https://www.archive.org/download/CavestorydoukutsuForLinuxV1.01/linuxdoukutsu-1.01.tar.bz2
-_eclasses_=desktop	22952d8f27cac191d75529d4c38e6bfa
+_eclasses_=desktop	7eb20ad915a0a318176d51bc2508ff5c
 _md5_=a93bd848d288e5a2c4cdeba8b046e21a
