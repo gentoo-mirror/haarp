@@ -3,11 +3,11 @@
 
 EAPI=8
 
-inherit cmake xdg
+inherit cmake git-r3 xdg
 
-DESCRIPTION="Decompilation of 3D Pinball for Windows - Space Cadet"
+DESCRIPTION="Reverse engineering of '3D Pinball for Windows - Space Cadet', a game bundled with Windows"
 HOMEPAGE="https://github.com/k4zmu2a/SpaceCadetPinball"
-SRC_URI="https://github.com/k4zmu2a/${PN}/archive/refs/tags/Release_${PV}.tar.gz -> ${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/k4zmu2a/${PN}.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -18,15 +18,6 @@ DEPEND="
 	media-libs/sdl2-mixer[midi]
 "
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}-Release_${PV}"
-
-src_prepare(){
-	# the paths should be relative
-	sed -i "s|/Platform|Platform|g" CMakeLists.txt || die
-
-	cmake_src_prepare
-}
 
 pkg_postinst(){
 	ewarn "This game is distributed without the data files."
