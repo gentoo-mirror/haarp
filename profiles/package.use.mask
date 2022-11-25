@@ -1,0 +1,5 @@
+# Currently fails to compile with this
+games-util/doomseeker legacy-plugins
+
+# Marked as experimental as of multiload-ng-1.5.2
+x11-plugsin/multiload-ng awn

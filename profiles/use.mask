@@ -1,5 +1,0 @@
-# Doomseeker currently fails to compile with this
-legacy-plugins
-
-# Marked as experimental as of multiload-ng-1.5.2
-awn
