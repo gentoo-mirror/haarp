@@ -5,5 +5,5 @@ media-gfx/prusa-slicer
 net-p2p/geth
 
 # This is in the Gentoo repo as sys-apps/earlyoom
-sys-process/earyloom
+sys-process/earlyoom
 
