@@ -4,9 +4,9 @@ app-editors/xed 3.2.8: X-Apps [Text] Editor (Cross-DE, backward-compatible, GTK3
 app-misc/mc 4.8.20-r2: GNU Midnight Commander is a text based file manager
 app-misc/screenruler 0.9.6-r2: Measure objects on your desktop using six different metrics
 app-misc/umouse 1.0: Unlocks the mouse pointer when an SDL app crashes
-app-mobilephone/scrcpy 1.12.1: Display and control your Android device
 dev-cpp/cpptoml 0.1.1: Header-only library for parsing TOML
 dev-db/dbeaver-bin 6.3.5: Free universal database tool and SQL client
+dev-util/apktool 2.7.0: A tool for reengineering 3rd party, closed, binary Android apps
 games-arcade/SpaceCadetPinball 9999: Reverse engineering of '3D Pinball for Windows - Space Cadet', a game bundled with Windows
 games-emulation/gens-gs 7-r5: A Gens fork which aims to clean up the source code and combine features from other forks
 games-fps/zandronum 3.1: OpenGL ZDoom port with Client/Server multiplayer
