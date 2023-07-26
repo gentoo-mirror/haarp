@@ -9,5 +9,5 @@ KEYWORDS=~amd64 ~x86
 PROPERTIES=live
 RDEPEND=x11-base/xorg-server
 SLOT=0
-_eclasses_=git-r3	97f7f638070d17e4c2b6542589bb4575
+_eclasses_=git-r3	2358a7b20091609e24bd3a83b3ac5991
 _md5_=8a421a4a0597bcadf0d0adb87906f154
