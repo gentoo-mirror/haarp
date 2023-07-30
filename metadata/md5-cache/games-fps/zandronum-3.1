@@ -1,6 +1,6 @@
 BDEPEND=>=dev-util/ninja-1.8.2 >=dev-util/cmake-3.20.5
 DEFINED_PHASES=compile configure install postinst prepare test
-DEPEND=gtk? ( x11-libs/gtk+:2 ) timidity? ( media-sound/timidity++ ) opengl? ( media-libs/fmod:1 media-libs/game-music-emu media-libs/libsdl[opengl] virtual/glu virtual/jpeg virtual/opengl ) system-dumb? ( >=media-libs/dumb-2 ) system-geoip? ( dev-libs/geoip ) system-sqlite? ( dev-db/sqlite ) app-arch/bzip2 dev-libs/openssl:0 media-sound/fluidsynth sys-libs/zlib cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )
+DEPEND=gtk? ( x11-libs/gtk+:2 ) timidity? ( media-sound/timidity++ ) opengl? ( media-libs/fmod media-libs/game-music-emu media-libs/glew media-libs/libsdl[opengl] virtual/glu virtual/jpeg virtual/opengl ) system-dumb? ( >=media-libs/dumb-2 ) system-geoip? ( dev-libs/geoip ) system-sqlite? ( dev-db/sqlite ) app-arch/bzip2 dev-libs/openssl:0 sys-libs/zlib cpu_flags_x86_mmx? ( || ( dev-lang/nasm dev-lang/yasm ) )
 DESCRIPTION=OpenGL ZDoom port with Client/Server multiplayer
 EAPI=8
 HOMEPAGE=https://zandronum.com/
@@ -8,9 +8,9 @@ INHERIT=cmake desktop
 IUSE=cpu_flags_x86_mmx dedicated +gtk +opengl system-dumb system-geoip +system-sqlite timidity
 KEYWORDS=~amd64 ~x86
 LICENSE=Sleepycat
-RDEPEND=gtk? ( x11-libs/gtk+:2 ) timidity? ( media-sound/timidity++ ) opengl? ( media-libs/fmod:1 media-libs/game-music-emu media-libs/libsdl[opengl] virtual/glu virtual/jpeg virtual/opengl ) system-dumb? ( >=media-libs/dumb-2 ) system-geoip? ( dev-libs/geoip ) system-sqlite? ( dev-db/sqlite ) app-arch/bzip2 dev-libs/openssl:0 media-sound/fluidsynth sys-libs/zlib
+RDEPEND=gtk? ( x11-libs/gtk+:2 ) timidity? ( media-sound/timidity++ ) opengl? ( media-libs/fmod media-libs/game-music-emu media-libs/glew media-libs/libsdl[opengl] virtual/glu virtual/jpeg virtual/opengl ) system-dumb? ( >=media-libs/dumb-2 ) system-geoip? ( dev-libs/geoip ) system-sqlite? ( dev-db/sqlite ) app-arch/bzip2 dev-libs/openssl:0 sys-libs/zlib
 REQUIRED_USE=|| ( dedicated opengl ) gtk? ( opengl ) timidity? ( opengl )
 SLOT=0
 SRC_URI=https://osdn.dl.osdn.net/scmarchive/g/zandronum/hg/zandronum-stable/41/7890/zandronum-stable-417890.tar.gz -> zandronum-3.1.tar.gz
 _eclasses_=toolchain-funcs	0c8a0b0d318eb5d5180d114bd3f6592b	multilib	c19072c3cd7ac5cb21de013f7e9832e0	flag-o-matic	ad475baa777c9978fa035216c8264a10	multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	ninja-utils	f3010c780f65d1bb5aea15a9af1adc9c	xdg-utils	baea6080dd821f5562d715887954c9d3	cmake	aa1d1fa7be37663d48162ac963b22692	desktop	021728fdc1b03b36357dbc89489e0f0d
-_md5_=3d2a4eaa22d65be99ca5a153dbb2ddb4
+_md5_=3a79a4c8f5134924e5a6dbbc90280589
