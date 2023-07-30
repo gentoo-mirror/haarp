@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -25,8 +25,9 @@ REQUIRED_USE="|| ( dedicated opengl )
 
 RDEPEND="gtk? ( x11-libs/gtk+:2 )
 	timidity? ( media-sound/timidity++ )
-	opengl? ( media-libs/fmod:1
+	opengl? ( media-libs/fmod
 		media-libs/game-music-emu
+		media-libs/glew
 		media-libs/libsdl[opengl]
 		virtual/glu
 		virtual/jpeg
@@ -37,7 +38,6 @@ RDEPEND="gtk? ( x11-libs/gtk+:2 )
 	system-sqlite? ( dev-db/sqlite )
 	app-arch/bzip2
 	dev-libs/openssl:0
-	media-sound/fluidsynth
 	sys-libs/zlib"
 
 DEPEND="${RDEPEND}
@@ -70,8 +70,6 @@ src_prepare() {
 
 src_configure() {
 	mycmakeargs=(
-		-DFMOD_INCLUDE_DIR=/opt/fmodex/api/inc/
-		-DFMOD_LIBRARY=/opt/fmodex/api/lib/libfmodex.so
 		-DFORCE_INTERNAL_GME="OFF"
 		-DNO_ASM="$(usex cpu_flags_x86_mmx OFF ON)"
 		-DNO_GTK="$(usex gtk OFF ON)"
@@ -125,7 +123,7 @@ pkg_postinst() {
 	# hacky, i know. should've listened to juippis :) please don't hit me.
 	# note: brightmaps.pk3 NEEDS TO KEEP ITS NAME to not break online play
 	# on servers that mistakenly add it as a required pwad.
-	cp -n "${BUILD_DIR}/brightmaps.pk3" "${EPREFIX}/usr/share/doom/" || die
+	cp -n "${BUILD_DIR}/brightmaps.pk3" "${EPREFIX}/usr/share/doom/"
 
         ewarn "For parity with the gzdoom ebuild, the data path has been changed yet again!"
         ewarn "It is ${EPREFIX}/usr/share/doom - copy/link wad files there or in \$HOME/.config/zandronum"
