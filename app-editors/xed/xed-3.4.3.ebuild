@@ -1,11 +1,11 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 GNOME2_LA_PUNT="yes" # plugins are dlopened
-PYTHON_COMPAT=( python3_{8..10} )
+PYTHON_COMPAT=( python3_{11..12} )
 
-inherit eutils gnome2 meson multilib python-single-r1
+inherit gnome2 meson multilib python-single-r1
 
 DESCRIPTION="X-Apps [Text] Editor (Cross-DE, backward-compatible, GTK3, traditional UI)"
 HOMEPAGE="https://github.com/linuxmint/xed"
