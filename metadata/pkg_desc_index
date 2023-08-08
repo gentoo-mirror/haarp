@@ -4,7 +4,6 @@ app-editors/xed 3.4.3: X-Apps [Text] Editor (Cross-DE, backward-compatible, GTK3
 app-misc/mc 4.8.20-r2: GNU Midnight Commander is a text based file manager
 app-misc/screenruler 0.9.6-r2: Measure objects on your desktop using six different metrics
 app-misc/umouse 1.0: Unlocks the mouse pointer when an SDL app crashes
-dev-cpp/cpptoml 0.1.1: Header-only library for parsing TOML
 dev-db/dbeaver-bin 6.3.5: Free universal database tool and SQL client
 dev-db/sqlcipher 4.5.4: Full Database Encryption for SQLite
 dev-util/apktool 2.7.0: A tool for reengineering 3rd party, closed, binary Android apps
@@ -27,8 +26,6 @@ sys-power/gapcmon 0.9.0_p20160531: Linux GUI monitor for APCUPSD
 x11-misc/XCreateMouseVoid 9999: Create a void window and prevent the mouse from entering it
 x11-misc/alltray 9999: An application which allows any application to be docked into the system notification area
 x11-misc/cvt12 9999: CVT (Coordinated Video Timings) modeline calculator with CVT v1.2 timings
-x11-misc/gebaar 0.1.4: Super Simple WM Independent Touchpad Gesture Daemon for libinput (forked version with new features)
-x11-misc/gesture-manager-x 9999: Graphical manager for setting libinput-gestures touchpad gestures
 x11-misc/gtk3-nocsd 9999: Hack to disable GTK+-3 client-side decorations (ZaWertun fork)
 x11-misc/mtview 9999: Graphical multitouch viewer
 x11-misc/nvidia-xrun 9999: Script to run dedicated X server with discrete nvidia graphics
