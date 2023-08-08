@@ -33,6 +33,7 @@ x11-misc/gtk3-nocsd 9999: Hack to disable GTK+-3 client-side decorations (ZaWert
 x11-misc/mtview 9999: Graphical multitouch viewer
 x11-misc/nvidia-xrun 9999: Script to run dedicated X server with discrete nvidia graphics
 x11-misc/switchscreen 0.1.1: Move the X mouse cursor to a given point on a given screen
+x11-misc/touchegg 2.0.16: Linux multi-touch gesture recognizer
 x11-misc/xsecurelock 1.8.0: X11 screen lock utility with security in mind
 x11-plugins/multiload-ng 9999: Modern graphical system monitor for any panel
 x11-plugins/purple-discord 9999: Pidgin/Purple Protocol Plugin for Discord
