@@ -1,0 +1,9 @@
+#!/sbin/openrc-run
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command=/usr/bin/touchegg
+command_args="--daemon"
+command_background=yes
+description="Linux multitouch gesture recognizer"
+pidfile=/run/touchegg.pid

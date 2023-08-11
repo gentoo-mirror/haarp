@@ -18,7 +18,9 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+gtk systemd"
+IUSE="daemon +gtk systemd"
+
+REQUIRED_USE="systemd? ( daemon )"
 
 RDEPEND="
 	dev-libs/libinput
@@ -53,15 +55,22 @@ src_install() {
 
 	cmake_src_install
 
-	use systemd && newinitd "${FILESDIR}"/touchegg.initd touchegg
+	if use daemon; then
+		if use systemd; then
+			systemd_dounit "${FILESDIR}/touchegg.service"
+		else
+			newinitd "${FILESDIR}/touchegg.initd" touchegg
+		fi
+	fi
 }
 
 pkg_postinst() {
-	if use systemd; then
-		elog "On update run: 'systemctl daemon-reload && systemctl restart touchegg'"
+	if use daemon; then
+		elog "On update, don't forget to restart the system daemon and userspace client"
 	else
-		elog "Not using systemd; in addition to 'touchegg', you have to manually"
+		elog "Not using system daemon; in addition to 'touchegg', you have to manually"
 		elog "run 'touchegg --daemon' as root or an user in the 'input' group"
+		elog "On update, don't forget to restart both"
 	fi
 	elog "See https://github.com/JoseExposito/touchegg#configuration for config information"
 }
