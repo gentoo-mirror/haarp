@@ -8,7 +8,6 @@ dev-db/dbeaver-bin 6.3.5: Free universal database tool and SQL client
 dev-db/sqlcipher 4.5.4: Full Database Encryption for SQLite
 dev-util/apktool 2.7.0: A tool for reengineering 3rd party, closed, binary Android apps
 games-arcade/SpaceCadetPinball 9999: Reverse engineering of '3D Pinball for Windows - Space Cadet', a game bundled with Windows
-games-emulation/gens-gs 7-r5: A Gens fork which aims to clean up the source code and combine features from other forks
 games-fps/zandronum 3.1: OpenGL ZDoom port with Client/Server multiplayer
 games-rpg/doukutsu-bin 1.01: Side-scrolling platformer written by StudioPixel, aka Cave Story
 games-util/doomseeker 1.4.1: Internet Doom server browser
@@ -28,7 +27,6 @@ x11-misc/alltray 9999: An application which allows any application to be docked 
 x11-misc/cvt12 9999: CVT (Coordinated Video Timings) modeline calculator with CVT v1.2 timings
 x11-misc/gtk3-nocsd 9999: Hack to disable GTK+-3 client-side decorations (ZaWertun fork)
 x11-misc/mtview 9999: Graphical multitouch viewer
-x11-misc/nvidia-xrun 9999: Script to run dedicated X server with discrete nvidia graphics
 x11-misc/switchscreen 0.1.1: Move the X mouse cursor to a given point on a given screen
 x11-misc/touchegg 2.0.16-r1: Linux multi-touch gesture recognizer
 x11-misc/xsecurelock 1.8.0: X11 screen lock utility with security in mind
