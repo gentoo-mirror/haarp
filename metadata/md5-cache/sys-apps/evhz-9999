@@ -1,0 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install unpack
+DESCRIPTION=Show mouse refresh rate under evdev
+EAPI=8
+HOMEPAGE=https://git.sr.ht/~iank/evhz
+INHERIT=git-r3 toolchain-funcs
+KEYWORDS=~amd64
+LICENSE=GPL-3
+PROPERTIES=live
+SLOT=0
+_eclasses_=git-r3	2358a7b20091609e24bd3a83b3ac5991	toolchain-funcs	862d337d98edb576796827be2c6b11ca	multilib	c19072c3cd7ac5cb21de013f7e9832e0
+_md5_=56edbab84b9085305b54cb1f468ef83f
