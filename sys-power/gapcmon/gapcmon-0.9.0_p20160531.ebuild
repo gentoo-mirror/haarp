@@ -6,7 +6,7 @@ EAPI=6
 BASE=apcupsd-3.14.14
 
 DESCRIPTION="Linux GUI monitor for APCUPSD"
-HOMEPAGE="http://gapcmon.sourceforge.net/"
+HOMEPAGE="https://gapcmon.sourceforge.net/"
 SRC_URI="mirror://sourceforge/apcupsd/$BASE.tar.gz"
 LICENSE="GPL-2"
 

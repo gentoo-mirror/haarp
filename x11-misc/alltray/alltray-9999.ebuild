@@ -7,7 +7,7 @@ VALA_MIN_API_VERSION="0.14"
 inherit autotools git-r3 vala
 
 DESCRIPTION="An application which allows any application to be docked into the system notification area"
-HOMEPAGE="http://alltray.trausch.us/"
+HOMEPAGE="https://github.com/mbt/alltray"
 EGIT_REPO_URI="https://github.com/mbt/alltray.git"
 
 LICENSE="GPL-2"
