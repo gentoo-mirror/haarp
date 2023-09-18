@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Foundation
+# Copyright 1999-2023 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -6,8 +6,8 @@ EAPI=8
 inherit unpacker
 
 DESCRIPTION="PKZIP-compatible compressor focusing on space over speed"
-HOMEPAGE="http://www.jonof.id.au/kenutils"
-SRC_URI="http://static.jonof.id.au/dl/kenutils/${P}-linux.tar.gz"
+HOMEPAGE="https://www.jonof.id.au/kenutils"
+SRC_URI="https://www.jonof.id.au/files/kenutils/${P}-linux.tar.gz"
 
 LICENSE=""
 SLOT="0"
