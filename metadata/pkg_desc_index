@@ -1,18 +1,18 @@
-app-admin/lastpass-cli 1.3.4: Interfaces with LastPass.com from the command line.
+app-admin/lastpass-cli 1.3.6: Interfaces with LastPass.com from the command line.
 app-arch/kzipmix 20200115: PKZIP-compatible compressor focusing on space over speed
 app-editors/xed 3.4.3: X-Apps [Text] Editor (Cross-DE, backward-compatible, GTK3, traditional UI)
+app-misc/font-manager 0.8.8-r2: A simple font management application for Gtk+ Desktop Environments
 app-misc/mc 4.8.20-r2: GNU Midnight Commander is a text based file manager
 app-misc/screenruler 9999: Measure objects on your desktop using six different metrics
 app-misc/umouse 1.0: Unlocks the mouse pointer when an SDL app crashes
 dev-db/dbeaver-bin 6.3.5: Free universal database tool and SQL client
-dev-db/sqlcipher 4.5.4: Full Database Encryption for SQLite
-dev-util/apktool 2.7.0: A tool for reengineering 3rd party, closed, binary Android apps
+dev-db/sqlcipher 4.5.5: Full Database Encryption for SQLite
+dev-util/apktool 2.8.1: A tool for reengineering 3rd party, closed, binary Android apps
 games-arcade/SpaceCadetPinball 9999: Reverse engineering of '3D Pinball for Windows - Space Cadet', a game bundled with Windows
 games-fps/zandronum 3.1: OpenGL ZDoom port with Client/Server multiplayer
 games-rpg/doukutsu-bin 1.01: Side-scrolling platformer written by StudioPixel, aka Cave Story
 games-util/doomseeker 1.4.1: Internet Doom server browser
 media-gfx/flash-player-projector 32.0.0.465-r1: Stand-alone viewer of SWF files.
-media-gfx/gnome-font-viewer 3.8.0: Font viewer for GNOME 3
 media-gfx/img2xterm 9999-r1: Displays images on your 256-color terminal with Unicode block characters
 media-gfx/pngout 20200115: Optimize the size of .PNG files losslessly
 media-libs/fmod 4.44.64: Libraries of the fmodex audio engine

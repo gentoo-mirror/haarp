@@ -1,10 +1,10 @@
 DEFINED_PHASES=compile configure install prepare
 DESCRIPTION=Linux GUI monitor for APCUPSD
 EAPI=6
-HOMEPAGE=http://gapcmon.sourceforge.net/
+HOMEPAGE=https://gapcmon.sourceforge.net/
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=x11-libs/gtk+-2.6:2 >=dev-libs/glib-2.8 >=gnome-base/gconf-2.10 !sys-power/apcupsd[gnome]
 SLOT=0
 SRC_URI=mirror://sourceforge/apcupsd/apcupsd-3.14.14.tar.gz
-_md5_=7607cf0ada90ab444bde91054cba3e55
+_md5_=be851a18dcf3c752f37f4b0fa8229deb
