@@ -55,8 +55,8 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/yelp-tools
+	dev-build/gtk-doc-am
 	dev-libs/libxml2:2
-	>=dev-util/gtk-doc-am-1
 	>=dev-util/intltool-0.50.1
 	dev-util/itstool
 	>=sys-devel/gettext-0.18
