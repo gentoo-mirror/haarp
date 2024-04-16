@@ -9,7 +9,7 @@ DESCRIPTION="A challenging 2D construction game"
 HOMEPAGE="https://bielebridge.net/"
 EGIT_REPO_URI="https://gitlab.digitalcourage.de/georg/bielebridge.git"
 
-EGIT_COMMIT="94071bda"
+EGIT_COMMIT="78427b6b"
 
 LICENSE="GPLv3"
 SLOT="0"
