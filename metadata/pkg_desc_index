@@ -10,9 +10,10 @@ dev-db/sqlcipher 4.5.5: Full Database Encryption for SQLite
 dev-util/apktool 2.8.1: A tool for reengineering 3rd party, closed, binary Android apps
 games-arcade/SpaceCadetPinball 9999: Reverse engineering of '3D Pinball for Windows - Space Cadet', a game bundled with Windows
 games-fps/zandronum 3.1: OpenGL ZDoom port with Client/Server multiplayer
-games-puzzle/bielebridge 0.0.5: A challenging 2D construction game
+games-puzzle/bielebridge 0.0.6: A challenging 2D construction game
 games-rpg/doukutsu-bin 1.01: Side-scrolling platformer written by StudioPixel, aka Cave Story
 games-util/doomseeker 1.4.1: Internet Doom server browser
+gnome-extra/zenity 3.44.2: Tool to display dialogs from the commandline and shell scripts
 media-gfx/flash-player-projector 32.0.0.465-r1: Stand-alone viewer of SWF files.
 media-gfx/img2xterm 9999-r1: Displays images on your 256-color terminal with Unicode block characters
 media-gfx/pngout 20200115: Optimize the size of .PNG files losslessly
