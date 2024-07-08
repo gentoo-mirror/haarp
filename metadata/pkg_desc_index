@@ -23,7 +23,6 @@ media-sound/helvum 0.3.4-r2: A GTK patchbay for pipewire
 net-p2p/etherwall 2.4.0: Free software wallet/front-end for Ethereum
 net-vpn/dns2tcp 0.5.2: Relay TCP connections through DNS traffic
 sys-apps/evhz 9999: Show mouse refresh rate under evdev
-sys-power/ec_access 9999: Tool to access the Embedded Controller
 sys-power/gapcmon 0.9.0_p20160531: Linux GUI monitor for APCUPSD
 x11-misc/XCreateMouseVoid 9999: Create a void window and prevent the mouse from entering it
 x11-misc/alltray 9999: An application which allows any application to be docked into the system notification area
