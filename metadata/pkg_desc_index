@@ -24,11 +24,8 @@ net-p2p/etherwall 2.4.0: Free software wallet/front-end for Ethereum
 net-vpn/dns2tcp 0.5.2: Relay TCP connections through DNS traffic
 sys-apps/evhz 9999: Show mouse refresh rate under evdev
 sys-power/gapcmon 0.9.0_p20160531: Linux GUI monitor for APCUPSD
-x11-misc/XCreateMouseVoid 9999: Create a void window and prevent the mouse from entering it
 x11-misc/alltray 9999: An application which allows any application to be docked into the system notification area
-x11-misc/cvt12 9999: CVT (Coordinated Video Timings) modeline calculator with CVT v1.2 timings
 x11-misc/gtk3-nocsd 9999: Hack to disable GTK+-3 client-side decorations (ZaWertun fork)
-x11-misc/mtview 9999: Graphical multitouch viewer
 x11-misc/switchscreen 0.1.1: Move the X mouse cursor to a given point on a given screen
 x11-misc/touchegg 2.0.16-r1: Linux multi-touch gesture recognizer
 x11-misc/xsecurelock 1.8.0: X11 screen lock utility with security in mind
