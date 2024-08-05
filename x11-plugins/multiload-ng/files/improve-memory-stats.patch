@@ -1,0 +1,514 @@
+Add `Shared` to memory graph
+change memory calculation to mirror htop's (don't count shared as cached)
+("Count Slab cache" option will become useless!)
+
+--- a/common/colors.c	2024-08-04 23:15:52.905672126 +0200
++++ b/common/colors.c	2024-08-04 23:38:24.601621278 +0200
+@@ -310,6 +310,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(000000, FF)			// Background (bottom)
+ 			}, { // MEM  - hue: 151
+ 				HEX_TO_RGBA(03964F, FF),		// User
++				HEX_TO_RGBA(03964F, FF),		// Shared
+ 				HEX_TO_RGBA(43D18D, FF),		// Buffers
+ 				HEX_TO_RGBA(BFFFE0, FF),		// Cached
+ 				HEX_TO_RGBA(008042, FF),		// Border
+@@ -374,6 +375,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(555753, FF)			// Background (bottom)
+ 			}, { // MEM  - Tango Chameleon
+ 				HEX_TO_RGBA(3E6618, FF),		// User
++				HEX_TO_RGBA(3E6618, FF),		// Shared
+ 				HEX_TO_RGBA(73D216, FF),		// Buffers
+ 				HEX_TO_RGBA(ACFF5C, FF),		// Cached
+ 				HEX_TO_RGBA(2E3436, FF),		// Border
+@@ -438,6 +440,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(002B36, FF)			// Background (bottom)
+ 			}, { // MEM  - Solarized Green
+ 				HEX_TO_RGBA(859900, FF),		// User
++				HEX_TO_RGBA(859900, FF),		// Shared
+ 				HEX_TO_RGBA(657B83, FF),		// Buffers
+ 				HEX_TO_RGBA(839496, FF),		// Cached
+ 				HEX_TO_RGBA(586E75, FF),		// Border
+@@ -502,6 +505,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(EEE8D5, FF)			// Background (bottom)
+ 			}, { // MEM  - Solarized Green
+ 				HEX_TO_RGBA(859900, FF),		// User
++				HEX_TO_RGBA(859900, FF),		// Shared
+ 				HEX_TO_RGBA(657B83, FF),		// Buffers
+ 				HEX_TO_RGBA(839496, FF),		// Cached
+ 				HEX_TO_RGBA(586E75, FF),		// Border
+@@ -568,6 +572,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(B4B4C2, FF)			// Background (bottom)
+ 			}, { // MEM  - Kiwi
+ 				HEX_TO_RGBA(55641F, FF),		// User
++				HEX_TO_RGBA(55641F, FF),		// Shared
+ 				HEX_TO_RGBA(789236, FF),		// Buffers
+ 				HEX_TO_RGBA(9AB452, FF),		// Cached
+ 				HEX_TO_RGBA(404040, FF),		// Border
+@@ -632,6 +637,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(48BDE6, FF)			// Background (bottom)
+ 			}, { // MEM
+ 				HEX_TO_RGBA(FFFFFF, D8),		// User
++				HEX_TO_RGBA(FFFFFF, D8),		// Shared
+ 				HEX_TO_RGBA(FFFFFF, A5),		// Buffers
+ 				HEX_TO_RGBA(FFFFFF, 72),		// Cached
+ 				HEX_TO_RGBA(FFFFFF, FF),		// Border
+@@ -698,6 +704,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(300A24, FF)			// Background (bottom)
+ 			}, { // MEM
+ 				HEX_TO_RGBA(E96F20, FF),		// User
++				HEX_TO_RGBA(E96F20, FF),		// Shared
+ 				HEX_TO_RGBA(E96F20, FF),		// Buffers
+ 				HEX_TO_RGBA(E96F20, FF),		// Cached
+ 				HEX_TO_RGBA(373737, FF),		// Border
+@@ -762,6 +769,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(E8E8E8, FF)			// Background (bottom)
+ 			}, { // MEM
+ 				HEX_TO_RGBA(E96F20, FF),		// User
++				HEX_TO_RGBA(E96F20, FF),		// Shared
+ 				HEX_TO_RGBA(E96F20, FF),		// Buffers
+ 				HEX_TO_RGBA(E96F20, FF),		// Cached
+ 				HEX_TO_RGBA(D6D6D6, FF),		// Border
+@@ -826,6 +834,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(393939, FF)			// Background (bottom)
+ 			}, { // MEM
+ 				HEX_TO_RGBA(97BF60, FF),		// User
++				HEX_TO_RGBA(97BF60, FF),		// Shared
+ 				HEX_TO_RGBA(97BF60, FF),		// Buffers
+ 				HEX_TO_RGBA(97BF60, FF),		// Cached
+ 				HEX_TO_RGBA(3C3C3C, FF),		// Border
+@@ -890,6 +899,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(001940, FF)			// Background (bottom)
+ 			}, { // MEM
+ 				HEX_TO_RGBA(199900, FF),		// User
++				HEX_TO_RGBA(199900, FF),		// Shared
+ 				HEX_TO_RGBA(2D652B, FF),		// Buffers
+ 				HEX_TO_RGBA(2D652B, FF),		// Cached
+ 				HEX_TO_RGBA(004A00, FF),		// Border
+@@ -956,6 +966,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(383C4A, FF)			// Background (bottom)
+ 			}, { // MEM
+ 				HEX_TO_RGBA(5924E2, FF),		// User
++				HEX_TO_RGBA(5924E2, FF),		// Shared
+ 				HEX_TO_RGBA(5924E2, FF),		// Buffers
+ 				HEX_TO_RGBA(5924E2, FF),		// Cached
+ 				HEX_TO_RGBA(1B1E24, FF),		// Border
+@@ -1020,6 +1031,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(333333, FF)			// Background (bottom)
+ 			}, { // MEM
+ 				HEX_TO_RGBA(D64937, FF),		// User
++				HEX_TO_RGBA(D64937, FF),		// Shared
+ 				HEX_TO_RGBA(D64937, FF),		// Buffers
+ 				HEX_TO_RGBA(D64937, FF),		// Cached
+ 				HEX_TO_RGBA(DEDEDE, FF),		// Border
+@@ -1084,6 +1096,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(DEDEDE, FF)			// Background (bottom)
+ 			}, { // MEM
+ 				HEX_TO_RGBA(D64937, FF),		// User
++				HEX_TO_RGBA(D64937, FF),		// Shared
+ 				HEX_TO_RGBA(D64937, FF),		// Buffers
+ 				HEX_TO_RGBA(D64937, FF),		// Cached
+ 				HEX_TO_RGBA(333333, FF),		// Border
+@@ -1150,6 +1163,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(6385FB, FF)			// Background (bottom)
+ 			}, { // MEM - Mario
+ 				HEX_TO_RGBA(DA0000, FF),		// User
++				HEX_TO_RGBA(DA0000, FF),		// Shared
+ 				HEX_TO_RGBA(716800, FF),		// Buffers
+ 				HEX_TO_RGBA(FAB100, FF),		// Cached
+ 				HEX_TO_RGBA(030000, FF),		// Border
+@@ -1214,6 +1228,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(FCA400, FF)			// Background (bottom)
+ 			}, { // MEM - Goku
+ 				HEX_TO_RGBA(333098, FF),		// User
++				HEX_TO_RGBA(333098, FF),		// Shared
+ 				HEX_TO_RGBA(FDC9AB, FF),		// Buffers
+ 				HEX_TO_RGBA(11141B, FF),		// Cached
+ 				HEX_TO_RGBA(11141B, FF),		// Border
+@@ -1278,6 +1293,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(657A7D, FF)			// Background (bottom)
+ 			}, { // MEM - Bart
+ 				HEX_TO_RGBA(0F9BE0, FF),		// User
++				HEX_TO_RGBA(0F9BE0, FF),		// Shared
+ 				HEX_TO_RGBA(F15B30, FF),		// Buffers
+ 				HEX_TO_RGBA(FED420, FF),		// Cached
+ 				HEX_TO_RGBA(84C55F, FF),		// Border
+@@ -1344,6 +1360,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(B5B5B5, FF)			// Background (bottom)
+ 			}, { // MEM
+ 				HEX_TO_RGBA(777777, FF),		// User
++				HEX_TO_RGBA(777777, FF),		// Shared
+ 				HEX_TO_RGBA(777777, FF),		// Buffers
+ 				HEX_TO_RGBA(777777, FF),		// Cached
+ 				HEX_TO_RGBA(142339, FF),		// Border
+@@ -1408,6 +1425,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(A57C1B, FF)			// Background (bottom)
+ 			}, { // MEM
+ 				HEX_TO_RGBA(E7D520, FF),		// User
++				HEX_TO_RGBA(E7D520, FF),		// Shared
+ 				HEX_TO_RGBA(E7D520, FF),		// Buffers
+ 				HEX_TO_RGBA(E7D520, FF),		// Cached
+ 				HEX_TO_RGBA(E39E1C, FF),		// Border
+@@ -1472,6 +1490,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(006287, FF)			// Background (bottom)
+ 			}, { // MEM
+ 				HEX_TO_RGBA(73591C, FF),		// User
++				HEX_TO_RGBA(73591C, FF),		// Shared
+ 				HEX_TO_RGBA(B6974F, FF),		// Buffers
+ 				HEX_TO_RGBA(E1C584, FF),		// Cached
+ 				HEX_TO_RGBA(24313A, FF),		// Border
+@@ -1536,6 +1555,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(45413F, FF)			// Background (bottom)
+ 			}, { // MEM
+ 				HEX_TO_RGBA(D66456, FF),		// User
++				HEX_TO_RGBA(D66456, FF),		// Shared
+ 				HEX_TO_RGBA(D66456, FF),		// Buffers
+ 				HEX_TO_RGBA(D66456, FF),		// Cached
+ 				HEX_TO_RGBA(733E34, FF),		// Border
+@@ -1600,6 +1620,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(063D06, FF)			// Background (bottom)
+ 			}, { // MEM
+ 				HEX_TO_RGBA(1A8A14, FF),		// User
++				HEX_TO_RGBA(1A8A14, FF),		// Shared
+ 				HEX_TO_RGBA(1A8A14, FF),		// Buffers
+ 				HEX_TO_RGBA(1A8A14, FF),		// Cached
+ 				HEX_TO_RGBA(3B763B, FF),		// Border
+@@ -1664,6 +1685,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(03444A, FF)			// Background (bottom)
+ 			}, { // MEM
+ 				HEX_TO_RGBA(30ABC0, FF),		// User
++				HEX_TO_RGBA(30ABC0, FF),		// Shared
+ 				HEX_TO_RGBA(30ABC0, FF),		// Buffers
+ 				HEX_TO_RGBA(30ABC0, FF),		// Cached
+ 				HEX_TO_RGBA(101010, FF),		// Border
+@@ -1728,6 +1750,7 @@ const MultiloadColorScheme multiload_bui
+ 				HEX_TO_RGBA(3D2B67, FF)			// Background (bottom)
+ 			}, { // MEM
+ 				HEX_TO_RGBA(5A7BE4, FF),		// User
++				HEX_TO_RGBA(5A7BE4, FF),		// Shared
+ 				HEX_TO_RGBA(5A7BE4, FF),		// Buffers
+ 				HEX_TO_RGBA(5A7BE4, FF),		// Cached
+ 				HEX_TO_RGBA(142339, FF),		// Border
+
+--- a/common/graph-data.h	2024-08-04 23:15:52.907672126 +0200
++++ b/common/graph-data.h	2024-08-04 23:54:06.340585852 +0200
+@@ -48,6 +48,7 @@ typedef struct _CpuData {
+ 
+ typedef struct _MemoryData {
+ 	guint64 user;
++	guint64 shared;
+ 	guint64 buffers;
+ 	guint64 cache;
+ 	guint64 total;
+@@ -124,7 +125,7 @@ G_GNUC_INTERNAL void
+ multiload_graph_cpu_tooltip_update (char *buf_title, size_t len_title, char *buf_text, size_t len_text, LoadGraph *g, CpuData *xd, gint style);
+ 
+ G_GNUC_INTERNAL void
+-multiload_graph_mem_get_data (int Maximum, int data [4], LoadGraph *g, MemoryData *xd, gboolean first_call);
++multiload_graph_mem_get_data (int Maximum, int data [5], LoadGraph *g, MemoryData *xd, gboolean first_call);
+ G_GNUC_INTERNAL void
+ multiload_graph_mem_cmdline_output (LoadGraph *g, MemoryData *xd);
+ G_GNUC_INTERNAL void
+
+--- a/common/graph-mem.c	2024-08-04 23:15:52.907672126 +0200
++++ b/common/graph-mem.c	2024-08-05 02:01:38.003116161 +0200
+@@ -34,10 +34,11 @@
+ #define PATH_MEMINFO "/proc/meminfo"
+ 
+ void
+-multiload_graph_mem_get_data (int Maximum, int data [4], LoadGraph *g, MemoryData *xd, gboolean first_call)
++multiload_graph_mem_get_data (int Maximum, int data [5], LoadGraph *g, MemoryData *xd, gboolean first_call)
+ {
+ 	// displayed keys
+ 	static guint64 kb_main_total = 0;
++	static guint64 kb_main_shared = 0;
+ 	static guint64 kb_main_buffers = 0;
+ 	static guint64 kb_main_cached = 0;
+ 	static guint64 kb_main_used = 0;
+@@ -45,35 +46,38 @@ multiload_graph_mem_get_data (int Maximu
+ 	// auxiliary keys
+ 	static guint64 kb_main_free = 0;
+ 	static guint64 kb_page_cache = 0;
+-	static guint64 kb_slab = 0;
++	static guint64 kb_reclaimable = 0;
+ 
+ 	static const InfoFileMappingEntry table[] = {
+ 		{ "MemTotal",		'u',	&kb_main_total },
+ 		{ "MemFree",		'u',	&kb_main_free},
+ 		{ "Buffers",		'u',	&kb_main_buffers },
++		{ "Shmem:",			'u',	&kb_main_shared},
+ 		{ "Cached",			'u',	&kb_page_cache },
+-		{ "Slab",			'u',	&kb_slab }
++		{ "SReclaimable",	'u',	&kb_reclaimable }
+ 	};
+ 
+-	gint r = info_file_read_keys (PATH_MEMINFO, table, 5);
+-	g_assert_cmpint(r, ==, 5);
++	gint r = info_file_read_keys (PATH_MEMINFO, table, 6);
++	g_assert_cmpint(r, ==, 6);
+ 
+-	kb_main_cached = kb_page_cache;
+-	if (xd->procps_compliant)
+-		kb_main_cached += kb_slab;
++	// https://stackoverflow.com/a/41251290
++	// https://github.com/htop-dev/htop/blob/3.3.0/linux/LinuxMachine.c#L199-L218
++	kb_main_cached = kb_page_cache + kb_reclaimable - kb_main_shared;
+ 
+-	kb_main_used = kb_main_total - kb_main_free - kb_main_cached - kb_main_buffers;
++	kb_main_used = kb_main_total - kb_main_free - kb_page_cache - kb_main_buffers - kb_reclaimable;
+ 	if (kb_main_used < 0)
+ 		kb_main_used = kb_main_total - kb_main_free;
+ 
+ 	xd->user = kb_main_used * 1024;
++	xd->shared = kb_main_shared * 1024;
+ 	xd->buffers = kb_main_buffers * 1024;
+ 	xd->cache = kb_main_cached * 1024;
+ 	xd->total = kb_main_total * 1024;
+ 
+ 	data [0] = rint (Maximum * (float)kb_main_used   / (float)kb_main_total);
+-	data [1] = rint (Maximum * (float)kb_main_buffers / (float)kb_main_total);
+-	data [2] = rint (Maximum * (float)kb_main_cached / (float)kb_main_total);
++	data [1] = rint (Maximum * (float)kb_main_shared / (float)kb_main_total);
++	data [2] = rint (Maximum * (float)kb_main_buffers / (float)kb_main_total);
++	data [3] = rint (Maximum * (float)kb_main_cached / (float)kb_main_total);
+ }
+ 
+ 
+@@ -81,8 +85,9 @@ void
+ multiload_graph_mem_cmdline_output (LoadGraph *g, MemoryData *xd)
+ {
+ 	g_snprintf(g->output_str[0], sizeof(g->output_str[0]), "%"G_GUINT64_FORMAT, xd->user);
+-	g_snprintf(g->output_str[1], sizeof(g->output_str[1]), "%"G_GUINT64_FORMAT, xd->buffers);
+-	g_snprintf(g->output_str[2], sizeof(g->output_str[2]), "%"G_GUINT64_FORMAT, xd->cache);
++	g_snprintf(g->output_str[1], sizeof(g->output_str[1]), "%"G_GUINT64_FORMAT, xd->shared);
++	g_snprintf(g->output_str[2], sizeof(g->output_str[2]), "%"G_GUINT64_FORMAT, xd->buffers);
++	g_snprintf(g->output_str[3], sizeof(g->output_str[3]), "%"G_GUINT64_FORMAT, xd->cache);
+ }
+ 
+ void
+@@ -94,6 +99,9 @@ multiload_graph_mem_tooltip_update (char
+ 		gchar *user = format_size_for_display(xd->user, g->multiload->size_format_iec);
+ 		gchar *user_percent = format_percent(xd->user, xd->total, 1);
+ 
++		gchar *shared = format_size_for_display(xd->shared, g->multiload->size_format_iec);
++		gchar *shared_percent = format_percent(xd->shared, xd->total, 1);
++
+ 		gchar *buffers = format_size_for_display(xd->buffers, g->multiload->size_format_iec);
+ 		gchar *buffers_percent = format_percent(xd->buffers, xd->total, 1);
+ 
+@@ -102,14 +110,18 @@ multiload_graph_mem_tooltip_update (char
+ 
+ 		g_snprintf(buf_title, len_title, _("%s of RAM"), total);
+ 		g_snprintf(buf_text, len_text, _(	"%s (%s) used by programs\n"
++											"%s (%s) shared among programs/tmpfs\n"
+ 											"%s (%s) used for buffers\n"
+ 											"%s (%s) used as cache"),
+ 											user_percent, user,
++											shared_percent, shared,
+ 											buffers_percent, buffers,
+ 											cache_percent, cache);
+ 		g_free(total);
+ 		g_free(user);
+ 		g_free(user_percent);
++		g_free(shared);
++		g_free(shared_percent);
+ 		g_free(buffers);
+ 		g_free(buffers_percent);
+ 		g_free(cache);
+
+--- a/common/multiload-config.c	2024-08-04 23:15:52.910672126 +0200
++++ b/common/multiload-config.c	2024-08-05 02:37:36.161034976 +0200
+@@ -50,7 +50,7 @@ void multiload_config_init()
+ 			(GraphCmdlineOutputFunc)	multiload_graph_cpu_cmdline_output,
+ 			(GraphGetFilterFunc)		NULL
+ 		},
+-		{	"mem",	_("Memory"),		6,	-1,		-1,		"byte",
++		{	"mem",	_("Memory"),		7,	-1,		-1,		"byte",
+ 			(GraphInitFunc)				NULL,
+ 			(GraphGetDataFunc)			multiload_graph_mem_get_data,
+ 			(GraphTooltipUpdateFunc)	multiload_graph_mem_tooltip_update,
+
+--- a/common/preferences.c	2024-08-04 23:15:52.912672126 +0200
++++ b/common/preferences.c	2024-08-04 23:47:31.544600704 +0200
+@@ -145,6 +145,7 @@ static const gchar* color_button_names[G
+ 		"cb_color_mem1",
+ 		"cb_color_mem2",
+ 		"cb_color_mem3",
++		"cb_color_mem4",
+ 		"cb_color_mem_border",
+ 		"cb_color_mem_bg1",
+ 		"cb_color_mem_bg2"
+@@ -857,14 +858,16 @@ multiload_preferences_dev_colorscheme_ge
+ 	_CPRINT(ma->graph_config[GRAPH_MEMLOAD].colors[0], buf);
+ 	printf("\t\t\t\t%s,\t\t// User\n", buf);
+ 	_CPRINT(ma->graph_config[GRAPH_MEMLOAD].colors[1], buf);
+-	printf("\t\t\t\t%s,\t\t// Buffers\n", buf);
++	printf("\t\t\t\t%s,\t\t// Shared\n", buf);
+ 	_CPRINT(ma->graph_config[GRAPH_MEMLOAD].colors[2], buf);
+-	printf("\t\t\t\t%s,\t\t// Cached\n", buf);
++	printf("\t\t\t\t%s,\t\t// Buffers\n", buf);
+ 	_CPRINT(ma->graph_config[GRAPH_MEMLOAD].colors[3], buf);
+-	printf("\t\t\t\t%s,\t\t// Border\n", buf);
++	printf("\t\t\t\t%s,\t\t// Cached\n", buf);
+ 	_CPRINT(ma->graph_config[GRAPH_MEMLOAD].colors[4], buf);
+-	printf("\t\t\t\t%s,\t\t// Background (top)\n", buf);
++	printf("\t\t\t\t%s,\t\t// Border\n", buf);
+ 	_CPRINT(ma->graph_config[GRAPH_MEMLOAD].colors[5], buf);
++	printf("\t\t\t\t%s,\t\t// Background (top)\n", buf);
++	_CPRINT(ma->graph_config[GRAPH_MEMLOAD].colors[6], buf);
+ 	printf("\t\t\t\t%s\t\t\t// Background (bottom)\n", buf);
+ 
+ 	printf("\t\t\t}, { // NET\n");
+
+--- a/data/preferences_gtk2.ui	2024-08-04 23:15:52.924672126 +0200
++++ b/data/preferences_gtk2.ui	2024-08-05 00:10:28.667367047 +0200
+@@ -1902,6 +1902,23 @@ Author: Mario cianciolo <mr.udda@gmail.c
+                           </packing>
+                         </child>
+                         <child>
++                          <object class="GtkColorButton" id="cb_color_mem4">
++                            <property name="visible">True</property>
++                            <property name="can_focus">True</property>
++                            <property name="receives_default">True</property>
++                            <property name="relief">none</property>
++                            <property name="use_alpha">True</property>
++                          </object>
++                          <packing>
++                            <property name="left_attach">3</property>
++                            <property name="right_attach">4</property>
++                            <property name="top_attach">4</property>
++                            <property name="bottom_attach">5</property>
++                            <property name="x_options"/>
++                            <property name="y_options">GTK_SHRINK</property>
++                          </packing>
++                        </child>
++                        <child>
+                           <object class="GtkLabel" id="label17">
+                             <property name="visible">True</property>
+                             <property name="can_focus">False</property>
+@@ -1917,11 +1934,11 @@ Author: Mario cianciolo <mr.udda@gmail.c
+                           </packing>
+                         </child>
+                         <child>
+-                          <object class="GtkLabel" id="label18">
++                          <object class="GtkLabel" id="label17.5">
+                             <property name="visible">True</property>
+                             <property name="can_focus">False</property>
+                             <property name="xalign">0</property>
+-                            <property name="label" translatable="yes">Buffer</property>
++                            <property name="label" translatable="yes">Shared</property>
+                           </object>
+                           <packing>
+                             <property name="left_attach">4</property>
+@@ -1932,11 +1949,11 @@ Author: Mario cianciolo <mr.udda@gmail.c
+                           </packing>
+                         </child>
+                         <child>
+-                          <object class="GtkLabel" id="label19">
++                          <object class="GtkLabel" id="label18">
+                             <property name="visible">True</property>
+                             <property name="can_focus">False</property>
+                             <property name="xalign">0</property>
+-                            <property name="label" translatable="yes">Cache</property>
++                            <property name="label" translatable="yes">Buffer</property>
+                           </object>
+                           <packing>
+                             <property name="left_attach">4</property>
+@@ -1946,6 +1963,22 @@ Author: Mario cianciolo <mr.udda@gmail.c
+                             <property name="y_options">GTK_SHRINK</property>
+                           </packing>
+                         </child>
++
++                        <child>
++                          <object class="GtkLabel" id="label19">
++                            <property name="visible">True</property>
++                            <property name="can_focus">False</property>
++                            <property name="xalign">0</property>
++                            <property name="label" translatable="yes">Cache</property>
++                          </object>
++                          <packing>
++                            <property name="left_attach">4</property>
++                            <property name="right_attach">5</property>
++                            <property name="top_attach">4</property>
++                            <property name="bottom_attach">5</property>
++                            <property name="y_options">GTK_SHRINK</property>
++                          </packing>
++                        </child>
+                         <child>
+                           <object class="GtkLabel" id="colors_label_net">
+                             <property name="visible">True</property>
+@@ -4362,6 +4395,7 @@ Author: Mario cianciolo <mr.udda@gmail.c
+       <widget name="cb_color_mem1"/>
+       <widget name="cb_color_mem2"/>
+       <widget name="cb_color_mem3"/>
++      <widget name="cb_color_mem4"/>
+       <widget name="cb_color_net1"/>
+       <widget name="cb_color_net2"/>
+       <widget name="cb_color_net3"/>
+
+--- a/data/preferences_gtk3.ui	2024-08-04 23:15:52.924672126 +0200
++++ b/data/preferences_gtk3.ui	2024-08-05 00:26:45.518330300 +0200
+@@ -1667,6 +1667,19 @@ Author: Mario cianciolo <mr.udda@gmail.c
+                           </packing>
+                         </child>
+                         <child>
++                          <object class="GtkColorButton" id="cb_color_mem4">
++                            <property name="visible">True</property>
++                            <property name="can_focus">True</property>
++                            <property name="receives_default">True</property>
++                            <property name="relief">none</property>
++                            <property name="use_alpha">True</property>
++                          </object>
++                          <packing>
++                            <property name="left_attach">3</property>
++                            <property name="top_attach">4</property>
++                          </packing>
++                        </child>
++                        <child>
+                           <object class="GtkLabel" id="label17">
+                             <property name="visible">True</property>
+                             <property name="can_focus">False</property>
+@@ -1679,6 +1692,18 @@ Author: Mario cianciolo <mr.udda@gmail.c
+                           </packing>
+                         </child>
+                         <child>
++                          <object class="GtkLabel" id="label17.5">
++                            <property name="visible">True</property>
++                            <property name="can_focus">False</property>
++                            <property name="label" translatable="yes">Shared</property>
++                            <property name="xalign">0</property>
++                          </object>
++                          <packing>
++                            <property name="left_attach">4</property>
++                            <property name="top_attach">2</property>
++                          </packing>
++                        </child>
++                        <child>
+                           <object class="GtkLabel" id="label18">
+                             <property name="visible">True</property>
+                             <property name="can_focus">False</property>
+@@ -1687,7 +1712,7 @@ Author: Mario cianciolo <mr.udda@gmail.c
+                           </object>
+                           <packing>
+                             <property name="left_attach">4</property>
+-                            <property name="top_attach">2</property>
++                            <property name="top_attach">3</property>
+                           </packing>
+                         </child>
+                         <child>
+@@ -1699,7 +1724,7 @@ Author: Mario cianciolo <mr.udda@gmail.c
+                           </object>
+                           <packing>
+                             <property name="left_attach">4</property>
+-                            <property name="top_attach">3</property>
++                            <property name="top_attach">4</property>
+                           </packing>
+                         </child>
+                         <child>
+@@ -4054,6 +4079,7 @@ Author: Mario cianciolo <mr.udda@gmail.c
+       <widget name="cb_color_mem1"/>
+       <widget name="cb_color_mem2"/>
+       <widget name="cb_color_mem3"/>
++      <widget name="cb_color_mem4"/>
+       <widget name="cb_color_net1"/>
+       <widget name="cb_color_net2"/>
+       <widget name="cb_color_net3"/>
