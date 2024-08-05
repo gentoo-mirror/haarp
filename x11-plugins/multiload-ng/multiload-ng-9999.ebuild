@@ -38,6 +38,7 @@ DOCS=( AUTHORS Changelog.md CONTRIBUTING.md README.md )
 
 src_prepare() {
 	eapply "${FILESDIR}/fix-sysfs-nvme-dm.patch"
+	eapply "${FILESDIR}/improve-memory-stats.patch"
 	eapply_user
 	eautoreconf
 }
