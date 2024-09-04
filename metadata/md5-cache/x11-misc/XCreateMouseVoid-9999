@@ -1,0 +1,14 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=x11-base/xorg-server
+DESCRIPTION=Create a void window and prevent the mouse from entering it
+EAPI=8
+HOMEPAGE=https://github.com/cas--/XCreateMouseVoid
+INHERIT=git-r3
+IUSE=debug
+KEYWORDS=~amd64 ~x86
+PROPERTIES=live
+RDEPEND=x11-base/xorg-server
+SLOT=0
+_eclasses_=git-r3	875eb471682d3e1f18da124be97dcc81
+_md5_=c94312b1cbe4439555fc6f0dc9510ca4
