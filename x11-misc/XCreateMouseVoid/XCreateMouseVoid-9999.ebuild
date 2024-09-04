@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit git-r3
 
@@ -21,7 +21,7 @@ src_prepare() {
 	sed -i -e 's/gcc/${CC}/g' Makefile
 	sed -i -e 's/$(CFLAGS)/$(CFLAGS) $(LDFLAGS)/g' Makefile
 
-	eapply_user
+	default
 }
 
 src_compile() {
