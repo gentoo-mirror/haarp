@@ -1,6 +1,4 @@
-Add `Shared` to memory graph
-change memory calculation to mirror htop's (don't count shared as cached)
-("Count Slab cache" option will become useless!)
+https://github.com/udda/multiload-ng/pull/85
 
 --- a/common/colors.c	2024-08-04 23:15:52.905672126 +0200
 +++ b/common/colors.c	2024-08-04 23:38:24.601621278 +0200

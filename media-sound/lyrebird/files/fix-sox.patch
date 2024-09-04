@@ -1,0 +1,59 @@
+https://github.com/lyrebird-voice-changer/lyrebird/issues/140
+
+From 031f2b6b5688875b23dd62398ad4175c455fedb7 Mon Sep 17 00:00:00 2001
+From: Daniel Arena <ddan39@gmail.com>
+Date: Wed, 1 Nov 2023 20:51:36 -0400
+Subject: [PATCH 1/2] fix issue with pactl command being split into arguments
+ incorrectly because of spaces in what should be single arguments
+
+---
+ app/core/audio.py | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/app/core/audio.py b/app/core/audio.py
+index 7b2c591..c8f6951 100644
+--- a/app/core/audio.py
++++ b/app/core/audio.py
+@@ -52,13 +52,8 @@ def get_sink_name(self, tuple):
+             return None
+ 
+     def load_pa_modules(self):
+-        self.null_sink = subprocess.check_call(
+-            'pactl load-module module-null-sink sink_name=Lyrebird-Output node.description="Lyrebird Output"'.split(' ')
+-        )
+-        self.remap_sink = subprocess.check_call(
+-            'pactl load-module module-remap-source source_name=Lyrebird-Input master=Lyrebird-Output.monitor node.description="Lyrebird Virtual Input"'\
+-                .split(' ')
+-        )
++        self.null_sink = subprocess.check_call(['pactl', 'load-module', 'module-null-sink', 'sink_name=Lyrebird-Output', 'sink_properties=device.description=Lyrebird_Output'])
++        self.remap_sink = subprocess.check_call(['pactl', 'load-module', 'module-remap-source', 'source_name=Lyrebird-Input', 'master=Lyrebird-Output.monitor', 'source_properties=device.description=Lyrebird_Virtual_Input'])
+ 
+     def get_pactl_modules(self):
+         '''
+
+From 062cf68b92ca52b892c9dfaa2dd2e960f5131323 Mon Sep 17 00:00:00 2001
+From: Daniel Arena <ddan39@gmail.com>
+Date: Wed, 1 Nov 2023 21:00:44 -0400
+Subject: [PATCH 2/2] Fix sox command when volume is not adjusted. When no
+ "type" is provided for the vol argument it defaults to amplitude. 0 amplitude
+ is absolute silence. To leave the volume unchanged we change it to amplitude
+ 1, but to keep consistent with the code above that uses dB, I am going to set
+ it to "0dB".
+
+---
+ app/core/audio.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/core/audio.py b/app/core/audio.py
+index c8f6951..4097439 100644
+--- a/app/core/audio.py
++++ b/app/core/audio.py
+@@ -30,7 +30,7 @@ def run_sox(self, scale, preset, buffer=20):
+             command_effects += ["vol", str(preset.volume_boost) + "dB"]
+         else:
+             # Fix a bug where SoX uses last given volumne
+-            command_effects += ["vol", "0"]
++            command_effects += ["vol", "0dB"]
+ 
+         # Downsampling
+         if preset.downsample_amount != None:

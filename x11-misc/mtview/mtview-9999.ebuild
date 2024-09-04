@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit git-r3
+inherit autotools git-r3
 
 DESCRIPTION="Graphical multitouch viewer"
 HOMEPAGE="https://github.com/whot/mtview"
@@ -17,7 +17,7 @@ IUSE=""
 RDEPEND=""
 DEPEND=${RDEPEND}
 
-src_configure() {
-	./autogen.sh
-	./configure --prefix=/usr
+src_prepare() {
+	default
+	eautoreconf
 }

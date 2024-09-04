@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 inherit linux-info toolchain-funcs
 
@@ -15,7 +15,8 @@ IUSE=""
 
 RDEPEND="sys-libs/glibc"
 DEPEND="${DEPEND}
-	>=sys-kernel/gentoo-sources-3.16"
+	virtual/linux-sources
+"
 
 pkg_setup() {
 	CONFIG_CHECK="~ACPI_EC_DEBUGFS"
