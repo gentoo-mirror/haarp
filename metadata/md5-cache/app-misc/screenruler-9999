@@ -10,5 +10,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=dev-ruby/ruby-gettext dev-ruby/ruby-gtk3
 SLOT=0
-_eclasses_=desktop	56973babb9c5f19cab0eeb53ece644c6	git-r3	875eb471682d3e1f18da124be97dcc81	xdg-utils	5465aed08f1dfc2a75f14cbea4272961	xdg	854eae304447322625df5991e20ed18f
+_eclasses_=desktop	3a72ffe0d8e1dd73af3a1c8c15a59fed	git-r3	875eb471682d3e1f18da124be97dcc81	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	xdg	3ef49a87c52c8b77c476351195dfe575
 _md5_=75553914ac7c6e08080e543915c9d5f8
