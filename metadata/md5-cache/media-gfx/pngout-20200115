@@ -6,5 +6,5 @@ INHERIT=unpacker
 KEYWORDS=~amd64 ~arm ~arm64 ~x86
 SLOT=0
 SRC_URI=https://www.jonof.id.au/files/kenutils/pngout-20200115-linux.tar.gz
-_eclasses_=multiprocessing	1e32df7deee68372153dca65f4a7c21f	toolchain-funcs	6afdb6107430c1832ca7e16aacbf8fa1	multilib	b2a329026f2e404e9e371097dda47f96	unpacker	3b4ee72d1e2e0374fd8cd3eddfa00627
+_eclasses_=multiprocessing	1e32df7deee68372153dca65f4a7c21f	toolchain-funcs	6afdb6107430c1832ca7e16aacbf8fa1	multilib	b2a329026f2e404e9e371097dda47f96	unpacker	13d8d65b19f96f31b38c39b57419304e
 _md5_=a6404bf072ba7a869693d1e93d838d2e
