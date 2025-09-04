@@ -3,7 +3,7 @@
 
 EAPI="8"
 GNOME2_LA_PUNT="yes" # plugins are dlopened
-PYTHON_COMPAT=( python3_{11..12} )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit gnome2 meson multilib python-single-r1
 
