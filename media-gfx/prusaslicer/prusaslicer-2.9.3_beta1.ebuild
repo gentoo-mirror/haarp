@@ -44,7 +44,6 @@ RDEPEND="
 	media-libs/libjpeg-turbo:=
 	media-libs/libpng:0=
 	media-libs/qhull:=
-	net-libs/webkit-gtk:4.1
 	sci-libs/libigl
 	sci-libs/nlopt
 	sci-libs/opencascade:=
@@ -66,7 +65,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.6.0-dont-force-link-to-wayland-and-x11.patch"
 	"${FILESDIR}/${PN}-2.8.1-cgal-6.0.patch"
 	"${FILESDIR}/${PN}-2.8.1-fstream.patch"
-	"${FILESDIR}/${PN}-2.8.1-fix-libsoup-double-linking.patch"
 	"${FILESDIR}/${PN}-2.8.1-boost-1.87.patch"
 	"${FILESDIR}/${PN}-2.9.2-boost-1.88.patch"
 )
@@ -80,6 +78,11 @@ src_prepare() {
 
 	sed -i -e 's/find_package(OpenCASCADE 7.6.[0-9] REQUIRED)/find_package(OpenCASCADE REQUIRED)/g' \
 		src/occt_wrapper/CMakeLists.txt || die
+
+	# get rid of webkit dependency to fix
+	# `libsoup-ERROR **: libsoup3 symbols detected. Using libsoup2 and libsoup3 in the same process is not supported.`
+	# https://github.com/prusa3d/PrusaSlicer/issues/14143#issuecomment-2686942538
+	sed -i -e '/webkit2gtk/d' -e 's/ PkgConfig::WEBKIT2GTK//' src/slic3r/CMakeLists.txt
 
 	cmake_src_prepare
 }
