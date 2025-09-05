@@ -1,0 +1,16 @@
+BDEPEND=sys-devel/gnuconfig >=app-portage/elt-patches-20250306 || ( >=dev-build/automake-1.18:1.18 >=dev-build/automake-1.17-r1:1.17 ) || ( >=dev-build/autoconf-2.72-r1:2.72 ) >=dev-build/libtool-2.4.7-r3
+DEFINED_PHASES=configure install postinst prepare pretend
+DEPEND=>=dev-libs/glib-2.26.0:2 gpm? ( sys-libs/gpm ) kernel_linux? ( sys-fs/e2fsprogs ) samba? ( net-fs/samba ) sftp? ( net-libs/libssh2 ) slang? ( >=sys-libs/slang-2 ) !slang? ( sys-libs/ncurses:0=[unicode?] ) spell? ( app-text/aspell ) X? ( x11-libs/libX11 x11-libs/libICE x11-libs/libXau x11-libs/libXdmcp x11-libs/libSM ) app-arch/xz-utils virtual/pkgconfig nls? ( sys-devel/gettext ) test? ( dev-libs/check )
+DESCRIPTION=GNU Midnight Commander is a text based file manager
+EAPI=7
+HOMEPAGE=https://www.midnight-commander.org
+INHERIT=autotools flag-o-matic
+IUSE=+edit gpm mclib nls samba sftp +slang spell test unicode X +xdg
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris
+LICENSE=GPL-3
+RDEPEND=>=dev-libs/glib-2.26.0:2 gpm? ( sys-libs/gpm ) kernel_linux? ( sys-fs/e2fsprogs ) samba? ( net-fs/samba ) sftp? ( net-libs/libssh2 ) slang? ( >=sys-libs/slang-2 ) !slang? ( sys-libs/ncurses:0=[unicode?] ) spell? ( app-text/aspell ) X? ( x11-libs/libX11 x11-libs/libICE x11-libs/libXau x11-libs/libXdmcp x11-libs/libSM )
+REQUIRED_USE=spell? ( edit )
+SLOT=0
+SRC_URI=http://ftp.midnight-commander.org/mc-4.8.20.tar.xz
+_eclasses_=gnuconfig	ddeb9f8caff1b5f71a09c75b7534df79	toolchain-funcs	a0b29008c671a362b505f96fa80ce9c0	libtool	c81bd096be5f4c82f4e8f156ef112402	autotools	955b29ccd82c1df4755e5f37748d2fa6	flag-o-matic	a7afe42e95fb46ce9691605acfb24672
+_md5_=a1abe79e829a301b6359eee3406cb020
